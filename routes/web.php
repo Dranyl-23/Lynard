@@ -154,7 +154,7 @@ Route::post('/set-name', function (Request $request) {
     return response()->json(['error' => 'No session'], 400);
 })->middleware('throttle:5,1');
 
-Route::get('/api/github-contributions/{username}', function($username) {
+Route::get('/ajax/github-contributions/{username}', function($username) {
     return Cache::remember('github_contributions_' . $username, 43200, function() use ($username) {
         $options = [
             "http" => [

@@ -392,7 +392,7 @@
             async fetchData() {
                 // Fetch real data from our local proxy API
                 try {
-                    const res = await fetch(`/api/github-contributions/${this.username}`);
+                    const res = await fetch(`/ajax/github-contributions/${this.username}`);
                     if (!res.ok) return;
                     const data = await res.json();
                     
