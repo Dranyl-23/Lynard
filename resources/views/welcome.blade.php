@@ -318,8 +318,9 @@
                                         <template x-for="day in col.days" :key="day.date">
                                             <div class="w-3 h-3 flex items-center justify-center group relative">
                                                 <!-- Dot -->
-                                                <div class="rounded-full bg-ink dark:bg-white transition-all duration-300"
+                                                <div class="rounded-full bg-ink transition-all duration-300"
                                                     :class="{
+
                                                         'w-[2px] h-[2px] opacity-10': day.level === 0,
                                                         'w-[4px] h-[4px] opacity-50': day.level === 1,
                                                         'w-[6px] h-[6px] opacity-70': day.level === 2,
@@ -329,7 +330,7 @@
                                                 </div>
                                                 
                                                 <!-- Tooltip -->
-                                                <div class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 hidden group-hover:block z-10 whitespace-nowrap bg-ink dark:bg-white text-white dark:text-ink text-[10px] font-mono px-2 py-1 rounded shadow-lg pointer-events-none">
+                                                <div class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 hidden group-hover:block z-10 whitespace-nowrap bg-ink text-white text-[10px] font-mono px-2 py-1 rounded shadow-lg pointer-events-none">
                                                     <span x-text="(day.level > 0 ? 'Contributions' : 'No contributions') + ' on ' + day.date"></span>
                                                 </div>
                                             </div>
