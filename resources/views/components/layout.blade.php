@@ -7,6 +7,7 @@
 
     <title>Alfie Lynard — Software Engineer</title>
     <meta name="description" content="I'm Alfie Lynard — a software engineer building modern applications.">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 </head>
-<body class="relative overflow-x-hidden bg-white font-sans text-ink antialiased">
+<body class="relative overflow-x-hidden bg-white font-sans text-ink antialiased" x-data="communityChat" x-init="initEcho()">
 
     <!-- Page-wide halftone backdrop -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
@@ -72,8 +73,8 @@
                 
                 <!-- Group 2: No Icons -->
                 <div class="flex flex-col gap-2.5">
-                    <a href="/#projects" class="group relative inline-flex w-fit items-center {{ request()->is('/') ? 'text-gray-500 hover:text-ink' : 'text-gray-400 hover:text-gray-500' }}">
-                        @if(request()->is('/'))
+                    <a href="/projects" class="group relative inline-flex w-fit items-center {{ request()->is('projects') ? 'text-ink font-medium' : 'text-gray-500 hover:text-ink' }}">
+                        @if(request()->is('projects'))
                             <span class="absolute -left-5 text-ink">&rarr;</span>
                         @endif
                         Projects
@@ -101,6 +102,26 @@
 
             <!-- Bottom Section -->
             <div class="flex flex-col gap-4 mt-12">
+                <div class="h-px bg-gray-200 w-full mb-2"></div>
+                
+                <!-- Presence Indicators -->
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="flex -space-x-2">
+                        <template x-for="(viewer, index) in viewers.slice(0, 3)" :key="viewer.id">
+                            <img :src="viewer.user_info?.avatar" class="w-6 h-6 rounded-full border-2 border-white bg-gray-200" alt="Avatar">
+                        </template>
+                        <div x-show="viewers.length > 3" class="w-6 h-6 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[8px] font-mono font-medium text-gray-500" x-text="'+' + (viewers.length - 3)"></div>
+                        <div x-show="viewers.length === 0" class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px]">?</div>
+                    </div>
+                    <span class="font-mono text-[10px] text-gray-500"><strong class="text-ink" x-text="Math.max(1, viewers.length)"></strong> people viewing now</span>
+                </div>
+
+                <!-- Community Chat Button -->
+                <button type="button" @click="isOpen = true" class="group flex items-center gap-2 font-mono text-[11px] text-gray-500 hover:text-ink transition-colors text-left w-fit mb-2">
+                    <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    community chat
+                </button>
+
                 <div class="h-px bg-gray-200 w-full mb-2"></div>
                 <div class="mb-2">
                     <div class="theme-switch" role="group" aria-label="Theme">
@@ -137,7 +158,7 @@
     </header>
 
     <!-- Mobile full-screen menu -->
-    <div id="mobileNav" class="fixed inset-0 z-[60] hidden flex-col bg-white lg:hidden">
+    <div id="mobileNav" class="fixed inset-0 z-60 hidden flex-col bg-white lg:hidden">
         <div class="flex items-center justify-between border-b border-gray-200 px-6 py-3">
             <a href="/" class="font-pixel text-[14px]">Lynard</a>
             <button type="button" onclick="closeMobileNav()" aria-label="Close menu" class="-mr-1 p-1 text-gray-700 hover:text-ink">
@@ -188,8 +209,8 @@
                 
                 <!-- Group 2: No Icons -->
                 <div class="mnav-group flex flex-col gap-4" style="transition-delay: 0.15s">
-                    <a href="/#projects" onclick="closeMobileNav()" class="relative inline-flex w-fit items-center {{ request()->is('/') ? 'text-gray-700 hover:text-ink' : 'text-gray-500 hover:text-gray-700' }}">
-                        @if(request()->is('/'))
+                    <a href="/projects" onclick="closeMobileNav()" class="relative inline-flex w-fit items-center {{ request()->is('projects') ? 'text-ink font-medium' : 'text-gray-700 hover:text-ink' }}">
+                        @if(request()->is('projects'))
                             <span class="absolute -left-6 text-ink">&rarr;</span>
                         @endif
                         Projects
@@ -256,12 +277,12 @@
     </main>
 
     <!-- Hackathon Modal -->
-    <div id="hackathonModal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+    <div id="hackathonModal" class="fixed inset-0 z-100 hidden items-center justify-center">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity" onclick="closeHackathonModal()"></div>
         
         <!-- Modal Content -->
-        <div class="relative w-full max-w-2xl transform overflow-hidden rounded-[1.5rem] bg-white p-8 text-left align-middle shadow-2xl transition-all sm:p-10 mx-4 border border-gray-100">
+        <div class="relative w-full max-w-2xl transform overflow-hidden rounded-3xl bg-white p-8 text-left align-middle shadow-2xl transition-all sm:p-10 mx-4 border border-gray-100">
             <!-- Close button -->
             <button type="button" onclick="closeHackathonModal()" class="absolute right-6 top-6 text-gray-400 hover:text-ink transition-colors">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round"/></svg>
@@ -312,5 +333,7 @@
             document.body.style.overflow = '';
         }
     </script>
+
+    <x-community-chat />
 </body>
 </html>

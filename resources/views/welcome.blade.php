@@ -47,12 +47,12 @@
                             <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap">Yrs Exp</div>
                         </div>
                         <!-- Stat 2 (Clickable) -->
-                        <div onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" class="group cursor-pointer py-6 pl-6 sm:px-6 border-b sm:border-b-0 sm:border-r border-gray-100">
+                        <a href="/projects" class="group block cursor-pointer py-6 pl-6 sm:px-6 border-b sm:border-b-0 sm:border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
                                 10+ <span class="inline-block text-[0.65rem] text-gray-300 font-sans mt-1.5 transition-all duration-300 group-hover:text-ink group-hover:scale-125 group-hover:-translate-y-px group-hover:translate-x-px group-hover:font-bold">↗</span>
                             </div>
                             <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap transition-colors group-hover:text-ink">Projects</div>
-                        </div>
+                        </a>
                         <!-- Stat 3 (Clickable) -->
                         <div onclick="openHackathonModal()" class="group cursor-pointer py-6 pr-6 sm:px-6 border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
@@ -125,8 +125,8 @@
                     <!-- Projects Section (Overlapping Cards) -->
                     <div id="projects" class="w-full pb-16 pt-8 overflow-visible">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>02 — projects</span>
-                            <a href="#" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
+                            <span>01 &mdash; Projects</span>
+                            <a href="/projects" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
                         </div>
                            <!-- Cards Container -->
                         <div class="relative w-full h-112.5 sm:h-125 flex items-center justify-center mt-12 mb-8">
