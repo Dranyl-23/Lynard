@@ -14,12 +14,12 @@
                 <!-- View Toggle Icons -->
                 <div class="hidden sm:flex items-center gap-1 bg-transparent border border-gray-200/50 rounded-lg p-1">
                     <button @click="view = 'list'" 
-                            :class="view === 'list' ? 'bg-gray-100 dark:bg-gray-800 text-ink shadow-sm' : 'text-gray-400 hover:text-ink'"
+                            :class="view === 'list' ? 'bg-gray-100 text-ink shadow-sm' : 'text-gray-400 hover:text-ink'"
                             class="p-1.5 rounded-md transition-colors cursor-pointer" aria-label="List View">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     </button>
                     <button @click="view = 'grid'" 
-                            :class="view === 'grid' ? 'bg-gray-100 dark:bg-gray-800 text-ink shadow-sm' : 'text-gray-400 hover:text-ink'"
+                            :class="view === 'grid' ? 'bg-gray-100 text-ink shadow-sm' : 'text-gray-400 hover:text-ink'"
                             class="p-1.5 rounded-md transition-colors cursor-pointer" aria-label="Grid View">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
                     </button>
@@ -33,7 +33,7 @@
                 
                 @foreach ($posts as $post)
                 <a href="/blog/{{ $post->slug }}" class="blog-post group transition-colors"
-                   :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
+                   :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
                         <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
