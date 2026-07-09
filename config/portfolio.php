@@ -164,6 +164,7 @@ return [
                     ],
                     'skills' => ['React', 'Node.js', 'AWS']
                 ]
+            ]
         ]
     ],
 
