@@ -46,12 +46,12 @@
                             </div>
                             <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap">Yrs Exp</div>
                         </div>
-                        <!-- Stat 2 -->
-                        <div class="py-6 pl-6 sm:px-6 border-b sm:border-b-0 sm:border-r border-gray-100">
+                        <!-- Stat 2 (Clickable) -->
+                        <div onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" class="group cursor-pointer py-6 pl-6 sm:px-6 border-b sm:border-b-0 sm:border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
-                                10+ <span class="text-[0.65rem] text-gray-400 font-sans mt-1.5">↗</span>
+                                10+ <span class="inline-block text-[0.65rem] text-gray-300 font-sans mt-1.5 transition-all duration-300 group-hover:text-ink group-hover:scale-125 group-hover:-translate-y-px group-hover:translate-x-px group-hover:font-bold">↗</span>
                             </div>
-                            <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap">Projects</div>
+                            <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap transition-colors group-hover:text-ink">Projects</div>
                         </div>
                         <!-- Stat 3 (Clickable) -->
                         <div onclick="openHackathonModal()" class="group cursor-pointer py-6 pr-6 sm:px-6 border-r border-gray-100">
