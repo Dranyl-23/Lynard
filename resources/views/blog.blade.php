@@ -39,14 +39,14 @@
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jul 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">The Stateless Mandate: Architectural Purity in Scalable Infrastructure</h3>
+                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Building Scalable Web Apps with Laravel and React</h3>
                         <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            In the evolution of system design, we often find ourselves fighting the gravity of "state." The most elegant infrastructures are those that treat state not as a...
+                            A deep dive into how I architect modern web applications that can handle thousands of concurrent users without breaking a sweat.
                         </p>
                         <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
                             <span>Read</span>
                             <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">2 min</span>
+                            <span class="text-gray-400 font-normal">4 min</span>
                         </div>
                     </div>
                 </a>
@@ -59,14 +59,14 @@
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jun 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">My Setup: Poke, MCPs, and a Local Mac Bridge</h3>
+                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Why I Still Choose Vanilla CSS over Frameworks</h3>
                         <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            I finally got my automation stack to a place where it actually works for me instead of the other way around...
+                            Tailwind is great, but there's a certain elegance to mastering pure CSS and CSS variables for completely custom design systems.
                         </p>
                         <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
                             <span>Read</span>
                             <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">1 min</span>
+                            <span class="text-gray-400 font-normal">3 min</span>
                         </div>
                     </div>
                 </a>
@@ -78,15 +78,15 @@
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jun 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">AI Products Need More Than a Good Demo</h3>
+                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">May 2026</span>
+                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Integrating AI Assistants into Daily Workflows</h3>
                         <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            What I think about when turning AI demos into products people can trust and use.
+                            How I use local LLMs and specialized agents to automate the boring parts of my freelance development business.
                         </p>
                         <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
                             <span>Read</span>
                             <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">3 min</span>
+                            <span class="text-gray-400 font-normal">5 min</span>
                         </div>
                     </div>
                 </a>
@@ -98,10 +98,10 @@
                         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jun 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">What Small Mobile Apps Taught Me About Taste</h3>
+                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Apr 2026</span>
+                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">The Art of Minimalist UI/UX Design</h3>
                         <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            What focused apps like budget, fitness, and travel tools taught me about product taste.
+                            Sometimes, less really is more. A look into how whitespace, typography, and contrast can make or break an interface.
                         </p>
                         <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
                             <span>Read</span>
