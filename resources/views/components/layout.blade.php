@@ -362,18 +362,18 @@
 
     <!-- Email Modal -->
     <div x-data="{ emailModalOpen: false }" @open-email-modal.window="emailModalOpen = true">
-        <div x-show="emailModalOpen" style="display: none;" class="fixed inset-0 z-100 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm" x-transition.opacity>
-            <div @click.away="emailModalOpen = false" class="bg-[#111] border border-[#222] text-white w-full max-w-90 rounded-xl p-6 shadow-2xl relative mx-4" x-transition.scale.95>
-                <button @click="emailModalOpen = false" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+        <div x-show="emailModalOpen" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center bg-gray-900/40 backdrop-blur-sm" x-transition.opacity>
+            <div @click.away="emailModalOpen = false" class="bg-[#111] border border-[#222] text-white w-full max-w-[360px] rounded-2xl p-6 shadow-2xl relative mx-4" x-transition.scale.95>
+                <button @click="emailModalOpen = false" class="absolute top-5 right-5 text-gray-500 hover:text-white transition-colors">
                     <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
                 <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-2">get in touch</div>
-                <h2 class="text-xl font-medium font-pixel mb-1.5">say hello</h2>
+                <h2 class="text-[1.35rem] font-medium font-serif mb-1.5 leading-none text-gray-100">say hello</h2>
                 <p class="text-[12.5px] text-gray-400 mb-6 font-mono">For work, collabs, or just to say hi &mdash; drop me a line.</p>
                 
                 <div class="flex items-center justify-between bg-[#1a1a1a] border border-[#333] rounded-lg p-1.5 mb-3">
                     <span class="font-mono text-[11px] text-gray-300 ml-3">alfielynard23@gmail.com</span>
-                    <button onclick="navigator.clipboard.writeText('alfielynard23@gmail.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000)" class="bg-white text-black font-medium text-[11px] px-4 py-2 rounded-md hover:bg-gray-200 transition-colors">Copy</button>
+                    <button onclick="navigator.clipboard.writeText('alfielynard23@gmail.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000)" class="bg-white text-black font-medium text-[11px] px-3.5 py-1.5 rounded-md hover:bg-gray-200 transition-colors">Copy</button>
                 </div>
                 
                 <a href="mailto:alfielynard23@gmail.com" class="block w-full text-center border border-[#333] hover:bg-[#1a1a1a] transition-colors rounded-lg py-2.5 text-[12.5px] font-medium font-mono text-gray-300">Open mail app</a>
