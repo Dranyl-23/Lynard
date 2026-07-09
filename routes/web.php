@@ -18,8 +18,24 @@ Route::get('/stack', function () {
     return view('stack');
 });
 
+use App\Models\Post;
+
 Route::get('/blog', function () {
-    return view('blog');
+    return view('blog', [
+        'posts' => Post::all()
+    ]);
+});
+
+Route::get('/blog/{slug}', function ($slug) {
+    $post = Post::find($slug);
+    
+    if (!$post) {
+        abort(404);
+    }
+    
+    return view('blog-show', [
+        'post' => $post
+    ]);
 });
 
 Route::get('/gear', function () {

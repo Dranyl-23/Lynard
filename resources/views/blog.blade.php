@@ -31,85 +31,26 @@
         <div class="w-full pb-20 pt-10">
             <div id="blog-container" :class="view === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12' : 'flex flex-col'">
                 
-                <!-- Post 1 -->
-                <a href="#" class="blog-post group transition-colors"
+                @foreach ($posts as $post)
+                <a href="/blog/{{ $post->slug }}" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="{{ asset('images/blog/thumb1.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jul 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Building Scalable Web Apps with Laravel and React</h3>
+                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">{{ $post->date }}</span>
+                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">{{ $post->title }}</h3>
                         <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            A deep dive into how I architect modern web applications that can handle thousands of concurrent users without breaking a sweat.
+                            {{ $post->excerpt }}
                         </p>
                         <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
                             <span>Read</span>
                             <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">4 min</span>
+                            <span class="text-gray-400 font-normal">{{ $post->readTime }}</span>
                         </div>
                     </div>
                 </a>
-
-                <!-- Post 2 -->
-                <a href="#" class="blog-post group transition-colors"
-                   :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
-                    <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="{{ asset('images/blog/thumb2.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jun 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Why I Still Choose Vanilla CSS over Frameworks</h3>
-                        <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            Tailwind is great, but there's a certain elegance to mastering pure CSS and CSS variables for completely custom design systems.
-                        </p>
-                        <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
-                            <span>Read</span>
-                            <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">3 min</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Post 3 -->
-                <a href="#" class="blog-post group transition-colors"
-                   :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
-                    <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="{{ asset('images/blog/thumb3.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">May 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">Integrating AI Assistants into Daily Workflows</h3>
-                        <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            How I use local LLMs and specialized agents to automate the boring parts of my freelance development business.
-                        </p>
-                        <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
-                            <span>Read</span>
-                            <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">5 min</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Post 4 -->
-                <a href="#" class="blog-post group transition-colors"
-                   :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
-                    <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="{{ asset('images/blog/thumb4.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Apr 2026</span>
-                        <h3 class="font-sans text-[1.1rem] font-medium text-ink group-hover:opacity-70 transition-opacity mb-2">The Art of Minimalist UI/UX Design</h3>
-                        <p x-show="view === 'list'" class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                            Sometimes, less really is more. A look into how whitespace, typography, and contrast can make or break an interface.
-                        </p>
-                        <div class="flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-widest text-ink font-medium">
-                            <span>Read</span>
-                            <span class="text-gray-300">&middot;</span>
-                            <span class="text-gray-400 font-normal">2 min</span>
-                        </div>
-                    </div>
-                </a>
+                @endforeach
 
             </div>
 
