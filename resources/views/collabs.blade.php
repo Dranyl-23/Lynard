@@ -71,7 +71,7 @@
                     </p>
                 </div>
                 <div class="flex flex-col items-start gap-3 shrink-0">
-                    <a href="mailto:alfielynard23@gmail.com" class="w-full sm:w-auto bg-ink text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity font-medium text-[13.5px] px-5 py-2.5 rounded-lg text-center flex items-center justify-center gap-2.5">
+                    <a href="#" @click.prevent="$dispatch('open-email-modal')" class="w-full sm:w-auto bg-ink text-white dark:bg-white dark:text-black hover:opacity-80 transition-opacity font-medium text-[13.5px] px-5 py-2.5 rounded-lg text-center flex items-center justify-center gap-2.5">
                         <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" stroke="currentColor" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         Get in touch
                     </a>

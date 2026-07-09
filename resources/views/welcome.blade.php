@@ -30,7 +30,7 @@
                             <a href="https://github.com/Dranyl-23" class="hover:text-ink transition-colors whitespace-nowrap">github ↗</a>
                             <a href="https://linkedin.com/in/alfielynard" class="hover:text-ink transition-colors whitespace-nowrap">linkedin ↗</a>
                             <a href="https://facebook.com/alfielynard" class="hover:text-ink transition-colors whitespace-nowrap">facebook ↗</a>
-                            <a href="mailto:alfielynard23@gmail.com" class="hover:text-ink transition-colors whitespace-nowrap">email</a>
+                            <a href="#" @click.prevent="$dispatch('open-email-modal')" class="hover:text-ink transition-colors whitespace-nowrap">email</a>
                         </div>
 
                     </div>

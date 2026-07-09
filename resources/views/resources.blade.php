@@ -383,7 +383,7 @@
 
             <!-- Bottom Note -->
             <div class="mt-24 pt-8 border-t border-gray-100 dark:border-[#222]">
-                <a href="mailto:alfielynard23@gmail.com" class="group inline-flex items-center gap-1.5 font-mono text-[10.5px] text-gray-500 uppercase tracking-widest hover:text-ink transition-colors">
+                <a href="#" @click.prevent="$dispatch('open-email-modal')" class="group inline-flex items-center gap-1.5 font-mono text-[10.5px] text-gray-500 uppercase tracking-widest hover:text-ink transition-colors">
                     Missing something great? Send me a link 
                     <span class="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">&nearr;</span>
                 </a>

@@ -158,7 +158,7 @@
                 <p class="text-[11px] text-gray-500 leading-relaxed pr-4">
                     For work, collabs & everything else, reach me at
                 </p>
-                <a href="mailto:alfielynard23@gmail.com" class="inline-flex w-fit items-center gap-2 text-ink hover:opacity-70 transition-opacity text-[12px] font-medium">
+                <a href="#" @click.prevent="$dispatch('open-email-modal')" class="inline-flex w-fit items-center gap-2 text-ink hover:opacity-70 transition-opacity text-[12px] font-medium">
                     <svg viewBox="0 0 24 24" fill="none" class="h-3.5 w-3.5 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" stroke="currentColor" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     alfielynard23@gmail.com
                 </a>
@@ -257,6 +257,11 @@
             
             <div class="my-5 h-px bg-gray-200"></div>
             <div class="mnav-group flex flex-col gap-5" style="transition-delay: 0.23s">
+                <!-- Mobile Community Chat Button -->
+                <button type="button" @click="closeMobileNav(); isOpen = true" class="group flex items-center gap-2 font-mono text-[14px] text-gray-700 hover:text-ink transition-colors text-left w-fit">
+                    <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    community chat
+                </button>
                 <div>
                     <div class="mb-4">
                         <div class="theme-switch" role="group" aria-label="Theme">
@@ -274,7 +279,7 @@
                     <p class="text-[11px] text-gray-500 leading-relaxed pr-4">
                         For work, collabs & everything else, reach me at
                     </p>
-                    <a href="mailto:alfielynard23@gmail.com" class="inline-flex w-fit items-center gap-2 text-ink hover:opacity-70 transition-opacity text-[12px] font-medium mt-3">
+                    <a href="#" @click.prevent="$dispatch('open-email-modal')" class="inline-flex w-fit items-center gap-2 text-ink hover:opacity-70 transition-opacity text-[12px] font-medium mt-3">
                         <svg viewBox="0 0 24 24" fill="none" class="h-3.5 w-3.5 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" stroke="currentColor" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         alfielynard23@gmail.com
                     </a>
@@ -354,5 +359,26 @@
     </script>
 
     <x-community-chat />
+
+    <!-- Email Modal -->
+    <div x-data="{ emailModalOpen: false }" @open-email-modal.window="emailModalOpen = true">
+        <div x-show="emailModalOpen" style="display: none;" class="fixed inset-0 z-100 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm" x-transition.opacity>
+            <div @click.away="emailModalOpen = false" class="bg-[#111] border border-[#222] text-white w-full max-w-90 rounded-xl p-6 shadow-2xl relative mx-4" x-transition.scale.95>
+                <button @click="emailModalOpen = false" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+                    <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+                <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-2">get in touch</div>
+                <h2 class="text-xl font-medium font-pixel mb-1.5">say hello</h2>
+                <p class="text-[12.5px] text-gray-400 mb-6 font-mono">For work, collabs, or just to say hi &mdash; drop me a line.</p>
+                
+                <div class="flex items-center justify-between bg-[#1a1a1a] border border-[#333] rounded-lg p-1.5 mb-3">
+                    <span class="font-mono text-[11px] text-gray-300 ml-3">alfielynard23@gmail.com</span>
+                    <button onclick="navigator.clipboard.writeText('alfielynard23@gmail.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000)" class="bg-white text-black font-medium text-[11px] px-4 py-2 rounded-md hover:bg-gray-200 transition-colors">Copy</button>
+                </div>
+                
+                <a href="mailto:alfielynard23@gmail.com" class="block w-full text-center border border-[#333] hover:bg-[#1a1a1a] transition-colors rounded-lg py-2.5 text-[12.5px] font-medium font-mono text-gray-300">Open mail app</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
