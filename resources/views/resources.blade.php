@@ -18,7 +18,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">LEARN AI / ML</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.deeplearning.ai/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">DeepLearning.AI</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -27,7 +27,7 @@
                                 Andrew Ng's specializations on ML, deep learning, and generative AI.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://course.fast.ai/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">fast.ai — Practical Deep Learning</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -36,7 +36,7 @@
                                 Top-down, code-first deep learning course for coders.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://github.com/huggingface/llm-course" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Hugging Face LLM Course</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -45,7 +45,7 @@
                                 Free hands-on course on transformers, NLP, and LLMs.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://developers.google.com/machine-learning/crash-course" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Google ML Crash Course</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -54,7 +54,7 @@
                                 Google's interactive intro to machine learning fundamentals.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://huggingface.co/learn/deep-rl-course/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Hugging Face Deep RL Course</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -63,7 +63,7 @@
                                 Free hands-on course on deep reinforcement learning.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.kaggle.com/learn" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Kaggle Learn</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -79,7 +79,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">AI ENGINEERING & LLMS</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://docs.anthropic.com/en/docs/prompt-engineering" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Anthropic Prompt Engineering</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -88,7 +88,7 @@
                                 Official guide to prompting Claude effectively.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Anthropic Cookbook</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -97,7 +97,7 @@
                                 Code recipes for building with Claude: RAG, tools, agents.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://github.com/openai/openai-cookbook" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">OpenAI Cookbook</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -106,7 +106,7 @@
                                 Practical code examples for building with OpenAI models.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://python.langchain.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">LangChain Docs</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -115,7 +115,7 @@
                                 Framework docs for building LLM apps, agents, and RAG.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://eugeneyan.com/writing/llm-patterns/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">A Year of Building with LLMs</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -124,7 +124,7 @@
                                 Hard-won tactical lessons on shipping LLM products.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://huyenchip.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Chip Huyen's Blog</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -140,7 +140,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">DEVELOPER FUNDAMENTALS / CS</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.theodinproject.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">The Odin Project</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -149,7 +149,7 @@
                                 Free full-stack web development curriculum with projects.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.freecodecamp.org/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">freeCodeCamp</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -158,7 +158,7 @@
                                 Free interactive coding curriculum with certifications.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://cs50.harvard.edu/x/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Harvard CS50x</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -167,7 +167,7 @@
                                 Harvard's renowned intro to computer science, free online.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://developer.mozilla.org/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">MDN Web Docs</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -176,7 +176,7 @@
                                 Authoritative reference for HTML, CSS, JavaScript, and web APIs.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://roadmap.sh/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">roadmap.sh</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -185,7 +185,7 @@
                                 Community-curated learning roadmaps for developer roles.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://teachyourselfcs.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Teach Yourself CS</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -194,7 +194,7 @@
                                 Curated core CS subjects with the best books and lectures.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://github.com/donnemartin/system-design-primer" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">System Design Primer</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -210,7 +210,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">PRACTICE & INTERVIEW PREP</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://leetcode.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">LeetCode</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -219,7 +219,7 @@
                                 Coding problems for technical and algorithm interview prep.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://neetcode.io/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">NeetCode</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -228,7 +228,7 @@
                                 Curated problem lists with clear video walkthroughs.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://exercism.org/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Exercism</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -237,7 +237,7 @@
                                 Free coding exercises with mentoring across 70+ languages.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.codewars.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Codewars</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -246,7 +246,7 @@
                                 Gamified coding kata to sharpen language fluency.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.frontendmentor.io/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Frontend Mentor</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -262,7 +262,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">STAY CURRENT — NEWSLETTERS & BLOGS</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.deeplearning.ai/the-batch/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">The Batch</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -271,7 +271,7 @@
                                 Andrew Ng's weekly roundup of AI news and research.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://importai.substack.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Import AI</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -280,7 +280,7 @@
                                 Jack Clark's weekly newsletter on frontier AI and policy.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.latent.space/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Latent Space</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -289,7 +289,7 @@
                                 Newsletter and podcast for AI engineers in production.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://simonwillison.net/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Simon Willison's Blog</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -298,7 +298,7 @@
                                 Prolific, practical writing on LLMs and developer tooling.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://lilianweng.github.io/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Lil'Log (Lilian Weng)</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -307,7 +307,7 @@
                                 Deep technical explainers on ML and LLM topics.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://tldr.tech/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">TLDR Newsletter</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -316,7 +316,7 @@
                                 Daily concise digest of tech, dev, and AI news.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://news.ycombinator.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Hacker News</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -332,7 +332,7 @@
                 <div>
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-8">TOOLS & REFERENCES</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://huggingface.co/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Hugging Face</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -341,7 +341,7 @@
                                 Hub for open models, datasets, and ML demos.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://huggingface.co/papers" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Hugging Face Papers</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -350,7 +350,7 @@
                                 Trending ML papers with linked code and discussion.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://arxiv.org/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">arXiv</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -359,7 +359,7 @@
                                 Open-access preprint server for AI and CS research.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://www.kaggle.com/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">Kaggle</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
@@ -368,7 +368,7 @@
                                 Datasets, notebooks, and ML competitions community.
                             </p>
                         </a>
-                        <a href="#" target="_blank" class="group flex flex-col">
+                        <a href="https://devdocs.io/" target="_blank" class="group flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <h4 class="font-sans text-[14.5px] font-medium text-ink group-hover:opacity-70 transition-opacity">DevDocs</h4>
                                 <svg class="w-3 h-3 text-gray-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" /></svg>
