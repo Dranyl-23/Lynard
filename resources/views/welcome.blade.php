@@ -56,7 +56,7 @@
                         <!-- Stat 3 (Clickable) -->
                         <div onclick="openHackathonModal()" class="group cursor-pointer py-6 pr-6 sm:px-6 border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
-                                1<span class="text-[1rem] text-gray-400 font-sans font-medium mt-[0.15rem]">x</span> <span class="inline-block text-[0.65rem] text-gray-300 font-sans mt-1.5 transition-all duration-300 group-hover:text-ink group-hover:scale-125 group-hover:-translate-y-[1px] group-hover:translate-x-[1px] group-hover:font-bold">↗</span>
+                                1<span class="text-[1rem] text-gray-400 font-sans font-medium mt-[0.15rem]">x</span> <span class="inline-block text-[0.65rem] text-gray-300 font-sans mt-1.5 transition-all duration-300 group-hover:text-ink group-hover:scale-125 group-hover:-translate-y-px group-hover:translate-x-px group-hover:font-bold">↗</span>
                             </div>
                             <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap transition-colors group-hover:text-ink">StellarX</div>
                         </div>
@@ -71,7 +71,7 @@
 
                     <!-- Dotted Divider -->
                     <div class="mt-8 mb-12 border-b border-gray-100/0">
-                        <div class="halftone halftone-wide h-[26px] w-full opacity-30"></div>
+                        <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
                     
                     <!-- Blog Section -->
@@ -119,7 +119,7 @@
 
                     <!-- Dotted Divider -->
                     <div class="mt-8 mb-12 border-b border-gray-100/0">
-                        <div class="halftone halftone-wide h-[26px] w-full opacity-30"></div>
+                        <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
 
                     <!-- Projects Section (Overlapping Cards) -->
@@ -129,11 +129,11 @@
                             <a href="#" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
                         </div>
                            <!-- Cards Container -->
-                        <div class="relative w-full h-[450px] sm:h-[500px] flex items-center justify-center mt-12 mb-8">
+                        <div class="relative w-full h-112.5 sm:h-125 flex items-center justify-center mt-12 mb-8">
                             
                             <!-- Left Card (Chainbudget) -->
-                            <a href="https://github.com/Dranyl-23/Chainbudget" target="_blank" class="absolute left-1/2 top-1/2 -ml-[120px] sm:-ml-[160px] mt-[20px] w-[260px] sm:w-[280px] -translate-x-1/2 -translate-y-1/2 -rotate-[10deg] z-10 hover:!z-40 group/card cursor-pointer">
-                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:-translate-x-[20%] group-hover/card:-rotate-[4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
+                            <a href="https://github.com/Dranyl-23/Chainbudget" target="_blank" class="absolute left-1/2 top-1/2 -ml-30 sm:-ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 -rotate-10 z-10 hover:z-40! group/card cursor-pointer">
+                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[-20%] group-hover/card:rotate-[-4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-600 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
                                             &lt; TOP BUDGET TOOL &gt;
@@ -159,7 +159,7 @@
                             </a>
 
                             <!-- Right Card (Report-Davao) -->
-                            <a href="https://github.com/Dranyl-23/Report-Davao" target="_blank" class="absolute left-1/2 top-1/2 ml-[120px] sm:ml-[160px] mt-[20px] w-[260px] sm:w-[280px] -translate-x-1/2 -translate-y-1/2 rotate-[10deg] z-10 hover:!z-40 group/card cursor-pointer">
+                            <a href="https://github.com/Dranyl-23/Report-Davao" target="_blank" class="absolute left-1/2 top-1/2 ml-30 sm:ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 rotate-10 z-10 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[20%] group-hover/card:rotate-[4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-500 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
@@ -186,7 +186,7 @@
                             </a>
 
                             <!-- Center Card (4PS-Nexus) -->
-                            <a href="https://github.com/Dranyl-23/4PS-Nexus" target="_blank" class="absolute left-1/2 top-1/2 w-[290px] sm:w-[330px] -translate-x-1/2 -translate-y-1/2 z-30 hover:!z-40 group/card cursor-pointer">
+                            <a href="https://github.com/Dranyl-23/4PS-Nexus" target="_blank" class="absolute left-1/2 top-1/2 w-72.5 sm:w-82.5 -translate-x-1/2 -translate-y-1/2 z-30 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgb(0,0,0,0.1)] transition-all duration-500 ease-out group-hover/card:-translate-y-6 group-hover/card:scale-[1.03]">
                                     <div class="flex flex-wrap gap-2 mb-6">
                                         <div class="bg-ink rounded-full px-3 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
@@ -230,7 +230,7 @@
 
                     <!-- Dotted Divider -->
                     <div class="mt-8 mb-12 border-b border-gray-100/0">
-                        <div class="halftone halftone-wide h-[26px] w-full opacity-30"></div>
+                        <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
 
                     <!-- Experience Section -->
