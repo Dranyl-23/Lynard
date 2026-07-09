@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :title="$post->title . ' — Alfie Lynard'" :description="$post->excerpt" :image="$post->image">
     <div class="mx-auto max-w-2xl px-6 pb-20 pt-16 sm:pt-24">
         
         <!-- Back Link -->

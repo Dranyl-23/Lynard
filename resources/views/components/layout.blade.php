@@ -1,3 +1,8 @@
+@props([
+    'title' => 'Alfie Lynard — Software Engineer',
+    'description' => 'I\'m Alfie Lynard — a software engineer building modern applications.',
+    'image' => 'og-image.jpg'
+])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
@@ -5,8 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Alfie Lynard — Software Engineer</title>
-    <meta name="description" content="I'm Alfie Lynard — a software engineer building modern applications.">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:image" content="{{ asset($image) }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="{{ $title }}">
+    <meta property="twitter:description" content="{{ $description }}">
+    <meta property="twitter:image" content="{{ asset($image) }}">
+
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
