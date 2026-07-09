@@ -12,16 +12,12 @@
     ],
     "routes": [
         {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
+            "src": "/(build|CertificationLogo|DeskSetup|HandCarry|ProjectLogos|WorldMap|audio|images)/(.*)",
+            "dest": "/public/$1/$2"
         },
         {
-            "src": "/CertificationLogo/(.*)",
-            "dest": "/public/CertificationLogo/$1"
-        },
-        {
-            "src": "/images/(.*)",
-            "dest": "/public/images/$1"
+            "src": "/(favicon\\.svg|favicon\\.ico|profile\\.png|og-image\\.jpg|robots\\.txt)",
+            "dest": "/public/$1"
         },
         {
             "src": "/(.*)",
