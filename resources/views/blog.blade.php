@@ -35,7 +35,7 @@
                 <a href="#" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                        <img src="{{ asset('images/blog/thumb1.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jul 2026</span>
@@ -55,7 +55,7 @@
                 <a href="#" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                        <img src="{{ asset('images/blog/thumb2.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Jun 2026</span>
@@ -75,7 +75,7 @@
                 <a href="#" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                        <img src="{{ asset('images/blog/thumb3.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">May 2026</span>
@@ -95,7 +95,7 @@
                 <a href="#" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 dark:hover:bg-gray-800/20 -mx-6 px-6 rounded-2xl'">
                     <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80&grayscale" alt="Thumbnail" class="w-full h-full rounded-xl object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                        <img src="{{ asset('images/blog/thumb4.jpg') }}" alt="Thumbnail" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">Apr 2026</span>
