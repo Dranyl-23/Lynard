@@ -138,6 +138,42 @@ Route::post('/set-name', function (Request $request) {
     return response()->json(['error' => 'No session'], 400);
 })->middleware('throttle:5,1');
 
+Route::get('/api/github-contributions/{username}', function($username) {
+    return Cache::remember('github_contributions_' . $username, 43200, function() use ($username) {
+        $options = [
+            "http" => [
+                "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n"
+            ]
+        ];
+        $context = stream_context_create($options);
+        $html = @file_get_contents("https://github.com/users/{$username}/contributions", false, $context);
+        
+        if (!$html) {
+            return ['error' => 'Failed to fetch'];
+        }
+
+        $total = '0';
+        if (preg_match('/<h2[^>]*>\s*([\d,]+)\s+contributions/i', $html, $m)) {
+            $total = trim($m[1]);
+        }
+
+        preg_match_all('/data-date="([^"]+)"[^>]*data-level="([^"]+)"/i', $html, $matches);
+        
+        $days = [];
+        for ($i = 0; $i < count($matches[1]); $i++) {
+            $days[] = [
+                'date' => $matches[1][$i],
+                'level' => (int)$matches[2][$i]
+            ];
+        }
+
+        return [
+            'total' => $total,
+            'days' => $days
+        ];
+    });
+});
+
 Route::get('/me', function () {
     return response()->json(session('chat_user'));
 });

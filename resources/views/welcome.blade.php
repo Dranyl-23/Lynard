@@ -303,10 +303,124 @@
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">Git</div>
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">GitHub</div>
                         </div>
-                    </div>
+                    <!-- GitHub Section -->
+                    <div id="github" class="w-full pb-20 pt-8" x-data="githubGraph('Dranyl-23')">
+                        <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
+                            <span>07 — github</span>
+                            <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors">@Dranyl-23 &rarr;</a>
+                        </div>
+                        
+                        <!-- Graph Container -->
+                        <div class="w-full overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+                            <div class="min-w-max flex gap-[3px] select-none">
+                                <template x-for="col in graph" :key="col.id">
+                                    <div class="flex flex-col gap-[3px]">
+                                        <template x-for="day in col.days" :key="day.date">
+                                            <div class="w-3 h-3 flex items-center justify-center group relative">
+                                                <!-- Dot -->
+                                                <div class="rounded-full bg-ink dark:bg-white transition-all duration-300"
+                                                    :class="{
+                                                        'w-[2px] h-[2px] opacity-10': day.level === 0,
+                                                        'w-[4px] h-[4px] opacity-50': day.level === 1,
+                                                        'w-[6px] h-[6px] opacity-70': day.level === 2,
+                                                        'w-[7.5px] h-[7.5px] opacity-90': day.level === 3,
+                                                        'w-[9px] h-[9px] opacity-100': day.level === 4,
+                                                    }">
+                                                </div>
+                                                
+                                                <!-- Tooltip -->
+                                                <div class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 hidden group-hover:block z-10 whitespace-nowrap bg-ink dark:bg-white text-white dark:text-ink text-[10px] font-mono px-2 py-1 rounded shadow-lg pointer-events-none">
+                                                    <span x-text="(day.level > 0 ? 'Contributions' : 'No contributions') + ' on ' + day.date"></span>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
 
+                        <div class="mt-4 font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest">
+                            <span x-text="totalContributions"></span> contributions in the last year
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
+
+    <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('githubGraph', (username) => ({
+            username: username,
+            graph: [],
+            totalContributions: '...',
+            
+            init() {
+                this.generateSimulatedData();
+                this.fetchData();
+            },
+
+            // Fallback simulated data while loading
+            generateSimulatedData() {
+                let columns = [];
+                // 52 weeks
+                for (let i = 0; i < 52; i++) {
+                    let days = [];
+                    // 7 days a week
+                    for (let j = 0; j < 7; j++) {
+                        let rand = Math.random();
+                        let level = 0;
+                        if (rand > 0.6) {
+                            if (rand > 0.95) level = 4;
+                            else if (rand > 0.85) level = 3;
+                            else if (rand > 0.75) level = 2;
+                            else level = 1;
+                        }
+                        
+                        let date = new Date();
+                        date.setDate(date.getDate() - ((51 - i) * 7 + (6 - j)));
+                        days.push({
+                            date: date.toISOString().split('T')[0],
+                            level: level
+                        });
+                    }
+                    columns.push({ id: i, days: days });
+                }
+                this.graph = columns;
+            },
+            
+            async fetchData() {
+                // Fetch real data from our local proxy API
+                try {
+                    const res = await fetch(`/api/github-contributions/${this.username}`);
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    
+                    if (data && data.days && data.days.length > 0) {
+                        let columns = [];
+                        let currentWeek = { id: 0, days: [] };
+                        
+                        // GitHub returns 371 days (53 weeks), we can render them all
+                        data.days.forEach((day, index) => {
+                            currentWeek.days.push(day);
+                            
+                            // GitHub columns are Sun-Sat
+                            if (currentWeek.days.length === 7 || index === data.days.length - 1) {
+                                columns.push(currentWeek);
+                                currentWeek = { id: columns.length, days: [] };
+                            }
+                        });
+                        
+                        if (columns.length > 0) {
+                            this.graph = columns;
+                            this.totalContributions = data.total;
+                        }
+                    }
+                } catch (e) {
+                    console.log('Using simulated GitHub data due to API error:', e);
+                }
+            }
+        }));
+    });
+    </script>
 </x-layout>
