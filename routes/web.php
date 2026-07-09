@@ -193,3 +193,13 @@ Route::get('/ajax/github-contributions/{username}', function($username) {
 Route::get('/me', function () {
     return response()->json(session('chat_user'));
 });
+
+// Temporary route to run migrations on Vercel
+Route::get('/deploy-migrate', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        return 'Migrations executed successfully! ' . \Illuminate\Support\Facades\Artisan::output();
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
