@@ -312,20 +312,19 @@
                         
                         <!-- Graph Container -->
                         <div class="w-full overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                            <div class="min-w-max flex gap-[3px] select-none">
+                            <div class="min-w-max flex gap-0.75 select-none">
                                 <template x-for="col in graph" :key="col.id">
-                                    <div class="flex flex-col gap-[3px]">
+                                    <div class="flex flex-col gap-0.75">
                                         <template x-for="day in col.days" :key="day.date">
                                             <div class="w-3 h-3 flex items-center justify-center group relative">
                                                 <!-- Dot -->
                                                 <div class="rounded-full bg-ink transition-all duration-300"
                                                     :class="{
-
-                                                        'w-[2px] h-[2px] opacity-10': day.level === 0,
-                                                        'w-[4px] h-[4px] opacity-50': day.level === 1,
-                                                        'w-[6px] h-[6px] opacity-70': day.level === 2,
+                                                        'w-0.5 h-0.5 opacity-10': day.level === 0,
+                                                        'w-1 h-1 opacity-50': day.level === 1,
+                                                        'w-1.5 h-1.5 opacity-70': day.level === 2,
                                                         'w-[7.5px] h-[7.5px] opacity-90': day.level === 3,
-                                                        'w-[9px] h-[9px] opacity-100': day.level === 4,
+                                                        'w-2.25 h-2.25 opacity-100': day.level === 4,
                                                     }">
                                                 </div>
                                                 
