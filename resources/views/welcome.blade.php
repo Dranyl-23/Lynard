@@ -40,7 +40,7 @@
                 <div class="reveal d3 mt-16 sm:mt-24 w-full">
                     <div class="grid grid-cols-2 sm:grid-cols-4 border-y border-gray-100">
                         <!-- Stat 1 -->
-                        <div class="py-6 sm:pr-6 border-b sm:border-b-0 border-r bord   er-gray-100">
+                        <div class="py-6 sm:pr-6 border-b sm:border-b-0 border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
                                 3+ <span class="text-[0.65rem] text-gray-400 font-sans mt-1.5">↗</span>
                             </div>
