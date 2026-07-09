@@ -21,10 +21,10 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                         
                         <!-- Item 1: ASUS TUF A16 -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://www.asus.com/laptops/for-gaming/tuf-gaming/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
-                                <img src="/DeskSetup/asus%20tuf.png" alt="ASUS TUF A16" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                                <img src="/DeskSetup/asus%20tuf.jpg" alt="ASUS TUF A16" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                             </div>
                             <!-- Text Container -->
                             <div class="flex flex-col flex-1">
@@ -39,7 +39,7 @@
                         </a>
 
                         <!-- Item 3: Xiaomi Monitor -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://www.mi.com/global/category-monitors" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/DeskSetup/xiaomi%20monitor.jpg" alt="Xiaomi Monitor" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                             </div>
@@ -55,7 +55,7 @@
                         </a>
 
                         <!-- Item 4: Aula F17 Keyboard -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://aulastar.com/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/DeskSetup/aula%20keyboard.jpg" alt="Aula F17 Keyboard" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                             </div>
@@ -71,7 +71,7 @@
                         </a>
 
                         <!-- Item 5: Red Dragon Mouse --> 
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://redragonshop.com/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/DeskSetup/red%20dragon%20mouse.jpg" alt="Red Dragon Mouse" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                             </div>
@@ -95,7 +95,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                         
                         <!-- Item 1: Vivo V27 Pro -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://www.vivo.com/en/products/v27pro" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/HandCarry/vivo%20v27.jpg" alt="Vivo V27 Pro" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
@@ -114,7 +114,7 @@
 
 
                          <!-- Item 2: Apple Airpods -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://www.apple.com/airpods/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/HandCarry/apple%20airpods.png" alt="Apple Airpods" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
@@ -132,7 +132,7 @@
                         </a>
 
                           <!-- Item 3: Pop Corn Headset -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://shopee.ph/search?keyword=popcorn%20headset" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/HandCarry/popcorn%20headset.jpg" alt="Pop Corn Headset" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
@@ -150,7 +150,7 @@
                         </a>
 
                           <!-- Item 3:Anker Powerbank -->
-                        <a href="#" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
+                        <a href="https://www.anker.com/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
                                 <img src="/HandCarry/anker%20powerbank.webp" alt="Anker Powerbank" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
