@@ -164,6 +164,131 @@ return [
                     ],
                     'skills' => ['React', 'Node.js', 'AWS']
                 ]
+        ]
+    ],
+
+    'certifications' => [
+        'awards' => [
+            [
+                'title' => 'FigmaFusion x Cor Jesu',
+                'subtitle' => 'Concept to Interface',
+                'action_text' => '&lang; VIEW CERTIFICATE &rang;',
+                'modal_type' => 'image',
+                'file' => '/CertificationLogo/Award %26 Cert/figma_cert.jpg',
+                'image' => '/CertificationLogo/Award %26 Cert/figma_cert.jpg',
+                'logos' => [
+                    ['src' => '/CertificationLogo/figma logo.png', 'classes' => 'bg-gray-50 border-white p-1 z-10'],
+                    ['src' => '/CertificationLogo/Corjesu.webp', 'classes' => 'bg-white border-white p-0.5 -ml-4 z-0']
+                ],
+                'rotation' => 'rotate-1',
+                'z_index' => 'z-10'
+            ],
+            [
+                'title' => 'OpenxAI x Davao DeFi',
+                'subtitle' => 'Workshop & Competition',
+                'action_text' => '&lang; VIEW CERTIFICATE &rang;',
+                'modal_type' => 'image',
+                'file' => '/CertificationLogo/Award %26 Cert/openAI_cert.jpg',
+                'image' => '/CertificationLogo/Award %26 Cert/openAI_cert.jpg',
+                'logos' => [
+                    ['src' => '/CertificationLogo/openxAI.png', 'classes' => 'bg-white p-1 z-10'],
+                    ['src' => '/CertificationLogo/Davao Defi.jpg', 'classes' => 'bg-gray-50 p-0 -ml-4 z-0']
+                ],
+                'rotation' => '-rotate-2',
+                'z_index' => 'z-20'
+            ],
+            [
+                'title' => 'Base Certificate',
+                'subtitle' => 'Web3 / Blockchain',
+                'action_text' => '&lang; VIEW CERTIFICATE &rang;',
+                'modal_type' => 'image',
+                'file' => '/CertificationLogo/Award %26 Cert/base_cert.jpg',
+                'image' => '/CertificationLogo/Award %26 Cert/base_cert.jpg',
+                'logos' => [
+                    ['src' => '/CertificationLogo/BASEPH logo.png', 'classes' => 'bg-blue-50 p-1']
+                ],
+                'rotation' => 'rotate-2',
+                'z_index' => 'z-30'
+            ],
+            [
+                'title' => 'StellarX',
+                'subtitle' => 'Blockchain & Crypto',
+                'action_text' => '&lang; VIEW IMAGE &rang;',
+                'modal_type' => 'image',
+                'file' => '/CertificationLogo/StellarX People.jpg',
+                'image' => '/CertificationLogo/StellarX People.jpg',
+                'logos' => [
+                    ['src' => '/CertificationLogo/StellarX.jpg', 'classes' => 'bg-gray-50 p-1']
+                ],
+                'rotation' => 'rotate-3',
+                'z_index' => 'z-20'
+            ]
+        ],
+        'networking' => [
+            [
+                'title' => 'Network Defense',
+                'subtitle' => 'Cybersecurity',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/Networking Cert/Network_Defense.pdf',
+                'gradient' => 'from-blue-50 to-cyan-50',
+                'icon_color' => 'text-blue-500',
+                'badge_color' => 'bg-blue-100 text-blue-600',
+                'svg' => '<path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"></path>',
+                'rotation' => '-rotate-1',
+                'z_index' => 'z-10'
+            ],
+            [
+                'title' => 'Cyber Threat Mgt.',
+                'subtitle' => 'Cybersecurity',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/Networking Cert/Cyber_Threat_Management.pdf',
+                'gradient' => 'from-red-50 to-orange-50',
+                'icon_color' => 'text-red-500',
+                'badge_color' => 'bg-red-100 text-red-600',
+                'svg' => '<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v5h-2V7zm0 7h2v2h-2v-2z"></path>',
+                'rotation' => 'rotate-2',
+                'z_index' => 'z-20'
+            ],
+            [
+                'title' => 'Endpoint Security',
+                'subtitle' => 'Cybersecurity',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/Networking Cert/Endpoint_Security.pdf',
+                'gradient' => 'from-green-50 to-emerald-50',
+                'icon_color' => 'text-green-500',
+                'badge_color' => 'bg-green-100 text-green-600',
+                'svg' => '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>',
+                'rotation' => '-rotate-3',
+                'z_index' => 'z-30'
+            ],
+            [
+                'title' => 'Networking',
+                'subtitle' => 'Infrastructure',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/Networking Cert/Networking.pdf',
+                'gradient' => 'from-purple-50 to-indigo-50',
+                'icon_color' => 'text-purple-500',
+                'badge_color' => 'bg-purple-100 text-purple-600',
+                'svg' => '<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68 1.41-1.41-3.68-3.68C19.26 16.07 20 14.12 20 12c0-4.97-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1-11h2v6h-2V8zm0 8h2v2h-2v-2z"></path>',
+                'rotation' => 'rotate-1',
+                'z_index' => 'z-10'
+            ],
+            [
+                'title' => 'DICT-ITU DTC',
+                'subtitle' => 'Training & Seminars',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/Networking Cert/DICT-ITU DTC.pdf',
+                'gradient' => 'from-yellow-50 to-amber-50',
+                'icon_color' => 'text-yellow-600',
+                'badge_color' => 'bg-yellow-100 text-yellow-600',
+                'svg' => '<path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"></path>',
+                'rotation' => 'rotate-2',
+                'z_index' => 'z-20'
             ]
         ]
     ]

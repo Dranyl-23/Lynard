@@ -19,101 +19,37 @@
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-12 text-center sm:text-left">AWARDS & CERTIFICATES</h3>
                     
                     <div class="flex flex-wrap justify-center sm:justify-start gap-y-8 sm:-mx-2">
-                        
-                        <!-- FigmaFusion x Cor Jesu -->
-                        <a href="/CertificationLogo/Award%20&%20Cert/figma_cert.jpg" @click.prevent="openModal('image', '/CertificationLogo/Award%20&%20Cert/figma_cert.jpg')" target="_blank" class="group relative z-10 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-1 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
+                        @foreach(config('portfolio.certifications.awards') as $award)
+                        <a href="{{ $award['file'] }}" @click.prevent="openModal('{{ $award['modal_type'] }}', '{{ $award['file'] }}')" target="_blank" class="group relative {{ $award['z_index'] }} hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
+                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col {{ $award['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
                                 <div class="relative w-full mb-8">
                                     <div class="w-full h-32 rounded-xl overflow-hidden bg-gray-100 relative border border-gray-100/50">
-                                        <img src="/CertificationLogo/Award%20&%20Cert/figma_cert.jpg" alt="Figma Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        <img src="{{ $award['image'] }}" alt="{{ $award['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     </div>
+                                    @if(count($award['logos']) === 1)
+                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden {{ $award['logos'][0]['classes'] }} shadow-sm flex items-center justify-center">
+                                        <img src="{{ $award['logos'][0]['src'] }}" alt="Logo" class="w-full h-full object-contain">
+                                    </div>
+                                    @else
                                     <div class="absolute -bottom-5 left-4 flex items-center">
-                                        <div class="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-gray-50 shadow-sm flex items-center justify-center relative z-10 p-1">
-                                            <img src="/CertificationLogo/figma%20logo.png" alt="Figma Logo" class="w-full h-full object-contain">
+                                        @foreach($award['logos'] as $logo)
+                                        <div class="w-12 h-12 rounded-full border-4 border-white overflow-hidden {{ $logo['classes'] }} shadow-sm flex items-center justify-center relative">
+                                            <img src="{{ $logo['src'] }}" alt="Logo" class="w-full h-full object-contain">
                                         </div>
-                                        <div class="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-white shadow-sm flex items-center justify-center -ml-4 relative z-0 p-0.5">
-                                            <img src="/CertificationLogo/Corjesu.webp" alt="Cor Jesu Logo" class="w-full h-full object-contain">
-                                        </div>
+                                        @endforeach
                                     </div>
+                                    @endif
                                 </div>
                                 <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">FigmaFusion x Cor Jesu</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Concept to Interface</div>
+                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">{{ $award['title'] }}</h4>
+                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">{{ $award['subtitle'] }}</div>
                                     <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW CERTIFICATE &rang;
+                                        {!! $award['action_text'] !!}
                                     </div>
                                 </div>
                             </div>
                         </a>
-
-                        <!-- OpenAI x Davao DeFi -->
-                        <a href="/CertificationLogo/Award%20&%20Cert/openAI_cert.jpg" @click.prevent="openModal('image', '/CertificationLogo/Award%20&%20Cert/openAI_cert.jpg')" target="_blank" class="group relative z-20 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col -rotate-2 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gray-100 relative border border-gray-100/50">
-                                        <img src="/CertificationLogo/Award%20&%20Cert/openAI_cert.jpg" alt="OpenAI Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 flex items-center">
-                                        <div class="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-white shadow-sm flex items-center justify-center p-1 relative z-10">
-                                            <img src="/CertificationLogo/openxAI.png" alt="OpenxAI Logo" class="w-full h-full object-contain">
-                                        </div>
-                                        <div class="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-gray-50 shadow-sm flex items-center justify-center -ml-4 relative z-0">
-                                            <img src="/CertificationLogo/Davao%20Defi.jpg" alt="Davao Defi Logo" class="w-full h-full object-cover">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">OpenxAI x Davao DeFi</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Workshop & Competition</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW CERTIFICATE &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Base -->
-                        <a href="/CertificationLogo/Award%20&%20Cert/base_cert.jpg" @click.prevent="openModal('image', '/CertificationLogo/Award%20&%20Cert/base_cert.jpg')" target="_blank" class="group relative z-30 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-2 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gray-100 relative border border-gray-100/50">
-                                        <img src="/CertificationLogo/Award%20&%20Cert/base_cert.jpg" alt="Base Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-blue-50 shadow-sm flex items-center justify-center p-1">
-                                        <img src="/CertificationLogo/BASEPH%20logo.png" alt="Base Logo" class="w-full h-full object-contain">
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">Base Certificate</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Web3 / Blockchain</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW CERTIFICATE &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- StellarX -->
-                        <a href="/CertificationLogo/StellarX%20People.jpg" @click.prevent="openModal('image', '/CertificationLogo/StellarX%20People.jpg')" target="_blank" class="group relative z-20 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-3 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gray-100 relative border border-gray-100/50">
-                                        <img src="/CertificationLogo/StellarX%20People.jpg" alt="StellarX Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-gray-50 shadow-sm flex items-center justify-center p-1">
-                                        <img src="/CertificationLogo/StellarX.jpg" alt="StellarX Logo" class="w-full h-full object-contain">
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">StellarX</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Blockchain & Crypto</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW IMAGE &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
+                        @endforeach
                     </div>
                 </div>
 
@@ -122,122 +58,29 @@
                     <h3 class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-12 text-center sm:text-left">NETWORKING & SECURITY</h3>
                     
                     <div class="flex flex-wrap justify-center sm:justify-start gap-y-8 sm:-mx-2">
-                        
-                        <!-- Network Defense -->
-                        <a href="/CertificationLogo/Networking%20Cert/Network_Defense.pdf" @click.prevent="openModal('pdf', '/CertificationLogo/Networking%20Cert/Network_Defense.pdf')" target="_blank" class="group relative z-10 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col -rotate-1 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
+                        @foreach(config('portfolio.certifications.networking') as $cert)
+                        <a href="{{ $cert['file'] }}" @click.prevent="openModal('{{ $cert['modal_type'] }}', '{{ $cert['file'] }}')" target="_blank" class="group relative {{ $cert['z_index'] }} hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
+                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col {{ $cert['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
                                 <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-cyan-50 relative border border-gray-100/50">
+                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br {{ $cert['gradient'] }} relative border border-gray-100/50">
                                         <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 text-blue-500" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"></path></svg>
+                                            <svg viewBox="0 0 24 24" class="w-16 h-16 {{ $cert['icon_color'] }}" fill="currentColor">{!! $cert['svg'] !!}</svg>
                                         </div>
                                     </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-blue-100 text-blue-600 shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"></path></svg>
+                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden {{ $cert['badge_color'] }} shadow-sm flex items-center justify-center">
+                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor">{!! $cert['svg'] !!}</svg>
                                     </div>
                                 </div>
                                 <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">Network Defense</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Cybersecurity</div>
+                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">{{ $cert['title'] }}</h4>
+                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">{{ $cert['subtitle'] }}</div>
                                     <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW PDF &rang;
+                                        {!! $cert['action_text'] !!}
                                     </div>
                                 </div>
                             </div>
                         </a>
-
-                        <!-- Cyber Threat Management -->
-                        <a href="/CertificationLogo/Networking%20Cert/Cyber_Threat_Management.pdf" @click.prevent="openModal('pdf', '/CertificationLogo/Networking%20Cert/Cyber_Threat_Management.pdf')" target="_blank" class="group relative z-20 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-2 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-red-50 to-orange-50 relative border border-gray-100/50">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 text-red-500" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v5h-2V7zm0 7h2v2h-2v-2z"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-red-100 text-red-600 shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v5h-2V7zm0 7h2v2h-2v-2z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">Cyber Threat Mgt.</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Cybersecurity</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW PDF &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Endpoint Security -->
-                        <a href="/CertificationLogo/Networking%20Cert/Endpoint_Security.pdf" @click.prevent="openModal('pdf', '/CertificationLogo/Networking%20Cert/Endpoint_Security.pdf')" target="_blank" class="group relative z-30 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col -rotate-3 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 relative border border-gray-100/50">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 text-green-500" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-green-100 text-green-600 shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">Endpoint Security</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Cybersecurity</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW PDF &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Networking -->
-                        <a href="/CertificationLogo/Networking%20Cert/Networking.pdf" @click.prevent="openModal('pdf', '/CertificationLogo/Networking%20Cert/Networking.pdf')" target="_blank" class="group relative z-10 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-1 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-purple-50 to-indigo-50 relative border border-gray-100/50">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 text-purple-500" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68 1.41-1.41-3.68-3.68C19.26 16.07 20 14.12 20 12c0-4.97-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1-11h2v6h-2V8zm0 8h2v2h-2v-2z"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-purple-100 text-purple-600 shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68 1.41-1.41-3.68-3.68C19.26 16.07 20 14.12 20 12c0-4.97-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1-11h2v6h-2V8zm0 8h2v2h-2v-2z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">Networking</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Infrastructure</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW PDF &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <!-- DICT-ITU DTC -->
-                        <a href="/CertificationLogo/Networking%20Cert/DICT-ITU%20DTC.pdf" @click.prevent="openModal('pdf', '/CertificationLogo/Networking%20Cert/DICT-ITU%20DTC.pdf')" target="_blank" class="group relative z-20 hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col rotate-2 group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
-                                <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-yellow-50 to-amber-50 relative border border-gray-100/50">
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 text-yellow-600" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-yellow-100 text-yellow-600 shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="px-3 pb-3 text-left">
-                                    <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">DICT-ITU DTC</h4>
-                                    <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">Training & Seminars</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
-                                        &lang; VIEW PDF &rang;
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
+                        @endforeach
                     </div>
                 </div>
 
