@@ -362,8 +362,8 @@
 
     <!-- Email Modal -->
     <div x-data="{ emailModalOpen: false }" @open-email-modal.window="emailModalOpen = true">
-        <div x-show="emailModalOpen" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center bg-gray-900/40 backdrop-blur-sm" x-transition.opacity>
-            <div @click.away="emailModalOpen = false" class="bg-[#111] border border-[#222] text-white w-full max-w-[360px] rounded-2xl p-6 shadow-2xl relative mx-4" x-transition.scale.95>
+        <div x-show="emailModalOpen" style="display: none; z-index: 100;" class="fixed inset-0 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm" x-transition.opacity>
+            <div @click.away="emailModalOpen = false" style="max-width: 360px;" class="bg-[#111] border border-[#222] text-white w-full rounded-2xl p-6 shadow-2xl relative mx-4" x-transition.scale.95>
                 <button @click="emailModalOpen = false" class="absolute top-5 right-5 text-gray-500 hover:text-white transition-colors">
                     <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
