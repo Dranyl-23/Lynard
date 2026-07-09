@@ -30,7 +30,7 @@
             </header>
 
             <!-- Main Image -->
-            <div class="w-full aspect-[16/9] mb-12 rounded-xl overflow-hidden">
+            <div class="w-full aspect-video mb-12 rounded-xl overflow-hidden">
                 <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
             </div>
 
