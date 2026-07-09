@@ -59,13 +59,12 @@ use Pusher\Pusher;
 
 Route::post('/broadcasting/auth', function (Request $request) {
     $pusher = new Pusher(
-        env('REVERB_APP_KEY'),
-        env('REVERB_APP_SECRET'),
-        env('REVERB_APP_ID'),
+        env('PUSHER_APP_KEY'),
+        env('PUSHER_APP_SECRET'),
+        env('PUSHER_APP_ID'),
         [
-            'host' => env('REVERB_HOST'),
-            'port' => env('REVERB_PORT'),
-            'scheme' => env('REVERB_SCHEME'),
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'useTLS' => true,
         ]
     );
 
@@ -197,7 +196,7 @@ Route::get('/me', function () {
 // Temporary route to run migrations on Vercel
 Route::get('/deploy-migrate', function () {
     try {
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true]);
         return 'Migrations executed successfully! ' . \Illuminate\Support\Facades\Artisan::output();
     } catch (\Exception $e) {
         return 'Error: ' . $e->getMessage();
