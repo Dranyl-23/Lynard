@@ -197,7 +197,7 @@ const registerCommunityChat = () => {
             // Set up local user id from local storage or generated
             this.myId = localStorage.getItem('chat_uid');
             if(!this.myId) {
-                this.myId = 'uuid-' + Math.random().toString(36).substr(2, 9);
+                this.myId = 'uuid-' + crypto.randomUUID();
                 localStorage.setItem('chat_uid', this.myId);
             }
 

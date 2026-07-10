@@ -59,6 +59,13 @@ use Illuminate\Http\Request;
 use Pusher\Pusher;
 
 Route::post('/broadcasting/auth', function (Request $request) {
+    // Validate Origin header to prevent cross-origin forgery
+    $origin = $request->header('Origin');
+    $allowedOrigins = [config('app.url'), 'https://lynard.vercel.app'];
+    if ($origin && !in_array($origin, $allowedOrigins)) {
+        abort(403, 'Invalid origin');
+    }
+
     $pusher = new Pusher(
         config('broadcasting.connections.pusher.key'),
         config('broadcasting.connections.pusher.secret'),
@@ -96,7 +103,7 @@ Route::post('/broadcasting/auth', function (Request $request) {
         $auth = $pusher->socket_auth($channelName, $socketId);
         return response($auth);
     }
-});
+})->middleware('throttle:30,1');
 
 use App\Models\Message;
 use App\Events\MessageSent;
@@ -115,7 +122,7 @@ Route::get('/messages', function (Request $request) {
         'has_more' => $messages->count() === 50,
         'oldest_id' => $messages->first()?->id,
     ]);
-});
+})->middleware('throttle:30,1');
 
 Route::post('/messages', function (Request $request) {
     $request->validate([
@@ -188,7 +195,7 @@ Route::get('/ajax/github-contributions/{username}', function($username) {
             'days' => $days
         ];
     });
-});
+})->where('username', '[a-zA-Z0-9_-]+')->middleware('throttle:10,1');
 
 Route::get('/me', function () {
     return response()->json(session('chat_user'));
