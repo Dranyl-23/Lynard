@@ -221,9 +221,14 @@
 
                         <div class="flex flex-col gap-1">
                             @foreach(array_slice(config('portfolio.experience'), 0, 4) as $job)
+                            @php 
+                                $firstRole = $job['roles'][0]; 
+                                $startDate = explode(' - ', $firstRole['duration'])[0]; 
+                                $year = substr($startDate, -4);
+                            @endphp
                             <a href="/experience" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">{{ substr($job['start_date'], 0, 4) }}</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">{{ $job['title'] }}</div>
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">{{ $year }}</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">{{ $firstRole['title'] }}</div>
                                 <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">{{ $job['company'] }}</div>
                             </a>
                             @endforeach
