@@ -123,15 +123,15 @@ a, button { transition: color .2s, background-color .2s, border-color .2s, opaci
 /* GitHub Graph Standard Dots */
 .gh-dot { border-radius: 50%; transition: width 0.2s, height 0.2s, background-color 0.2s; }
 .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g600)); }
-html.dark .gh-dot-4 { background-color: rgb(var(--g200)); }
+html.dark .gh-dot-4 { background-color: rgb(var(--g800)); }
 .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g600)); }
-html.dark .gh-dot-3 { background-color: rgb(var(--g200)); }
+html.dark .gh-dot-3 { background-color: rgb(var(--g800)); }
 .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g600)); }
-html.dark .gh-dot-2 { background-color: rgb(var(--g200)); }
+html.dark .gh-dot-2 { background-color: rgb(var(--g800)); }
 .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g600)); }
-html.dark .gh-dot-1 { background-color: rgb(var(--g200)); }
+html.dark .gh-dot-1 { background-color: rgb(var(--g800)); }
 .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
-html.dark .gh-dot-0 { background-color: #2a2a2a; }
+html.dark .gh-dot-0 { background-color: rgb(var(--g100)); }
 
 html.dark .text-ink { color: #f4f4f5 !important; }
 
