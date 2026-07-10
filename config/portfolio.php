@@ -110,59 +110,50 @@ return [
 
     'experience' => [
         [
-            'company' => 'Standard Chartered',
-            'logo_text' => 'SC',
-            'location' => 'Makati, Manila',
+            'company' => 'Independent Software Developer',
+            'logo_text' => 'DEV',
+            'location' => 'Freelance / Projects',
             'roles' => [
                 [
-                    'title' => 'Lead UI Engineer',
-                    'duration' => 'Jul 2023 - Present &middot; 11 mos',
+                    'title' => 'Full Stack Developer',
+                    'duration' => '2023 - Present',
                     'description' => [
-                        'Led the UI architecture and modernization efforts for the inner source platform serving 2,000+ internal teams across the business.',
-                        'Collaborated directly with stakeholders and backend engineers to ensure seamless integrations.'
+                        'Designed and built end-to-end web applications addressing real-world problem scenarios, from local governance to healthcare.',
+                        'Developed responsive user interfaces, integrated APIs, and structured robust backend databases for multiple client and personal projects.'
                     ],
-                    'skills' => ['TypeScript', 'React', 'Next.js']
+                    'skills' => ['Laravel', 'React', 'Tailwind CSS', 'TypeScript']
                 ]
             ]
         ],
         [
-            'company' => 'Cambridge University Press & Assessment',
-            'logo_text' => 'CU',
-            'location' => 'Makati, Manila',
+            'company' => 'Tech Community & Hackathons',
+            'logo_text' => 'IT',
+            'location' => 'Davao Region',
             'roles' => [
                 [
-                    'title' => 'UI/UX Engineer',
-                    'duration' => 'Feb 2022 - Jun 2023 &middot; 1 yr 5 mos',
+                    'title' => 'Active Participant & Builder',
+                    'duration' => '2022 - Present',
                     'description' => [
-                        'Architected the primary UI components for global assessments taken by millions of students globally.',
-                        'Built interactive and accessible exam interfaces focusing on high performance across low-end devices.'
+                        'Actively joined IT-related activities, tech seminars, and competitive hackathons to continuously hone development skills.',
+                        'Built experimental prototypes including blockchain disbursement systems, civic issue trackers, and AI-assisted workflows.'
                     ],
-                    'skills' => ['Vue', 'Nuxt', 'CSS Architecture']
-                ],
-                [
-                    'title' => 'Senior Full Stack Developer',
-                    'duration' => 'Jul 2019 - Feb 2022 &middot; 2 yrs 8 mos',
-                    'description' => [
-                        'Led development of the core content delivery network APIs.',
-                        'Designed and maintained large-scale databases for storing and retrieving student metrics.'
-                    ],
-                    'skills' => ['PHP', 'Laravel', 'PostgreSQL']
+                    'skills' => ['Web3', 'AI Integrations', 'Problem Solving']
                 ]
             ]
         ],
         [
-            'company' => 'INVENTIVE',
-            'logo_text' => 'IN',
-            'location' => 'BGC, Taguig',
+            'company' => 'Cor Jesu College',
+            'logo_text' => 'CJC',
+            'location' => 'Digos City, Davao del Sur',
             'roles' => [
                 [
-                    'title' => 'Software Engineering Lead',
-                    'duration' => 'Jul 2017 - Jul 2019 &middot; 2 yrs 1 mo',
+                    'title' => 'BS Information Technology (4th Year)',
+                    'duration' => '2020 - Present',
                     'description' => [
-                        'Led the design, development, and deployment of a multi-tenant e-commerce platform.',
-                        'Mentored a team of 5 engineers and established agile development workflows.'
+                        'Currently completing my final year in Information Technology with a strong focus on software engineering, web technologies, and systems architecture.',
+                        'Consistent involvement in campus tech initiatives and collaborative student projects.'
                     ],
-                    'skills' => ['React', 'Node.js', 'AWS']
+                    'skills' => ['Software Engineering', 'System Architecture', 'Leadership']
                 ]
             ]
         ]

@@ -6,7 +6,7 @@
                 Experience
             </h1>
             <p class="mt-4 max-w-lg text-[0.95rem] leading-relaxed text-gray-700 sm:mt-5 sm:text-base">
-                8+ years in building various UI engineering and full-stack development — from internal tools to planet scale gateways processing 100+ million daily per-second requests.
+                A 4th-year IT student passionate about solving real-world problems. Actively building full-stack web applications, participating in tech events, and constantly exploring modern technologies.
             </p>
         </section>
 
