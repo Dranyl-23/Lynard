@@ -417,7 +417,7 @@
                         }
                     }
                 } catch (e) {
-                    console.log('Using simulated GitHub data due to API error:', e);
+                    // Silently fall back to simulated data
                 }
             }
         }));

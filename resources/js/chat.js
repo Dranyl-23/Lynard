@@ -137,14 +137,17 @@ const registerCommunityChat = () => {
                 // Scroll to bottom
                 this.$nextTick(() => { this.scrollToBottom() });
             } catch (e) {
-                console.error("Failed to load initial data", e);
+                // Failed to load initial data silently
             }
 
-            // Await Echo to be available (from bootstrap.js)
-            let checkEcho = setInterval(() => {
+            // Await Echo to be available (from bootstrap.js) with 5 second timeout
+            let echoAttempts = 0;
+            this.checkEcho = setInterval(() => {
                 if (window.Echo) {
-                    clearInterval(checkEcho);
+                    clearInterval(this.checkEcho);
                     this.setupChannels();
+                } else if (++echoAttempts > 50) {
+                    clearInterval(this.checkEcho);
                 }
             }, 100);
         },
@@ -216,7 +219,7 @@ const registerCommunityChat = () => {
                 window.Echo.leave('game');
                 this.setupChannels();
             } catch (e) {
-                console.error("Failed to set name", e);
+                // Silently handle failure
             }
         },
 
@@ -238,7 +241,7 @@ const registerCommunityChat = () => {
                 // We also learn who we are
                 this.currentUser = { name: res.data.username, avatar: res.data.avatar, location: res.data.location };
             } catch (e) {
-                console.error("Failed to send message", e);
+                // Silently handle failure
             }
         },
 
@@ -262,7 +265,7 @@ const registerCommunityChat = () => {
                 this.hasMore = res.data.has_more || false;
                 this.oldestId = res.data.oldest_id || this.oldestId;
             } catch (e) {
-                console.error('Failed to load more messages', e);
+                // Silently handle failure
             }
             this.loadingMore = false;
         },
@@ -460,8 +463,6 @@ const registerCommunityChat = () => {
                 this.animTime = 0;
             }
 
-            const ghostW = 32;
-            const ghostH = 32;
             const pRadius = 15;
             
             // X-axis collision
@@ -751,6 +752,7 @@ const registerCommunityChat = () => {
         },
 
         destroy() {
+            if (this.checkEcho) clearInterval(this.checkEcho);
             if (this.animationFrame) {
                 cancelAnimationFrame(this.animationFrame);
             }
