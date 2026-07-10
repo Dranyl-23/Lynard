@@ -129,7 +129,7 @@
                                         A Blockchain-Based Budget Management System for Transparent Organizational Fund Monitoring.
                                     </p>
                                     <div class="flex gap-2">
-                                        <a href="#" onclick="event.stopPropagation();" class="bg-[#111111] border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
                                             <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col">
                                                 <span class="text-[7px] text-gray-300 leading-none">Download on the</span>
@@ -156,7 +156,7 @@
                                         Civic issue reporting platform for local communities to track and solve problems.
                                     </p>
                                     <div class="flex gap-2">
-                                        <a href="#" onclick="event.stopPropagation();" class="bg-[#111111] border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
                                             <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col">
                                                 <span class="text-[7px] text-gray-300 leading-none">Download on the</span>
@@ -171,7 +171,7 @@
                             <div onclick="window.open('https://github.com/Dranyl-23/4PS-Nexus', '_blank')" class="absolute left-1/2 top-1/2 w-72.5 sm:w-82.5 -translate-x-1/2 -translate-y-1/2 z-30 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgb(0,0,0,0.1)] transition-all duration-500 ease-out group-hover/card:-translate-y-6 group-hover/card:scale-[1.03]">
                                     <div class="flex flex-wrap gap-2 mb-6">
-                                        <div class="bg-[#111111] rounded-full px-3 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
+                                        <div class="bg-ink rounded-full px-3 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
                                             &lt; #1 BLOCKCHAIN APP &gt;
                                         </div>
                                         <div class="border border-gray-200 rounded-full px-3 py-1 font-mono text-[9px] text-gray-500 uppercase tracking-widest">
@@ -189,14 +189,14 @@
                                         A blockchain-based disbursement system for the Philippine 4Ps program using programmable money.
                                     </p>
                                     <div class="flex gap-3">
-                                        <a href="#" onclick="event.stopPropagation();" class="bg-[#111111] border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
                                             <svg class="w-5 h-5 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col items-start">
                                                 <span class="text-[8px] text-gray-300 leading-none">Download on the</span>
                                                 <span class="text-[12px] font-medium text-white leading-tight mt-0.5">App Store</span>
                                             </div>
                                         </a>
-                                        <a href="#" onclick="event.stopPropagation();" class="bg-[#111111] border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
                                             <svg class="w-5 h-5 text-white" viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
                                             <div class="flex flex-col items-start">
                                                 <span class="text-[8px] text-gray-300 leading-none">GET IT ON</span>
