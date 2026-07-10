@@ -1,7 +1,10 @@
 <x-layout>
     <div class="mx-auto max-w-2xl px-6">
             <!-- Hero -->
-            <section class="relative pt-20 pb-16 sm:pt-28">
+            <section id="about" class="relative pt-20 pb-16 sm:pt-28">
+                <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
+                    <span>01 — about</span>
+                </div>
                 <div class="grid gap-9 sm:grid-cols-[18rem_1fr] sm:items-start sm:gap-10">
                     
                     <!-- Image column (Left) -->
@@ -77,7 +80,7 @@
                     <!-- Blog Section -->
                     <div id="blog" class="reveal d4 w-full pb-16 pt-8">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>01 — blog</span>
+                            <span>02 — blog</span>
                             <a href="/blog" class="hover:text-ink transition-colors">ALL POSTS &rarr;</a>
                         </div>
 
@@ -104,7 +107,7 @@
                     <!-- Projects Section (Overlapping Cards) -->
                     <div id="projects" class="w-full pb-16 pt-8 overflow-visible">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>01 &mdash; Projects</span>
+                            <span>03 — projects</span>
                             <a href="/projects" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
                         </div>
                            <!-- Cards Container -->
@@ -212,10 +215,41 @@
                         <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
 
+                    <!-- Certifications Section -->
+                    <div id="certifications" class="w-full pb-10 pt-8">
+                        <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
+                            <span>04 — certifications</span>
+                            <a href="/certifications" class="hover:text-ink transition-colors">ALL CERTIFICATIONS &rarr;</a>
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2025</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">AWS Certified Solutions Architect</div>
+                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Amazon Web Services</div>
+                            </a>
+                            <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2024</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Meta Front-End Developer</div>
+                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Coursera</div>
+                            </a>
+                            <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2023</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Responsive Web Design</div>
+                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">freeCodeCamp</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dotted Divider -->
+                    <div class="mt-8 mb-12 border-b border-gray-100/0">
+                        <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
+                    </div>
+
                     <!-- Experience Section -->
                     <div id="experience" class="w-full pb-10 pt-8">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>03 — experience</span>
+                            <span>05 — experience</span>
                             <a href="/experience" class="hover:text-ink transition-colors">FULL HISTORY &rarr;</a>
                         </div>
 
@@ -238,7 +272,7 @@
                     <!-- Stack Section -->
                     <div id="stack" class="w-full pb-20 pt-2">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-6">
-                            <span>STACK</span>
+                            <span>06 — stack</span>
                             <a href="/stack" class="hover:text-ink transition-colors">VIEW ALL &rarr;</a>
                         </div>
 
