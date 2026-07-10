@@ -1,3 +1,4 @@
+import Alpine from 'alpinejs';
 const cell = 32;
 const scale = 1.6; // draw scale
 const animRow = { IDLE_DOWN: 0, IDLE_RIGHT: 32, IDLE_UP: 64, WALK_DOWN: 96, WALK_RIGHT: 128, WALK_UP: 160 };
@@ -900,8 +901,4 @@ const registerCommunityChat = () => {
     }));
 };
 
-if (window.Alpine) {
-    registerCommunityChat();
-} else {
-    document.addEventListener('alpine:init', registerCommunityChat);
-}
+registerCommunityChat();
