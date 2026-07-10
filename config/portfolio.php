@@ -149,12 +149,12 @@ return [
         [
             'company' => 'Cor Jesu College',
             'logo_text' => 'CJC',
-            'total_duration' => 'Student · 4 yrs',
+            'total_duration' => 'Student · 1 yr',
             'location' => 'Digos City, Davao del Sur · On-site',
             'roles' => [
                 [
                     'title' => 'BS Information Technology (4th Year)',
-                    'duration' => 'Aug 2020 - Present',
+                    'duration' => 'Aug 2023 - Present',
                     'description' => [
                         'Currently completing the final year of a Bachelor of Science in Information Technology, maintaining a strong academic focus on advanced software engineering principles, modern web technologies, and scalable systems architecture.',
                         'Consistently taking on leadership roles in collaborative student projects, managing project lifecycles from initial requirements gathering to final deployment, and ensuring adherence to agile development methodologies.',
