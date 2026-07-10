@@ -118,7 +118,6 @@ Route::post('/broadcasting/auth', function (Request $request) {
 use App\Models\Message;
 use App\Events\MessageSent;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
 
 function getChatUserLocation($request) {
     $userAgent = $request->header('user-agent', '');
