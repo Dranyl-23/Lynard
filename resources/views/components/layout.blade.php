@@ -19,15 +19,16 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:image" content="{{ asset($image) }}">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="{{ $title }}">
-    <meta property="twitter:description" content="{{ $description }}">
-    <meta property="twitter:image" content="{{ asset($image) }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    <meta name="twitter:image" content="{{ asset($image) }}">
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=2">
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}?v=2">
@@ -229,6 +230,13 @@
                         @endif
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-[1.15em] w-[1.15em] shrink-0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         Collabs
+                    </a>
+                    <a href="/recommendations" onclick="closeMobileNav()" class="relative inline-flex w-fit items-center gap-3 {{ request()->is('recommendations') ? 'text-ink font-medium' : 'text-gray-700 hover:text-ink' }}">
+                        @if(request()->is('recommendations'))
+                            <span class="absolute -left-6 text-ink">&rarr;</span>
+                        @endif
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-[1.15em] w-[1.15em] shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Recommendations
                     </a>
                 </div>
                 

@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'posts' => \App\Models\Post::all()->take(3)
+    ]);
 });
 
 Route::get('/projects', function () {
@@ -21,9 +23,22 @@ Route::get('/stack', function () {
 
 use App\Models\Post;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+
 Route::get('/blog', function () {
+    $allPosts = Post::all();
+    $page = request()->get('page', 1);
+    $perPage = 6;
+    $paginatedPosts = new LengthAwarePaginator(
+        $allPosts->forPage($page, $perPage),
+        $allPosts->count(),
+        $perPage,
+        $page,
+        ['path' => request()->url(), 'query' => request()->query()]
+    );
+
     return view('blog', [
-        'posts' => Post::all()
+        'posts' => $paginatedPosts
     ]);
 });
 
@@ -108,11 +123,14 @@ Route::post('/broadcasting/auth', function (Request $request) {
     ];
 
     try {
-        $auth = $pusher->presence_auth($channelName, $socketId, $sessionUser['id'], $presenceData);
-        return response($auth);
+        if (str_starts_with($channelName, 'presence-')) {
+            $auth = $pusher->presence_auth($channelName, $socketId, $sessionUser['id'], $sessionUser);
+        } else {
+            $auth = $pusher->socket_auth($channelName, $socketId);
+        }
+        return response($auth)->header('Content-Type', 'application/json');
     } catch (\Exception $e) {
-        $auth = $pusher->socket_auth($channelName, $socketId);
-        return response($auth);
+        return response()->json(['error' => 'Auth failed'], 403);
     }
 })->middleware('throttle:30,1');
 
@@ -168,7 +186,7 @@ Route::post('/messages', function (Request $request) {
     broadcast(new MessageSent($message))->toOthers();
 
     return response()->json($message);
-})->middleware('throttle:10,1');
+})->middleware('throttle:10,1,chat_user.id');
 
 Route::post('/set-name', function (Request $request) {
     $request->validate(['name' => 'required|string|min:2|max:20']);
@@ -229,6 +247,7 @@ Route::get('/me', function () {
             'id' => $user['id'] ?? null,
             'name' => $user['name'] ?? null,
             'avatar' => $user['avatar'] ?? null,
+            'location' => $user['location'] ?? 'Unknown',
         ]);
     }
     return response()->json(null);

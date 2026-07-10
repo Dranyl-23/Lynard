@@ -50,6 +50,7 @@ const registerCommunityChat = () => {
         isSending: false, // BUG FIX 18
         myId: null, // BUG FIX 13
         checkEcho: null, // BUG FIX 13
+        isDark: false, // PERF 2
         messages: [],
         newMessage: '',
         currentUser: {},
@@ -245,6 +246,7 @@ const registerCommunityChat = () => {
                 // Do NOT call initGame() again — it's already running. setupChannels() guard
                 // above (animationFrame check) prevents a second game loop from spawning.
                 window.Echo.leave('site');
+                window.Echo.leave('chat'); // BUG FIX WS3
                 window.Echo.leave('game');
                 this.setupChannels();
             } catch (e) {
@@ -555,7 +557,7 @@ const registerCommunityChat = () => {
                 this.isMoving = true;
                 this.animTime++;
                 if (this.animTime > 10) {
-                    this.animFrame++;
+                    this.animFrame = (this.animFrame + 1) % 4; // BUG FIX 7
                     this.animTime = 0;
                 }
             } else {
@@ -636,18 +638,21 @@ const registerCommunityChat = () => {
             this.cameraY = Math.max(0, Math.min(maxCamY, this.cameraY));
         },
 
-        drawGame() {
-            if (!this.ctx) return;
-            const cw = window.innerWidth;
-            const ch = window.innerHeight;
-            this.ctx.clearRect(0, 0, cw, ch);
-            this.ctx.save();
-            this.ctx.translate(-this.cameraX, -this.cameraY);
+    drawGame() {
+        if (!this.ctx) return;
+        const cw = window.innerWidth;
+        const ch = window.innerHeight;
+        
+        // PERF 2: Cache dark mode once per frame
+        this.isDark = document.documentElement.classList.contains('dark');
+        
+        this.ctx.clearRect(0, 0, cw, ch);
+        this.ctx.save();
+        this.ctx.translate(-this.cameraX, -this.cameraY);
 
-            // Draw grid
-            const isDark = document.documentElement.classList.contains('dark');
-            this.ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
-            this.ctx.lineWidth = 1;
+        // Draw grid
+        this.ctx.strokeStyle = this.isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+        this.ctx.lineWidth = 1;
             this.ctx.beginPath();
             for (let x = 0; x <= this.worldWidth; x += 40) {
                 this.ctx.moveTo(x, 0); this.ctx.lineTo(x, this.worldHeight);
@@ -789,10 +794,10 @@ const registerCommunityChat = () => {
                 this.ctx.font = '600 11px "Geist Mono", ui-monospace, monospace';
                 this.ctx.textAlign = 'center'; 
                 this.ctx.textBaseline = 'middle';
-                this.ctx.shadowColor = document.documentElement.classList.contains('dark') ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
+                this.ctx.shadowColor = this.isDark ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
                 this.ctx.shadowBlur = 3; 
                 this.ctx.shadowOffsetY = 1;
-                this.ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#f4f4f5' : '#0a0a0a';
+                this.ctx.fillStyle = this.isDark ? '#f4f4f5' : '#0a0a0a';
                 this.ctx.fillText(name, x, cy - 8);
                 this.ctx.restore();
             }
@@ -812,7 +817,7 @@ const registerCommunityChat = () => {
             }
 
             // Dark Mode Tint Overlay
-            if (document.documentElement.classList.contains('dark')) {
+            if (this.isDark) {
                 // BUG FIX 15: Draw dark tint with source-atop so it only affects the opaque parts 
                 // of the underlying asset, rather than being a big square block over the desk.
                 this.ctx.save();
@@ -824,7 +829,6 @@ const registerCommunityChat = () => {
         },
 
         drawNPC(npc) {
-            // ... (keep exact contents, don't change this method, just adding destroy below) ...
             if (!assetsLoaded) return;
             const d = npc.direction;
             const moving = npc.isMoving;
@@ -840,28 +844,40 @@ const registerCommunityChat = () => {
             const flip = d === 'left';
             const w = cell * scale, h = cell * scale;
             const cx = npc.x - w/2, cy = npc.y - h/2 - 16;
-
             this.ctx.save();
             this.ctx.globalAlpha = 0.6;
             // Shadow
-            if (flip) { this.ctx.save(); this.ctx.scale(-1,1); this.ctx.drawImage(assets.shadow, cf*cell, rowY, cell, cell, -cx-w, cy, w, h); this.ctx.restore(); }
+            if (flip) { 
+                this.ctx.save(); 
+                this.ctx.translate(cx + w/2, 0);
+                this.ctx.scale(-1, 1); 
+                this.ctx.drawImage(assets.shadow, cf*cell, rowY, cell, cell, -w/2, cy, w, h); 
+                this.ctx.restore(); 
+            }
             else this.ctx.drawImage(assets.shadow, cf*cell, rowY, cell, cell, cx, cy, w, h);
             // Character
-            if (flip) { this.ctx.save(); this.ctx.scale(-1,1); this.ctx.drawImage(assets.hero, cf*cell, rowY, cell, cell, -cx-w, cy, w, h); this.ctx.restore(); }
+            this.ctx.globalAlpha = 1;
+            if (flip) { 
+                this.ctx.save(); 
+                this.ctx.translate(cx + w/2, 0);
+                this.ctx.scale(-1, 1); 
+                this.ctx.drawImage(assets.hero, cf*cell, rowY, cell, cell, -w/2, cy, w, h); 
+                this.ctx.restore(); 
+            }
             else this.ctx.drawImage(assets.hero, cf*cell, rowY, cell, cell, cx, cy, w, h);
             this.ctx.restore();
 
             // Name
             if (npc.name) {
                 this.ctx.save();
-                this.ctx.font = '600 11px "Geist Mono", ui-monospace, monospace';
-                this.ctx.textAlign = 'center'; this.ctx.textBaseline = 'middle';
-                this.ctx.globalAlpha = 0.7;
-                const isDark = document.documentElement.classList.contains('dark');
-                this.ctx.shadowColor = isDark ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
-                this.ctx.shadowBlur = 3; this.ctx.shadowOffsetY = 1;
-                this.ctx.fillStyle = isDark ? '#a6a6ad' : '#6d6d72';
-                this.ctx.fillText(npc.name, npc.x, cy - 8);
+                this.ctx.font = '600 10px "Geist Mono", ui-monospace, monospace';
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.shadowColor = this.isDark ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
+                this.ctx.shadowBlur = 2;
+                this.ctx.shadowOffsetY = 1;
+                this.ctx.fillStyle = this.isDark ? '#e4e4e7' : '#18181b';
+                this.ctx.fillText(npc.name, npc.x, cy - 6);
                 this.ctx.restore();
             }
         },

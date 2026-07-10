@@ -82,38 +82,17 @@
                         </div>
 
                         <div class="flex flex-col gap-10">
-                            <!-- Project 1 -->
-                            <a href="#" class="group block">
+                            @foreach($posts as $post)
+                            <a href="/blog/{{ $post->slug }}" class="group block">
                                 <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                                    <h3 class="font-sans text-[1.05rem] font-medium text-ink dark:text-gray-200 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">StellarX Hackathon Entry</h3>
-                                    <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">Jul 2023</span>
+                                    <h3 class="font-sans text-[1.05rem] font-medium text-ink dark:text-gray-200 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">{{ $post->title }}</h3>
+                                    <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">{{ $post->date }}</span>
                                 </div>
                                 <p class="mt-2 text-[0.9rem] text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-400 transition-colors">
-                                    An award-winning solution built during the StellarX hackathon. Focused on building smart contracts with Rust Soroban and seamless blockchain interactions using the Freighter wallet.
+                                    {{ $post->excerpt }}
                                 </p>
                             </a>
-
-                            <!-- Project 2 -->
-                            <a href="#" class="group block">
-                                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                                    <h3 class="font-sans text-[1.05rem] font-medium text-ink dark:text-gray-200 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">E-Commerce Architecture</h3>
-                                    <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">Dec 2024</span>
-                                </div>
-                                <p class="mt-2 text-[0.9rem] text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-400 transition-colors">
-                                    A high-performance e-commerce API built for speed and reliability, featuring real-time inventory syncing and secure payment gateways.
-                                </p>
-                            </a>
-
-                            <!-- Project 3 -->
-                            <a href="#" class="group block">
-                                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                                    <h3 class="font-sans text-[1.05rem] font-medium text-ink dark:text-gray-200 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">Minimalist Portfolio</h3>
-                                    <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">Current</span>
-                                </div>
-                                <p class="mt-2 text-[0.9rem] text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-400 transition-colors">
-                                    A sleek, typography-focused personal website designed to showcase projects with a premium aesthetic and smooth micro-interactions.
-                                </p>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -132,7 +111,7 @@
                         <div class="relative w-full h-112.5 sm:h-125 flex items-center justify-center mt-12 mb-8">
                             
                             <!-- Left Card (Chainbudget) -->
-                            <a href="https://github.com/Dranyl-23/Chainbudget" target="_blank" class="absolute left-1/2 top-1/2 -ml-30 sm:-ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 -rotate-10 z-10 hover:z-40! group/card cursor-pointer">
+                            <div onclick="window.open('https://github.com/Dranyl-23/Chainbudget', '_blank')" class="absolute left-1/2 top-1/2 -ml-30 sm:-ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 -rotate-10 z-10 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[-20%] group-hover/card:rotate-[-4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-600 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
@@ -147,19 +126,19 @@
                                         A Blockchain-Based Budget Management System for Transparent Organizational Fund Monitoring.
                                     </p>
                                     <div class="flex gap-2">
-                                        <div class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
                                             <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col">
                                                 <span class="text-[7px] text-gray-300 leading-none">Download on the</span>
                                                 <span class="text-[10px] font-medium text-white leading-tight mt-0.5">App Store</span>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Right Card (Report-Davao) -->
-                            <a href="https://github.com/Dranyl-23/Report-Davao" target="_blank" class="absolute left-1/2 top-1/2 ml-30 sm:ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 rotate-10 z-10 hover:z-40! group/card cursor-pointer">
+                            <div onclick="window.open('https://github.com/Dranyl-23/Report-Davao', '_blank')" class="absolute left-1/2 top-1/2 ml-30 sm:ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 rotate-10 z-10 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[20%] group-hover/card:rotate-[4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-500 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
@@ -174,19 +153,19 @@
                                         Civic issue reporting platform for local communities to track and solve problems.
                                     </p>
                                     <div class="flex gap-2">
-                                        <div class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity">
                                             <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col">
                                                 <span class="text-[7px] text-gray-300 leading-none">Download on the</span>
                                                 <span class="text-[10px] font-medium text-white leading-tight mt-0.5">App Store</span>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Center Card (4PS-Nexus) -->
-                            <a href="https://github.com/Dranyl-23/4PS-Nexus" target="_blank" class="absolute left-1/2 top-1/2 w-72.5 sm:w-82.5 -translate-x-1/2 -translate-y-1/2 z-30 hover:z-40! group/card cursor-pointer">
+                            <div onclick="window.open('https://github.com/Dranyl-23/4PS-Nexus', '_blank')" class="absolute left-1/2 top-1/2 w-72.5 sm:w-82.5 -translate-x-1/2 -translate-y-1/2 z-30 hover:z-40! group/card cursor-pointer">
                                 <div class="bg-white border border-gray-200 rounded-3xl p-6 sm:p-7 shadow-[0_20px_60px_rgb(0,0,0,0.1)] transition-all duration-500 ease-out group-hover/card:-translate-y-6 group-hover/card:scale-[1.03]">
                                     <div class="flex flex-wrap gap-2 mb-6">
                                         <div class="bg-ink rounded-full px-3 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
@@ -207,23 +186,23 @@
                                         A blockchain-based disbursement system for the Philippine 4Ps program using programmable money.
                                     </p>
                                     <div class="flex gap-3">
-                                        <div class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
                                             <svg class="w-5 h-5 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 24 184.8 8 273.5q-19 104.9 31.9 193.3c15 25.5 35 55 62.5 56.4 25.6 1.4 36.4-13.6 67.2-13.6 30.8 0 40.5 13.6 67.2 13.6 29.5 0 46.5-27.9 61.5-53.5 20.2-34.6 28-66.7 28.5-68.5-1.1-.4-47.9-17.5-48.1-72.5zM259.6 100.9C278.4 78 288.7 46 285.3 14c-28.7 1.1-61.6 19.3-81.2 41.8-17.5 19.7-29.6 51.6-25.5 83.2 31.6 2.4 62.1-18.4 81-40.1z"/></svg>
                                             <div class="flex flex-col items-start">
                                                 <span class="text-[8px] text-gray-300 leading-none">Download on the</span>
                                                 <span class="text-[12px] font-medium text-white leading-tight mt-0.5">App Store</span>
                                             </div>
-                                        </div>
-                                        <div class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
+                                        </a>
+                                        <a href="#" onclick="event.stopPropagation();" class="bg-ink border border-transparent hover:opacity-80 transition-opacity rounded-xl px-3 py-2 flex items-center gap-2">
                                             <svg class="w-5 h-5 text-white" viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
                                             <div class="flex flex-col items-start">
                                                 <span class="text-[8px] text-gray-300 leading-none">GET IT ON</span>
                                                 <span class="text-[12px] font-medium text-white leading-tight mt-0.5">Google Play</span>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                             
                         </div>                       </div>
                     </div>
@@ -241,33 +220,13 @@
                         </div>
 
                         <div class="flex flex-col gap-1">
-                            <!-- Experience 1 -->
-                            <a href="#" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2024</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Senior Full-Stack Developer</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Tech Corp Inc.</div>
+                            @foreach(array_slice(config('portfolio.experience'), 0, 4) as $job)
+                            <a href="/experience" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">{{ substr($job['start_date'], 0, 4) }}</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">{{ $job['title'] }}</div>
+                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">{{ $job['company'] }}</div>
                             </a>
-
-                            <!-- Experience 2 -->
-                            <a href="#" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2023</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Software Engineer</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Startup Inc.</div>
-                            </a>
-
-                            <!-- Experience 3 -->
-                            <a href="#" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2022</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Web Development Intern</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Creative Studio</div>
-                            </a>
-                            
-                            <!-- Experience 4 -->
-                            <a href="#" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2021</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Freelance Developer</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Self-Employed</div>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -303,46 +262,6 @@
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">Git</div>
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">GitHub</div>
                         </div>
-                    <!-- GitHub Section -->
-                    <div id="github" class="w-full pb-20 pt-8" x-data="githubGraph('Dranyl-23')">
-                        <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>07 — github</span>
-                            <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors">@Dranyl-23 &rarr;</a>
-                        </div>
-                        
-                        <!-- Graph Container -->
-                        <div class="w-full overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                            <div class="min-w-max flex gap-0.75 select-none">
-                                <template x-for="col in graph" :key="col.id">
-                                    <div class="flex flex-col gap-0.75">
-                                        <template x-for="day in col.days" :key="day.date">
-                                            <div class="w-3 h-3 flex items-center justify-center group relative">
-                                                <!-- Dot -->
-                                                <div class="rounded-full bg-ink transition-all duration-300"
-                                                    :class="{
-                                                        'w-0.5 h-0.5 opacity-10': day.level === 0,
-                                                        'w-1 h-1 opacity-50': day.level === 1,
-                                                        'w-1.5 h-1.5 opacity-70': day.level === 2,
-                                                        'w-[7.5px] h-[7.5px] opacity-90': day.level === 3,
-                                                        'w-2.25 h-2.25 opacity-100': day.level === 4,
-                                                    }">
-                                                </div>
-                                                
-                                                <!-- Tooltip -->
-                                                <div class="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 hidden group-hover:block z-10 whitespace-nowrap bg-ink text-white text-[10px] font-mono px-2 py-1 rounded shadow-lg pointer-events-none">
-                                                    <span x-text="(day.level > 0 ? 'Contributions' : 'No contributions') + ' on ' + day.date"></span>
-                                                </div>
-                                            </div>
-                                        </template>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest">
-                            <span x-text="totalContributions"></span> contributions in the last year
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
@@ -350,77 +269,6 @@
 
     <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('githubGraph', (username) => ({
-            username: username,
-            graph: [],
-            totalContributions: '...',
-            
-            init() {
-                this.generateSimulatedData();
-                this.fetchData();
-            },
-
-            // Fallback simulated data while loading
-            generateSimulatedData() {
-                let columns = [];
-                // 52 weeks
-                for (let i = 0; i < 52; i++) {
-                    let days = [];
-                    // 7 days a week
-                    for (let j = 0; j < 7; j++) {
-                        let rand = Math.random();
-                        let level = 0;
-                        if (rand > 0.6) {
-                            if (rand > 0.95) level = 4;
-                            else if (rand > 0.85) level = 3;
-                            else if (rand > 0.75) level = 2;
-                            else level = 1;
-                        }
-                        
-                        let date = new Date();
-                        date.setDate(date.getDate() - ((51 - i) * 7 + (6 - j)));
-                        days.push({
-                            date: date.toISOString().split('T')[0],
-                            level: level
-                        });
-                    }
-                    columns.push({ id: i, days: days });
-                }
-                this.graph = columns;
-            },
-            
-            async fetchData() {
-                // Fetch real data from our local proxy API
-                try {
-                    const res = await fetch(`/ajax/github-contributions/${this.username}`);
-                    if (!res.ok) return;
-                    const data = await res.json();
-                    
-                    if (data && data.days && data.days.length > 0) {
-                        let columns = [];
-                        let currentWeek = { id: 0, days: [] };
-                        
-                        // GitHub returns 371 days (53 weeks), we can render them all
-                        data.days.forEach((day, index) => {
-                            currentWeek.days.push(day);
-                            
-                            // GitHub columns are Sun-Sat
-                            if (currentWeek.days.length === 7 || index === data.days.length - 1) {
-                                columns.push(currentWeek);
-                                currentWeek = { id: columns.length, days: [] };
-                            }
-                        });
-                        
-                        if (columns.length > 0) {
-                            this.graph = columns;
-                            this.totalContributions = data.total;
-                        }
-                    }
-                } catch (e) {
-                    // Silently fall back to simulated data
-                }
-            }
-        }));
     });
     </script>
 </x-layout>

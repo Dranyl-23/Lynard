@@ -36,7 +36,7 @@
 
             <!-- Content -->
             <div class="prose prose-zinc dark:prose-invert max-w-none prose-p:leading-relaxed prose-p:text-[1.05rem] prose-a:text-ink prose-a:decoration-gray-300 hover:prose-a:decoration-ink prose-a:underline-offset-4 prose-headings:font-medium prose-headings:tracking-tight">
-                {!! Str::markdown($post->body) !!}
+                {!! Str::markdown($post->body, ['html_input' => 'strip']) !!}
             </div>
         </article>
 

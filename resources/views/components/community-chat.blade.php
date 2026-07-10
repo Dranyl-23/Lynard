@@ -28,7 +28,7 @@
     <!-- Mobile Touch Controls -->
     <div class="absolute inset-0 z-10 pointer-events-none md:hidden flex justify-between items-end p-6 pb-30" x-show="gameActive">
         <!-- D-Pad (Left) -->
-        <div class="relative w-32 h-32 pointer-events-auto opacity-70 transition-opacity">
+        <div class="relative w-40 h-32 pointer-events-auto opacity-70 transition-opacity">
             <button @touchstart.prevent="handleTouch('w', true)" @touchend.prevent="handleTouch('w', false)" @touchcancel.prevent="handleTouch('w', false)" class="absolute top-0 left-10 w-12 h-12 bg-zinc-900/50 backdrop-blur border border-white/10 rounded-full flex items-center justify-center text-white/50 active:bg-zinc-800/80">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
             </button>
@@ -91,7 +91,15 @@
                         <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
                             <span class="font-mono text-[11px] font-semibold text-ink dark:text-white" x-text="msg.username"></span>
                             <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
-                            <span class="font-mono text-[10px] text-gray-500" x-html="renderLocation(msg.location || 'Unknown')"></span>
+                            <span class="font-mono text-[10px] text-gray-500 flex items-center">
+                                <span x-text="(msg.location || 'Unknown').replace('💻', '').replace('📱', '').trim()"></span>
+                                <template x-if="(msg.location || '').includes('💻')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v10H4zm2 2v6h12V8H6zM2 18h20v2H2z"/></svg>
+                                </template>
+                                <template x-if="(msg.location || '').includes('📱')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>
+                                </template>
+                            </span>
                             <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>

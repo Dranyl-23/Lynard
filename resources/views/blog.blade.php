@@ -56,10 +56,8 @@
             </div>
 
             <!-- Pagination -->
-            <div class="mt-16 flex items-center justify-between font-mono text-[0.75rem] text-gray-500">
-                <a href="#" class="hover:text-ink transition-colors opacity-50 cursor-not-allowed">&larr; prev</a>
-                <span>1 / 2</span>
-                <a href="#" class="hover:text-ink transition-colors text-ink">next &rarr;</a>
+            <div class="mt-16">
+                {{ $posts->links() }}
             </div>
 
             <!-- Footer -->
