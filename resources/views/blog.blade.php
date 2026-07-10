@@ -34,7 +34,7 @@
                 @foreach ($posts as $post)
                 <a href="/blog/{{ $post->slug }}" class="blog-post group transition-colors"
                    :class="view === 'grid' ? 'flex flex-col gap-4' : 'py-8 border-b border-gray-100 flex flex-col sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 -mx-6 px-6 rounded-2xl'">
-                    <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-[16/9]' : 'w-full sm:w-32 aspect-[16/9] sm:aspect-auto'">
+                    <div class="shrink-0" :class="view === 'grid' ? 'w-full aspect-video' : 'w-full sm:w-32 aspect-video sm:aspect-auto'">
                         <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
