@@ -117,7 +117,7 @@ return [
             'roles' => [
                 [
                     'title' => 'Full Stack Developer',
-                    'duration' => 'Jul 2023 - Present · 1 yr',
+                    'duration' => 'Jul 2025 - Present · 1 yr',
                     'description' => [
                         'Spearheaded the end-to-end design, development, and deployment of comprehensive web applications tailored to address real-world problem scenarios, focusing on user-centric design and high-performance backend architectures.',
                         'Engineered scalable RESTful APIs and real-time WebSocket communication utilizing Laravel and Reverb/Pusher, significantly improving the responsiveness of collaborative platforms and civic tech initiatives.',
@@ -136,7 +136,7 @@ return [
             'roles' => [
                 [
                     'title' => 'Active Participant & Builder',
-                    'duration' => 'Feb 2022 - Present · 2 yrs',
+                    'duration' => 'Feb 2024 - Present · 2 yrs',
                     'description' => [
                         'Actively engaged in regional and national IT-related activities, competitive hackathons, and intensive tech seminars to continuously hone full-stack development skills and stay ahead of industry trends.',
                         'Collaborated with cross-functional teams of developers and designers in high-pressure environments to rapidly prototype and pitch innovative software solutions, such as blockchain disbursement systems (4PS-Nexus) and civic issue trackers (Report-Davao).',
