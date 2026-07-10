@@ -82,7 +82,7 @@
                     <div class="flex-1 min-w-0">
                         <div class="flex items-baseline gap-2 mb-1">
                             <span class="font-mono text-sm text-ink truncate" x-text="msg.username"></span>
-                            <span class="font-mono text-[10px] text-gray-500 truncate" x-text="msg.location || 'Unknown'"></span>
+                            <span class="font-mono text-[10px] text-gray-500 truncate" x-html="renderLocation(msg.location || 'Unknown')"></span>
                             <span class="font-mono text-[10px] text-gray-400 ml-auto" x-text="formatTime(msg.created_at)"></span>
                         </div>
                         <div class="px-0 py-1 text-sm font-mono text-ink break-all" x-text="msg.content"></div>
