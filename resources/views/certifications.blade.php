@@ -64,11 +64,19 @@
                                 <div class="relative w-full mb-8">
                                     <div class="w-full h-32 rounded-xl overflow-hidden bg-linear-to-br {{ $cert['gradient'] }} relative border border-gray-100/50">
                                         <div class="absolute inset-0 flex items-center justify-center opacity-20">
-                                            <svg viewBox="0 0 24 24" class="w-16 h-16 {{ $cert['icon_color'] }}" fill="currentColor">{!! $cert['svg'] !!}</svg>
+                                            @if(isset($cert['logo']))
+                                                <img src="{{ $cert['logo'] }}" alt="Logo Background" class="w-20 h-20 object-contain grayscale opacity-50">
+                                            @else
+                                                <svg viewBox="0 0 24 24" class="w-16 h-16 {{ $cert['icon_color'] }}" fill="currentColor">{!! $cert['svg'] !!}</svg>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-full border-4 border-white overflow-hidden {{ $cert['badge_color'] }} shadow-sm flex items-center justify-center">
-                                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor">{!! $cert['svg'] !!}</svg>
+                                        @if(isset($cert['logo']))
+                                            <img src="{{ $cert['logo'] }}" alt="Logo" class="w-full h-full object-contain p-1">
+                                        @else
+                                            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor">{!! $cert['svg'] !!}</svg>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="px-3 pb-3 text-left">
