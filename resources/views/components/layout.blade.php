@@ -4,7 +4,7 @@
     'image' => 'og-image.jpg'
 ])
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -318,7 +318,7 @@
     </style>
 
     <!-- Main content area -->
-    <main id="top" class="relative z-10 min-h-screen lg:pl-64">
+    <main id="top" class="relative z-10 min-h-screen lg:pl-64 overflow-x-hidden">
         {{ $slot }}
     </main>
 

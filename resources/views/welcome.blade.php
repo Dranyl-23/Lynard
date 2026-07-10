@@ -105,7 +105,7 @@
                     </div>
 
                     <!-- Projects Section (Overlapping Cards) -->
-                    <div id="projects" class="w-full pb-16 pt-8 overflow-visible">
+                    <div id="projects" class="w-full pb-16 pt-8 overflow-x-hidden">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
                             <span>03 — projects</span>
                             <a href="/projects" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
