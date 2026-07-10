@@ -268,7 +268,7 @@
                             @endforeach
                         </div>
                     </div>
-
+    
                     <!-- Stack Section -->
                     <div id="stack" class="w-full pb-20 pt-2">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-6">
