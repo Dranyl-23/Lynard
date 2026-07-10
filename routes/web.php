@@ -124,7 +124,7 @@ Route::post('/broadcasting/auth', function (Request $request) {
 
     try {
         if (str_starts_with($channelName, 'presence-')) {
-            $auth = $pusher->presence_auth($channelName, $socketId, $sessionUser['id'], $sessionUser);
+            $auth = $pusher->presence_auth($channelName, $socketId, $sessionUser['id'], $presenceData);
         } else {
             $auth = $pusher->socket_auth($channelName, $socketId);
         }
