@@ -63,9 +63,9 @@
                         <!-- Stat 4 -->
                         <div class="py-6 pl-6">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
-                                Laravel <span class="text-[0.65rem] text-gray-400 font-sans mt-1.5">↗</span>
+                                999+
                             </div>
-                            <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap">Stack</div>
+                            <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap">Cups of Coffee</div>
                         </div>
                     </div>
 
