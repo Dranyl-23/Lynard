@@ -223,21 +223,13 @@
                         </div>
 
                         <div class="flex flex-col gap-1">
+                            @foreach(array_slice(config('portfolio.certifications.awards'), 0, 3) as $index => $award)
                             <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2025</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">AWS Certified Solutions Architect</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Amazon Web Services</div>
+                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</div>
+                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">{{ $award['title'] }}</div>
+                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">{{ $award['subtitle'] }}</div>
                             </a>
-                            <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2024</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Meta Front-End Developer</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">Coursera</div>
-                            </a>
-                            <a href="/certifications" class="group grid grid-cols-[3rem_1fr_auto] sm:grid-cols-[4rem_1fr_auto] gap-4 items-center py-2.5 sm:py-3 border-b border-gray-100/0 hover:border-gray-100 hover:bg-gray-50 transition-all px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-lg">
-                                <div class="font-mono text-[12px] sm:text-[13px] text-gray-400">2023</div>
-                                <div class="font-sans text-[13.5px] sm:text-[14px] font-medium text-ink group-hover:text-gray-500 transition-colors">Responsive Web Design</div>
-                                <div class="font-sans text-[12.5px] sm:text-[13px] text-gray-500 text-right">freeCodeCamp</div>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
 
