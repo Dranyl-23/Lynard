@@ -168,8 +168,10 @@ const registerCommunityChat = () => {
             // Join chat channel
             window.Echo.join('chat')
                 .listen('MessageSent', (e) => {
-                    this.messages.push(e.message);
-                    this.$nextTick(() => { this.scrollToBottom() });
+                    if (!this.messages.find(m => m.id === e.message.id)) {
+                        this.messages.push(e.message);
+                        this.$nextTick(() => { this.scrollToBottom() });
+                    }
                     // Refresh NPC names from latest chat messages
                     if (this.npcs.length) {
                         const names = this.getRecentChatNames();
@@ -233,15 +235,36 @@ const registerCommunityChat = () => {
             const content = this.newMessage.trim();
             this.newMessage = ''; // clear immediately
 
+            // Optimistic UI update
+            const tempId = 'temp-' + Date.now();
+            const optimisticMsg = {
+                id: tempId,
+                username: this.currentUser.name,
+                avatar: this.currentUser.avatar || 'https://api.dicebear.com/9.x/pixel-art/svg?seed=' + encodeURIComponent(this.currentUser.name),
+                location: this.currentUser.location || 'Unknown',
+                content: content,
+                created_at: new Date().toISOString()
+            };
+            this.messages.push(optimisticMsg);
+            this.$nextTick(() => { this.scrollToBottom() });
+
             try {
                 const res = await axios.post('/messages', { content });
-                // We add it to our array immediately for snappy UI
-                this.messages.push(res.data);
-                this.$nextTick(() => { this.scrollToBottom() });
-                // We also learn who we are
+                
+                // Replace optimistic message with actual data from server
+                const idx = this.messages.findIndex(m => m.id === tempId);
+                if (idx !== -1) {
+                    // Update object in place so Alpine reactivity catches it
+                    Object.assign(this.messages[idx], res.data);
+                } else if (!this.messages.find(m => m.id === res.data.id)) {
+                    this.messages.push(res.data);
+                }
+                
+                // We also learn who we are (if server updated it)
                 this.currentUser = { name: res.data.username, avatar: res.data.avatar, location: res.data.location };
             } catch (e) {
-                // Silently handle failure
+                // If it fails, remove the optimistic message
+                this.messages = this.messages.filter(m => m.id !== tempId);
             }
         },
 
