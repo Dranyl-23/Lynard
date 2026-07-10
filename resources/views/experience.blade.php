@@ -22,18 +22,25 @@
                         </div>
                     </div>
                     <div class="flex-1 pb-10 border-b border-gray-100/0 relative before:absolute before:left-[-1.65rem] before:top-10 before:bottom-0 before:w-px before:bg-gray-200">
-                        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-6">
-                            <h3 class="font-sans text-[1.1rem] font-medium text-ink">{{ $job['company'] }}</h3>
-                            <span class="font-mono text-[0.7rem] text-gray-400 uppercase tracking-widest shrink-0">{{ $job['location'] }}</span>
+                        <div class="mb-6">
+                            <h3 class="font-sans text-[1.1rem] font-semibold text-ink">{{ $job['company'] }}</h3>
+                            @if(isset($job['total_duration']))
+                            <div class="text-[0.85rem] text-gray-600 mt-0.5">{{ $job['total_duration'] }}</div>
+                            @endif
+                            <div class="text-[0.85rem] text-gray-500 mt-0.5">{{ $job['location'] }}</div>
                         </div>
                         
                         @foreach($job['roles'] as $role)
-                        <div class="mb-{{ $loop->last ? '2' : '8' }}">
-                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-3">
-                                <h4 class="font-sans text-[1rem] font-medium text-gray-700">{{ $role['title'] }}</h4>
-                                <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">{!! $role['duration'] !!}</span>
+                        <div class="mb-{{ $loop->last ? '2' : '8' }} relative">
+                            @if(count($job['roles']) > 1)
+                            <!-- Timeline dot for multiple roles -->
+                            <div class="absolute left-[-1.85rem] top-2 w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                            @endif
+                            <div class="mb-3">
+                                <h4 class="font-sans text-[1rem] font-semibold text-ink">{{ $role['title'] }}</h4>
+                                <div class="text-[0.85rem] text-gray-500 mt-0.5">{!! $role['duration'] !!}</div>
                             </div>
-                            <div class="text-[0.9rem] text-gray-500 leading-relaxed mb-4 space-y-3">
+                            <div class="text-[0.9rem] text-gray-600 leading-relaxed mb-4 space-y-3">
                                 @foreach($role['description'] as $desc)
                                 <p>{{ $desc }}</p>
                                 @endforeach

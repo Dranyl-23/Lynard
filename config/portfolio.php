@@ -112,48 +112,55 @@ return [
         [
             'company' => 'Independent Software Developer',
             'logo_text' => 'DEV',
-            'location' => 'Freelance / Projects',
+            'total_duration' => 'Freelance · 1 yr',
+            'location' => 'Davao Region, Philippines · Remote',
             'roles' => [
                 [
                     'title' => 'Full Stack Developer',
-                    'duration' => '2023 - Present',
+                    'duration' => 'Jul 2023 - Present · 1 yr',
                     'description' => [
-                        'Designed and built end-to-end web applications addressing real-world problem scenarios, from local governance to healthcare.',
-                        'Developed responsive user interfaces, integrated APIs, and structured robust backend databases for multiple client and personal projects.'
+                        'Spearheaded the end-to-end design, development, and deployment of comprehensive web applications tailored to address real-world problem scenarios, focusing on user-centric design and high-performance backend architectures.',
+                        'Engineered scalable RESTful APIs and real-time WebSocket communication utilizing Laravel and Reverb/Pusher, significantly improving the responsiveness of collaborative platforms and civic tech initiatives.',
+                        'Architected complex database schemas in MySQL/PostgreSQL to handle multi-tenant data securely, ensuring robust data integrity and optimal query performance across various freelance projects.',
+                        'Leveraged modern frontend frameworks like React and Vue.js alongside Tailwind CSS to build highly interactive, accessible, and responsive user interfaces that adapt seamlessly across devices.'
                     ],
-                    'skills' => ['Laravel', 'React', 'Tailwind CSS', 'TypeScript']
+                    'skills' => ['Laravel', 'React', 'Tailwind CSS', 'TypeScript', 'WebSockets']
                 ]
             ]
         ],
         [
             'company' => 'Tech Community & Hackathons',
             'logo_text' => 'IT',
-            'location' => 'Davao Region',
+            'total_duration' => 'Tech Enthusiast · 2 yrs',
+            'location' => 'Davao City, Philippines · On-site / Hybrid',
             'roles' => [
                 [
                     'title' => 'Active Participant & Builder',
-                    'duration' => '2022 - Present',
+                    'duration' => 'Feb 2022 - Present · 2 yrs',
                     'description' => [
-                        'Actively joined IT-related activities, tech seminars, and competitive hackathons to continuously hone development skills.',
-                        'Built experimental prototypes including blockchain disbursement systems, civic issue trackers, and AI-assisted workflows.'
+                        'Actively engaged in regional and national IT-related activities, competitive hackathons, and intensive tech seminars to continuously hone full-stack development skills and stay ahead of industry trends.',
+                        'Collaborated with cross-functional teams of developers and designers in high-pressure environments to rapidly prototype and pitch innovative software solutions, such as blockchain disbursement systems (4PS-Nexus) and civic issue trackers (Report-Davao).',
+                        'Explored and integrated cutting-edge technologies including Web3 smart contracts (Stellar/Soroban) and AI-assisted workflows (OpenAI), translating theoretical concepts into functional, real-world proof-of-concepts.'
                     ],
-                    'skills' => ['Web3', 'AI Integrations', 'Problem Solving']
+                    'skills' => ['Web3', 'AI Integrations', 'Problem Solving', 'Rapid Prototyping']
                 ]
             ]
         ],
         [
             'company' => 'Cor Jesu College',
             'logo_text' => 'CJC',
-            'location' => 'Digos City, Davao del Sur',
+            'total_duration' => 'Student · 4 yrs',
+            'location' => 'Digos City, Davao del Sur · On-site',
             'roles' => [
                 [
                     'title' => 'BS Information Technology (4th Year)',
-                    'duration' => '2020 - Present',
+                    'duration' => 'Aug 2020 - Present',
                     'description' => [
-                        'Currently completing my final year in Information Technology with a strong focus on software engineering, web technologies, and systems architecture.',
-                        'Consistent involvement in campus tech initiatives and collaborative student projects.'
+                        'Currently completing the final year of a Bachelor of Science in Information Technology, maintaining a strong academic focus on advanced software engineering principles, modern web technologies, and scalable systems architecture.',
+                        'Consistently taking on leadership roles in collaborative student projects, managing project lifecycles from initial requirements gathering to final deployment, and ensuring adherence to agile development methodologies.',
+                        'Serving as a technical mentor to junior students, sharing knowledge on modern tech stacks, debugging techniques, and best practices in version control with Git and GitHub.'
                     ],
-                    'skills' => ['Software Engineering', 'System Architecture', 'Leadership']
+                    'skills' => ['Software Engineering', 'System Architecture', 'Leadership', 'Agile']
                 ]
             ]
         ]
