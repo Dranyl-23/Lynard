@@ -89,7 +89,7 @@
                                     <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest shrink-0">Jul 2023</span>
                                 </div>
                                 <p class="mt-2 text-[0.9rem] text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-400 transition-colors">
-                                    An award-winning solution built during the StellarX hackathon. Focused on building a scalable backend with Laravel and a seamless user experience.
+                                    An award-winning solution built during the StellarX hackathon. Focused on building smart contracts with Rust Soroban and seamless blockchain interactions using the Freighter wallet.
                                 </p>
                             </a>
 
