@@ -47,6 +47,9 @@ const registerCommunityChat = () => {
     Alpine.data('communityChat', () => ({
         isOpen: false,
         gameActive: false,
+        isSending: false, // BUG FIX 18
+        myId: null, // BUG FIX 13
+        checkEcho: null, // BUG FIX 13
         messages: [],
         newMessage: '',
         currentUser: {},
@@ -136,6 +139,20 @@ const registerCommunityChat = () => {
                 
                 // Scroll to bottom
                 this.$nextTick(() => { this.scrollToBottom() });
+                
+                // BUG FIX 10: Watch messages array so that if spawnNPCs runs before messages load, 
+                // the NPCs will automatically adopt the chat names once they arrive.
+                this.$watch('messages', () => {
+                    if (!this.npcs || this.npcs.length === 0) return;
+                    const names = this.getRecentChatNames();
+                    if (names.length > 0) {
+                        this.npcs.forEach((npc, i) => {
+                            if (npc.name.startsWith('guest ')) {
+                                npc.name = names[i % names.length] || npc.name;
+                            }
+                        });
+                    }
+                });
             } catch (e) {
                 // Failed to load initial data silently
             }
@@ -240,7 +257,9 @@ const registerCommunityChat = () => {
                 return this.setName();
             }
 
-            if (!this.newMessage.trim()) return;
+            // BUG FIX 18: Prevent rapid Enter key presses from sending duplicate messages
+            if (this.isSending || !this.newMessage.trim()) return;
+            this.isSending = true;
             
             const content = this.newMessage.trim();
             this.newMessage = ''; // clear immediately
@@ -275,6 +294,8 @@ const registerCommunityChat = () => {
             } catch (e) {
                 // If it fails, remove the optimistic message
                 this.messages = this.messages.filter(m => m.id !== tempId);
+            } finally {
+                this.isSending = false;
             }
         },
 
@@ -374,7 +395,8 @@ const registerCommunityChat = () => {
                         b.dir = null; npc.isMoving = false; return;
                     }
                     b.dir = ['up','down','left','right'][Math.floor(Math.random()*4)];
-                    b.steps = 2 + Math.floor(Math.random() * 6);
+                    // BUG FIX 8: NPCs walk significantly longer before stopping
+                    b.steps = 20 + Math.floor(Math.random() * 60);
                 }
                 npc.direction = b.dir;
                 let dx = 0, dy = 0;
@@ -515,10 +537,18 @@ const registerCommunityChat = () => {
             let dy = 0;
             let dir = null;
 
-            if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['W']) { dy -= speed; dir = 'up'; }
-            if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['S']) { dy += speed; dir = 'down'; }
+            // BUG FIX 5: Only change direction if that axis is the primary or only movement
+            if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['W']) { dy -= speed; if (!dx) dir = 'up'; }
+            if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['S']) { dy += speed; if (!dx) dir = 'down'; }
             if (this.keys['ArrowLeft'] || this.keys['a'] || this.keys['A']) { dx -= speed; dir = 'left'; }
             if (this.keys['ArrowRight'] || this.keys['d'] || this.keys['D']) { dx += speed; dir = 'right'; }
+
+            // BUG FIX 4: Normalize diagonal velocity to prevent walking 41% faster
+            if (dx !== 0 && dy !== 0) {
+                const length = Math.sqrt(dx*dx + dy*dy);
+                dx = (dx / length) * speed;
+                dy = (dy / length) * speed;
+            }
 
             if (dir) {
                 this.direction = dir;
@@ -783,8 +813,13 @@ const registerCommunityChat = () => {
 
             // Dark Mode Tint Overlay
             if (document.documentElement.classList.contains('dark')) {
+                // BUG FIX 15: Draw dark tint with source-atop so it only affects the opaque parts 
+                // of the underlying asset, rather than being a big square block over the desk.
+                this.ctx.save();
+                this.ctx.globalCompositeOperation = 'source-atop';
                 this.ctx.fillStyle = 'rgba(0, 0, 10, 0.45)';
                 this.ctx.fillRect(obj.x, obj.y - 16, obj.w, obj.h + 16);
+                this.ctx.restore();
             }
         },
 
