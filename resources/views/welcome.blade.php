@@ -327,47 +327,48 @@
                 
                 async init() {
                     try {
-                        const response = await fetch('/ajax/github-contributions/' + username);
+                        const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
                         const data = await response.json();
                         
-                        if (data && data.days) {
-                            this.totalContributions = data.total;
+                        if (data && data.contributions) {
+                            this.totalContributions = data.totalContributions;
                             
-                            // 1. Sort days chronologically (API returns them row by row)
-                            const sortedDays = [...data.days].sort((a, b) => new Date(a.date) - new Date(b.date));
+                            const levelMap = {
+                                "NONE": 0,
+                                "FIRST_QUARTILE": 1,
+                                "SECOND_QUARTILE": 2,
+                                "THIRD_QUARTILE": 3,
+                                "FOURTH_QUARTILE": 4
+                            };
                             
-                            // 2. Build weeks array
                             let newWeeks = [];
-                            let currentWeek = [];
                             
-                            sortedDays.forEach((day, i) => {
-                                // If it's the very first day, pad the beginning of the week
-                                if (i === 0) {
-                                    const dayOfWeek = new Date(day.date).getDay(); // 0 is Sunday
-                                    for (let j = 0; j < dayOfWeek; j++) {
-                                        currentWeek.push({ date: `pad-start-${j}`, level: 0 });
+                            // The Deno API already groups by week perfectly!
+                            data.contributions.forEach((week) => {
+                                let mappedWeek = week.map(day => ({
+                                    date: day.date,
+                                    level: levelMap[day.contributionLevel] || 0,
+                                    count: day.contributionCount
+                                }));
+                                
+                                // Ensure exactly 7 days in a week column for grid alignment
+                                if (mappedWeek.length < 7) {
+                                    const padding = 7 - mappedWeek.length;
+                                    // If it's the first week, pad at start. Otherwise at end.
+                                    if (newWeeks.length === 0) {
+                                        for(let i=0; i<padding; i++) {
+                                            mappedWeek.unshift({ date: '', level: 0, count: 0 });
+                                        }
+                                    } else {
+                                        for(let i=0; i<padding; i++) {
+                                            mappedWeek.push({ date: '', level: 0, count: 0 });
+                                        }
                                     }
                                 }
                                 
-                                currentWeek.push(day);
-                                
-                                // If the week is full, push to weeks and reset
-                                if (currentWeek.length === 7) {
-                                    newWeeks.push(currentWeek);
-                                    currentWeek = [];
-                                }
+                                newWeeks.push(mappedWeek);
                             });
                             
-                            // Pad the end of the last week if necessary
-                            if (currentWeek.length > 0 && currentWeek.length < 7) {
-                                const padding = 7 - currentWeek.length;
-                                for (let j = 0; j < padding; j++) {
-                                    currentWeek.push({ date: `pad-end-${j}`, level: 0 });
-                                }
-                                newWeeks.push(currentWeek);
-                            }
-                            
-                            // 3. Assign the final array to trigger Alpine reactivity once
                             this.weeks = newWeeks;
                         }
                     } catch (e) {
