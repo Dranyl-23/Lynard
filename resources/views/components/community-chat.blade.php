@@ -79,12 +79,7 @@
                 <span x-text="loadingMore ? 'loading...' : '↑ load earlier messages'"></span>
             </button>
             <template x-for="msg in messages" :key="msg.id">
-                <div class="flex items-start gap-3"
-                    x-data="{ show: false }" x-init="setTimeout(() => show = true, 50)"
-                    x-show="show"
-                    x-transition:enter="transition ease-out duration-300"
-                    x-transition:enter-start="opacity-0 translate-x-4"
-                    x-transition:enter-end="opacity-100 translate-x-0">
+                <div class="flex items-start gap-3 reveal" style="animation-duration: 0.4s; animation-delay: 0s;">
                     
                     <img :src="msg.avatar" class="w-7 h-7 rounded-full bg-gray-200 shrink-0 object-cover mt-1" alt="Avatar">
                     <div class="flex-1 min-w-0">
