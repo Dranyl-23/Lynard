@@ -274,61 +274,105 @@
                         <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
 
-                    <!-- Github Section -->
-                    <div id="github" class="w-full pb-32 pt-8">
-                        <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
-                            <span>07 — github</span>
-                            <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors">@DRANYL-23 &rarr;</a>
-                        </div>
-                        
-                        @php
-                            $githubGraph = [
-                                "...............#...#.#.#..#..#..##..##.................",
-                                "...............#...#.#.##.##.#.#.#.#.#.................",
-                                "...............#....#.##.##.#.#.#.#.#..................",
-                                "...............#....#.#.##.###.##..#.#.................",
-                                "...............#....#.#.##.#.#.#.#.#.#.................",
-                                "...............#....#.#..#.#.#.#.#.#.#.................",
-                                "...............###..#.#..#.#.#.#.#.##.................."
-                            ];
-                        @endphp
-                        
-                        <div class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
-                            <div class="flex flex-col gap-[0.35rem] w-max">
-                                @foreach($githubGraph as $row)
-                                    <div class="flex items-center gap-[0.35rem]">
-                                        @foreach(str_split($row) as $char)
-                                            <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0">
-                                                @if($char === '#')
-                                                    <div class="w-[11px] h-[11px] rounded-full bg-gray-500 dark:bg-gray-200 transition-transform hover:scale-150 duration-200 shadow-[0_0_10px_rgba(255,255,255,0.2)] shrink-0"></div>
-                                                @else
-                                                    @php $rand = mt_rand(1, 100); @endphp
-                                                    @if($rand > 97)
-                                                        <div class="w-[11px] h-[11px] rounded-full bg-gray-400 dark:bg-gray-400 opacity-90 transition-transform hover:scale-150 duration-200 shrink-0"></div>
-                                                    @elseif($rand > 85)
+                        <!-- Github Section -->
+                        <div id="github" class="w-full pb-32 pt-8" x-data="githubGraph('Dranyl-23')" x-init="init()">
+                            <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
+                                <span>07 — github</span>
+                                <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors">@DRANYL-23 &rarr;</a>
+                            </div>
+                            
+                            <!-- Loading State -->
+                            <div x-show="loading" class="w-full flex justify-start sm:justify-center py-10">
+                                <div class="font-mono text-[0.65rem] text-gray-500 animate-pulse">Loading contributions...</div>
+                            </div>
+
+                            <div x-cloak x-show="!loading" class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
+                                <div class="flex items-center gap-[0.35rem] w-max">
+                                    <template x-for="(week, index) in weeks" :key="index">
+                                        <div class="flex flex-col gap-[0.35rem]">
+                                            <template x-for="day in week" :key="day.date || Math.random()">
+                                                <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date ? (day.date + ': ' + day.level + ' contributions') : ''">
+                                                    <!-- Level 4 -->
+                                                    <template x-if="day.level >= 4">
+                                                        <div class="w-[11px] h-[11px] rounded-full bg-gray-500 dark:bg-gray-200 transition-transform hover:scale-150 duration-200 shadow-[0_0_10px_rgba(255,255,255,0.2)] shrink-0"></div>
+                                                    </template>
+                                                    <!-- Level 3 -->
+                                                    <template x-if="day.level == 3">
+                                                        <div class="w-[9px] h-[9px] rounded-full bg-gray-400 dark:bg-gray-400 opacity-90 transition-transform hover:scale-150 duration-200 shrink-0"></div>
+                                                    </template>
+                                                    <!-- Level 2 -->
+                                                    <template x-if="day.level == 2">
                                                         <div class="w-[7px] h-[7px] rounded-full bg-gray-300 dark:bg-gray-500 opacity-80 transition-transform hover:scale-150 duration-200 shrink-0"></div>
-                                                    @else
+                                                    </template>
+                                                    <!-- Level 1 -->
+                                                    <template x-if="day.level == 1">
+                                                        <div class="w-[5px] h-[5px] rounded-full bg-gray-200 dark:bg-gray-600 opacity-70 transition-transform hover:scale-150 duration-200 shrink-0"></div>
+                                                    </template>
+                                                    <!-- Level 0 (Background) -->
+                                                    <template x-if="day.level == 0">
                                                         <div class="w-[3px] h-[3px] rounded-full bg-gray-200 dark:bg-[#2a2a2a] shrink-0"></div>
-                                                    @endif
-                                                @endif
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endforeach
+                                                    </template>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            
+                            <div x-cloak x-show="!loading" class="mt-8 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest text-left sm:text-center">
+                                <span x-text="totalContributions"></span> CONTRIBUTIONS IN THE LAST YEAR
                             </div>
                         </div>
-                        
-                        <div class="mt-8 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest text-left sm:text-center">
-                            562 CONTRIBUTIONS IN 2026
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
     </main>
 
     <script>
-    document.addEventListener('alpine:init', () => {
-    });
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('githubGraph', (username) => ({
+                loading: true,
+                totalContributions: 0,
+                weeks: [],
+                
+                async init() {
+                    try {
+                        const response = await fetch('/ajax/github-contributions/' + username);
+                        const data = await response.json();
+                        
+                        if (data && data.days) {
+                            this.totalContributions = data.total;
+                            
+                            let currentWeek = [];
+                            this.weeks = [];
+                            
+                            data.days.forEach((day, index) => {
+                                currentWeek.push(day);
+                                if (currentWeek.length === 7 || index === data.days.length - 1) {
+                                    if (this.weeks.length === 0 && currentWeek.length < 7) {
+                                        const padding = 7 - currentWeek.length;
+                                        for(let i=0; i<padding; i++) {
+                                            currentWeek.unshift({date: '', level: 0});
+                                        }
+                                    }
+                                    else if (index === data.days.length - 1 && currentWeek.length < 7) {
+                                        const padding = 7 - currentWeek.length;
+                                        for(let i=0; i<padding; i++) {
+                                            currentWeek.push({date: '', level: 0});
+                                        }
+                                    }
+                                    this.weeks.push(currentWeek);
+                                    currentWeek = [];
+                                }
+                            });
+                        }
+                    } catch (e) {
+                        console.error('Error fetching GitHub contributions:', e);
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }));
+        });
     </script>
 </x-layout>
