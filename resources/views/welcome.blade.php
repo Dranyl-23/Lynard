@@ -274,6 +274,19 @@
                         <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
                     </div>
 
+                    <style>
+                        .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g500)); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+                        html.dark .gh-dot-4 { background-color: rgb(var(--g200)); }
+                        .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g400)); opacity: 0.9; }
+                        html.dark .gh-dot-3 { background-color: rgb(var(--g400)); }
+                        .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g300)); opacity: 0.8; }
+                        html.dark .gh-dot-2 { background-color: rgb(var(--g500)); }
+                        .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g200)); opacity: 0.7; }
+                        html.dark .gh-dot-1 { background-color: rgb(var(--g600)); }
+                        .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
+                        html.dark .gh-dot-0 { background-color: #2a2a2a; }
+                    </style>
+
                         <!-- Github Section -->
                         <div id="github" class="w-full pb-32 pt-8" x-data="githubGraph('Dranyl-23')" x-init="init()">
                             <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
