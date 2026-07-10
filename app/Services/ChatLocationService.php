@@ -16,7 +16,7 @@ class ChatLocationService
     {
         $userAgent = $request->header('user-agent', '');
         $isMobile = (bool) preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
-        $deviceIcon = $isMobile ? '??' : '??';
+        $deviceIcon = $isMobile ? '📱' : '💻';
 
         // Vercel provides these headers automatically on production
         $city    = urldecode($request->header('x-vercel-ip-city', ''));
