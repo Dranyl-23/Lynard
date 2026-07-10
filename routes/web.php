@@ -87,28 +87,12 @@ Route::post('/broadcasting/auth', function (Request $request) {
 
     $sessionUser = session('chat_user');
     
-    // Helper to get location
-    $getLocation = function() use ($request) {
-        $city = urldecode($request->header('x-vercel-ip-city', 'Local Area'));
-        $country = $request->header('x-vercel-ip-country', '');
-        
-        $userAgent = $request->header('user-agent', '');
-        $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
-        $deviceIcon = $isMobile ? '📱' : '💻';
-        
-        $location = $city;
-        if ($country) {
-            $location .= ', ' . $country;
-        }
-        return $location . ' ' . $deviceIcon;
-    };
-    
     // Fallback if session wasn't set for some reason
     if (!$sessionUser) {
         $sessionUser = [
             'id' => (string) str()->uuid(),
             'name' => 'Guest-' . rand(1000, 9999),
-            'location' => $getLocation(),
+            'location' => 'Unknown',
             'avatar' => 'https://api.dicebear.com/9.x/pixel-art/svg?seed=Guest'
         ];
         session(['chat_user' => $sessionUser]);
@@ -133,6 +117,48 @@ Route::post('/broadcasting/auth', function (Request $request) {
 
 use App\Models\Message;
 use App\Events\MessageSent;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
+
+function getChatUserLocation($request) {
+    $userAgent = $request->header('user-agent', '');
+    $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
+    $deviceIcon = $isMobile ? '📱' : '💻';
+
+    $city = urldecode($request->header('x-vercel-ip-city', ''));
+    $country = urldecode($request->header('x-vercel-ip-country', ''));
+
+    if (!$city) {
+        // Fallback to IP Geolocation
+        $ip = $request->ip();
+        // If testing locally, fake an IP for testing (or use ip-api without IP to get current)
+        if ($ip == '127.0.0.1' || $ip == '::1') $ip = ''; 
+        
+        $geo = Cache::remember('geo_'.$ip, 3600, function() use ($ip) {
+            $url = $ip ? "http://ip-api.com/json/{$ip}" : "http://ip-api.com/json/";
+            try {
+                $response = Http::timeout(2)->get($url);
+                if ($response->successful() && $response->json('status') === 'success') {
+                    return [
+                        'city' => $response->json('city'),
+                        'country' => $response->json('countryCode')
+                    ];
+                }
+            } catch (\Exception $e) {}
+            return ['city' => 'Earth', 'country' => ''];
+        });
+        
+        $city = $geo['city'];
+        $country = $geo['country'];
+    }
+
+    $location = $city;
+    if ($country) {
+        $location .= ', ' . $country;
+    }
+    
+    return $location . ' ' . $deviceIcon;
+}
 
 Route::get('/messages', function (Request $request) {
     $query = Message::orderBy('created_at', 'desc');
@@ -161,12 +187,19 @@ Route::post('/messages', function (Request $request) {
         return response()->json(['error' => 'Set a name first'], 403);
     }
 
+    // Always re-evaluate location on message send to ensure accuracy and fix stale sessions
+    $currentLocation = getChatUserLocation($request);
+    
     $message = Message::create([
         'username' => e($sessionUser['name']),
-        'location' => e($sessionUser['location']),
+        'location' => $currentLocation,
         'avatar' => $sessionUser['avatar'],
         'content' => e($request->content),
     ]);
+
+    // Update session location quietly
+    $sessionUser['location'] = $currentLocation;
+    session(['chat_user' => $sessionUser]);
 
     broadcast(new MessageSent($message))->toOthers();
 
@@ -177,25 +210,10 @@ Route::post('/set-name', function (Request $request) {
     $request->validate(['name' => 'required|string|min:2|max:20']);
     $sessionUser = session('chat_user');
     
-    $getLocation = function() use ($request) {
-        $city = urldecode($request->header('x-vercel-ip-city', 'Local Area'));
-        $country = $request->header('x-vercel-ip-country', '');
-        
-        $userAgent = $request->header('user-agent', '');
-        $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
-        $deviceIcon = $isMobile ? '📱' : '💻';
-        
-        $location = $city;
-        if ($country) {
-            $location .= ', ' . $country;
-        }
-        return $location . ' ' . $deviceIcon;
-    };
-    
     if ($sessionUser) {
         $sessionUser['name'] = e($request->name);
         $sessionUser['avatar'] = "https://api.dicebear.com/9.x/pixel-art/svg?seed=" . urlencode($request->name);
-        $sessionUser['location'] = $getLocation();
+        $sessionUser['location'] = getChatUserLocation($request);
         session(['chat_user' => $sessionUser]);
         return response()->json($sessionUser);
     }
