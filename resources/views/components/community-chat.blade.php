@@ -63,7 +63,7 @@
         </div>
 
         <!-- Messages Area -->
-        <div class="flex-1 overflow-y-auto pr-4 space-y-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent pointer-events-auto" id="chat-messages" style="mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);">
+        <div class="flex-1 overflow-y-auto pr-4 space-y-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pointer-events-auto" id="chat-messages" style="mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);">
             <div class="h-10"></div> <!-- Spacer for top mask -->
             <button x-show="hasMore" @click="loadMore()" 
                 class="text-[11px] font-mono text-gray-400 hover:text-ink dark:hover:text-white mx-auto block mb-4 transition-colors pointer-events-auto"
@@ -105,7 +105,7 @@
                     @keydown.enter.prevent="sendMessage"
                     @focus="gameActive = false"
                     :placeholder="currentUser.name ? 'say something...' : 'enter a nickname to join...'" 
-                    class="w-full bg-transparent border-none p-0 text-ink dark:text-white placeholder-gray-400 focus:ring-0 resize-none font-mono text-[11px] h-10 leading-10 m-0"
+                    class="w-full bg-transparent border-none p-0 text-black dark:text-white dark:!text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-0 resize-none font-mono text-[11px] h-10 leading-10 m-0"
                     rows="1"
                 ></textarea>
                 <button type="submit" class="text-[11px] font-mono text-gray-400 hover:text-ink dark:hover:text-white shrink-0 mb-3" :class="{'opacity-50 cursor-not-allowed': !newMessage.trim()}" :disabled="!newMessage.trim()">
