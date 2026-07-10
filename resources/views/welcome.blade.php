@@ -414,5 +414,5 @@
         });
     </script>
 </x-layout>
-<!-- TEST_TAILWIND_V4 w-[99px] h-[99px] -->
-<div class="hidden w-[99px] h-[99px]"></div>
+<!-- TEST_TAILWIND_V4 w-24.75 h-24.75 -->
+<div class="hidden w-24.75 h-24.75"></div>

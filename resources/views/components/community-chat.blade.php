@@ -61,7 +61,7 @@
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 -translate-x-12"
         @click="gameActive = false"
-        class="relative z-10 w-full md:w-1/2 lg:w-[450px] h-full flex flex-col p-6 md:p-12 md:pl-24 pointer-events-none">
+        class="relative z-10 w-full md:w-1/2 lg:w-112.5 h-full flex flex-col p-6 md:p-12 md:pl-24 pointer-events-none">
         
         <div class="flex items-center gap-3 text-gray-500 font-mono text-[11px] mb-6 pointer-events-auto">
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
