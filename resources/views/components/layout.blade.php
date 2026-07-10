@@ -10,6 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- BUG FIX B2: [x-cloak] must be in <head> so it applies before Alpine loads.
+         Having it inside a conditionally-hidden div means it was never parsed at page load. --}}
+    <style>[x-cloak] { display: none !important; }</style>
+
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
     

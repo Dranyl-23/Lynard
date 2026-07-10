@@ -183,17 +183,23 @@ const registerCommunityChat = () => {
             const gameChannel = window.Echo.join('game')
                 .here((users) => {
                     users.forEach(u => {
-                        this.players[u.id] = { ...u.user_info, x: 400, y: 400, tx: 400, ty: 400 };
+                        // BUG FIX 12: spawn at a random offset so players don't stack at same position
+                        const spawnX = 1200 + (Math.random() - 0.5) * 200;
+                        const spawnY = 1200 + (Math.random() - 0.5) * 200;
+                        this.players[u.id] = { ...u.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
                     });
                 })
                 .joining((user) => {
-                    this.players[user.id] = { ...user.user_info, x: 400, y: 400, tx: 400, ty: 400 };
+                    const spawnX = 1200 + (Math.random() - 0.5) * 200;
+                    const spawnY = 1200 + (Math.random() - 0.5) * 200;
+                    this.players[user.id] = { ...user.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
                 })
                 .leaving((user) => {
                     delete this.players[user.id];
                 })
                 .listenForWhisper('move', (e) => {
                     if (this.players[e.id]) {
+                        // BUG FIX 12: store target position — the game loop will interpolate x/y toward tx/ty
                         this.players[e.id].tx = e.x;
                         this.players[e.id].ty = e.y;
                     }
@@ -206,8 +212,10 @@ const registerCommunityChat = () => {
                 localStorage.setItem('chat_uid', this.myId);
             }
 
-            // Start game loop
-            this.initGame();
+            // Only start the game loop once
+            if (!this.animationFrame) {
+                this.initGame();
+            }
         },
 
         async setName() {
@@ -216,7 +224,9 @@ const registerCommunityChat = () => {
                 const res = await axios.post('/set-name', { name: this.newMessage.trim() });
                 this.currentUser = res.data;
                 this.newMessage = '';
-                // Reconnect presence channels to broadcast new name
+                // BUG FIX 14: Leave channels and rejoin to broadcast new name.
+                // Do NOT call initGame() again — it's already running. setupChannels() guard
+                // above (animationFrame check) prevents a second game loop from spawning.
                 window.Echo.leave('site');
                 window.Echo.leave('game');
                 this.setupChannels();
@@ -442,6 +452,14 @@ const registerCommunityChat = () => {
             };
 
             this.keyupHandler = (e) => {
+                // BUG FIX 17: Always clear movement keys on keyup regardless of target.
+                // Without this, pressing W then clicking the textarea and releasing W
+                // keeps keys['w'] = true forever (character walks forever).
+                const movementKeys = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','W','A','S','D'];
+                if (movementKeys.includes(e.key)) {
+                    this.keys[e.key] = false;
+                    return;
+                }
                 if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
                 this.keys[e.key] = false;
             };
@@ -547,6 +565,17 @@ const registerCommunityChat = () => {
             // Update NPCs
             this.updateNPCs();
 
+            // BUG FIX 12: Interpolate other players toward their broadcasted target positions.
+            // tx/ty are updated from whisper events. Without this loop, they were stored but never applied.
+            const lerpSpeed = 0.18;
+            for (const id in this.players) {
+                const p = this.players[id];
+                if (p.tx !== undefined && p.ty !== undefined) {
+                    p.x += (p.tx - p.x) * lerpSpeed;
+                    p.y += (p.ty - p.y) * lerpSpeed;
+                }
+            }
+
             // Interaction detection
             this.nearbyInteract = null;
             this.obstacles.forEach(obs => {
@@ -555,15 +584,19 @@ const registerCommunityChat = () => {
                 }
             });
 
-            // Camera follow logic
-            const targetCamX = this.myPos.x - (window.innerWidth / 2);
+            // Camera follow logic — center on the visible game area (right of chat panel)
+            const chatPanelW = window.innerWidth >= 768 ? Math.min(450, window.innerWidth * 0.5) : 0;
+            const visibleW = window.innerWidth - chatPanelW;
+            const targetCamX = this.myPos.x - chatPanelW - (visibleW / 2);
             const targetCamY = this.myPos.y - (window.innerHeight / 2);
             
             this.cameraX += (targetCamX - this.cameraX) * 0.1;
             this.cameraY += (targetCamY - this.cameraY) * 0.1;
 
-            this.cameraX = Math.max(0, Math.min(this.worldWidth - window.innerWidth, this.cameraX));
-            this.cameraY = Math.max(0, Math.min(this.worldHeight - window.innerHeight, this.cameraY));
+            const maxCamX = Math.max(0, this.worldWidth - window.innerWidth);
+            const maxCamY = Math.max(0, this.worldHeight - window.innerHeight);
+            this.cameraX = Math.max(0, Math.min(maxCamX, this.cameraX));
+            this.cameraY = Math.max(0, Math.min(maxCamY, this.cameraY));
         },
 
         drawGame() {

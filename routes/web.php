@@ -66,6 +66,7 @@ Route::get('/recommendations', function () {
 
 use Illuminate\Http\Request;
 use Pusher\Pusher;
+use App\Services\ChatLocationService;
 
 Route::post('/broadcasting/auth', function (Request $request) {
     // Validate Origin header to prevent cross-origin forgery
@@ -119,46 +120,6 @@ use App\Models\Message;
 use App\Events\MessageSent;
 use Illuminate\Support\Facades\Http;
 
-function getChatUserLocation($request) {
-    $userAgent = $request->header('user-agent', '');
-    $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
-    $deviceIcon = $isMobile ? '📱' : '💻';
-
-    $city = urldecode($request->header('x-vercel-ip-city', ''));
-    $country = urldecode($request->header('x-vercel-ip-country', ''));
-
-    if (!$city) {
-        // Fallback to IP Geolocation
-        $ip = $request->ip();
-        // If testing locally, fake an IP for testing (or use ip-api without IP to get current)
-        if ($ip == '127.0.0.1' || $ip == '::1') $ip = ''; 
-        
-        $geo = Cache::remember('geo_'.$ip, 3600, function() use ($ip) {
-            $url = $ip ? "http://ip-api.com/json/{$ip}" : "http://ip-api.com/json/";
-            try {
-                $response = Http::timeout(2)->get($url);
-                if ($response->successful() && $response->json('status') === 'success') {
-                    return [
-                        'city' => $response->json('city'),
-                        'country' => $response->json('countryCode')
-                    ];
-                }
-            } catch (\Exception $e) {}
-            return ['city' => 'Earth', 'country' => ''];
-        });
-        
-        $city = $geo['city'];
-        $country = $geo['country'];
-    }
-
-    $location = $city;
-    if ($country) {
-        $location .= ', ' . $country;
-    }
-    
-    return $location . ' ' . $deviceIcon;
-}
-
 Route::get('/messages', function (Request $request) {
     $query = Message::orderBy('created_at', 'desc');
     
@@ -166,11 +127,14 @@ Route::get('/messages', function (Request $request) {
         $query->where('id', '<', (int) $request->before);
     }
     
-    $messages = $query->take(50)->get()->reverse()->values();
+    // Fetch 51 to correctly determine if more exist
+    $fetched = $query->take(51)->get();
+    $hasMore = $fetched->count() === 51;
+    $messages = $fetched->take(50)->reverse()->values();
     
     return response()->json([
         'messages' => $messages,
-        'has_more' => $messages->count() === 50,
+        'has_more' => $hasMore,
         'oldest_id' => $messages->first()?->id,
     ]);
 })->middleware('throttle:30,1');
@@ -187,13 +151,14 @@ Route::post('/messages', function (Request $request) {
     }
 
     // Always re-evaluate location on message send to ensure accuracy and fix stale sessions
-    $currentLocation = getChatUserLocation($request);
+    $currentLocation = ChatLocationService::getLocation($request);
     
+    // Store raw (no e() here) — x-text in Alpine escapes at render time, preventing double-encoding
     $message = Message::create([
-        'username' => e($sessionUser['name']),
+        'username' => $sessionUser['name'],
         'location' => $currentLocation,
         'avatar' => $sessionUser['avatar'],
-        'content' => e($request->content),
+        'content' => $request->content,
     ]);
 
     // Update session location quietly
@@ -210,9 +175,10 @@ Route::post('/set-name', function (Request $request) {
     $sessionUser = session('chat_user');
     
     if ($sessionUser) {
-        $sessionUser['name'] = e($request->name);
+        // Store raw name (no e()) — escaping happens at render time
+        $sessionUser['name'] = $request->name;
         $sessionUser['avatar'] = "https://api.dicebear.com/9.x/pixel-art/svg?seed=" . urlencode($request->name);
-        $sessionUser['location'] = getChatUserLocation($request);
+        $sessionUser['location'] = ChatLocationService::getLocation($request);
         session(['chat_user' => $sessionUser]);
         return response()->json($sessionUser);
     }
