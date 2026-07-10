@@ -132,4 +132,4 @@ html.dark .gh-dot-1 { background-color: rgb(var(--g600)); }
 .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
 html.dark .gh-dot-0 { background-color: #2a2a2a; }
 
-.text-ink { color: rgb(var(--ink)) !important; }
+html.dark .text-ink { color: #f4f4f5 !important; }
