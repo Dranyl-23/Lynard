@@ -9,13 +9,16 @@
         wasd / arrows to move
     </div>
 
-    <!-- Masked Fullscreen Game Canvas -->
-    <div class="absolute inset-0 z-0 bg-transparent overflow-hidden pointer-events-none" style="mask-image: linear-gradient(to right, transparent, transparent 35%, black 60%); -webkit-mask-image: linear-gradient(to right, transparent, transparent 35%, black 60%);">
-        <canvas x-ref="gameCanvas" class="w-full h-full pointer-events-auto" role="img" aria-label="Community chat interactive canvas" @click="focusGame"></canvas>
+    <!-- Fullscreen Game Canvas with Gradient Fade -->
+    <div class="absolute inset-0 z-0 bg-white dark:bg-[#18181b] overflow-hidden">
+        <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas" @click="focusGame"></canvas>
         
+        <!-- Seamless Fade Overlay -->
+        <div class="absolute inset-y-0 left-0 w-full md:w-[60%] bg-gradient-to-r from-white via-white/95 to-transparent dark:from-[#18181b] dark:via-[#18181b]/95 dark:to-transparent pointer-events-none"></div>
+
         <!-- Click to play prompt -->
         <div class="absolute inset-0 flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-sm transition-opacity duration-300 pointer-events-none" :class="{'opacity-0': gameActive}">
-            <span class="font-mono text-xs text-ink dark:text-white tracking-widest bg-white/90 dark:bg-[#18181b]/90 px-4 py-2 rounded-full border border-gray-200 dark:border-zinc-800 shadow-xl ml-96">
+            <span class="font-mono text-xs text-ink dark:text-white tracking-widest bg-white/90 dark:bg-[#18181b]/90 px-4 py-2 rounded-full border border-gray-200 dark:border-zinc-800 shadow-xl md:ml-[30%]">
                 click to play - <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800 ml-1">W</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">A</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">S</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">D</kbd>
             </span>
         </div>
