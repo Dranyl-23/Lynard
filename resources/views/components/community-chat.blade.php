@@ -1,16 +1,16 @@
 <div x-show="isOpen" 
      @keydown.escape.window="isOpen = false" 
      x-effect="document.body.style.overflow = isOpen ? 'hidden' : ''"
-     class="fixed inset-0 z-100 flex" 
+     class="fixed inset-0 z-100 flex bg-white dark:bg-[#121215]" 
      x-cloak>
     
     <!-- Instructions overlay -->
-    <div class="absolute top-6 right-16 z-20 text-gray-400 font-mono text-[10px] tracking-widest uppercase">
+    <div class="absolute top-6 right-16 z-20 text-gray-400 font-mono text-[10px] tracking-widest uppercase hidden md:block">
         wasd / arrows to move
     </div>
 
-    <!-- Fullscreen Game Canvas (Background) -->
-    <div class="absolute inset-0 z-0 bg-[#fbfbfb] dark:bg-zinc-950 overflow-hidden" @click="focusGame">
+    <!-- Right Side Game Canvas -->
+    <div class="absolute right-0 top-0 bottom-0 w-full md:w-1/2 lg:w-[60%] z-0 bg-[#fbfbfb] dark:bg-[#0a0a0c] overflow-hidden" @click="focusGame">
         <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas"></canvas>
         
         <!-- Click to play prompt -->
@@ -55,7 +55,7 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 -translate-x-12"
-        class="relative z-10 w-full max-w-md h-full flex flex-col p-6 md:p-12 pointer-events-none">
+        class="relative z-10 w-full md:w-1/2 lg:w-[40%] h-full flex flex-col p-6 md:p-12 pointer-events-none">
         
         <div class="flex items-center gap-3 text-gray-500 font-mono text-xs mb-6 pointer-events-auto">
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -78,14 +78,16 @@
                     x-transition:enter-start="opacity-0 translate-x-4"
                     x-transition:enter-end="opacity-100 translate-x-0">
                     
-                    <img :src="msg.avatar" class="w-8 h-8 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0 object-cover" alt="Avatar">
+                    <img :src="msg.avatar" class="w-8 h-8 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0 object-cover mt-1" alt="Avatar">
                     <div class="flex-1 min-w-0">
-                        <div class="flex items-baseline gap-2 mb-1">
-                            <span class="font-mono text-sm text-ink truncate" x-text="msg.username"></span>
-                            <span class="font-mono text-[10px] text-gray-500 truncate" x-html="renderLocation(msg.location || 'Unknown')"></span>
-                            <span class="font-mono text-[10px] text-gray-400 ml-auto" x-text="formatTime(msg.created_at)"></span>
+                        <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
+                            <span class="font-mono text-xs font-semibold text-ink" x-text="msg.username"></span>
+                            <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
+                            <span class="font-mono text-[10px] text-gray-500" x-html="renderLocation(msg.location || 'Unknown')"></span>
+                            <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
+                            <span class="font-mono text-[10px] text-gray-400" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-0 py-1 text-sm font-mono text-ink break-all" x-text="msg.content"></div>
+                        <div class="px-4 py-2 rounded-2xl bg-gray-100 dark:bg-zinc-800/60 inline-block text-[13px] font-mono text-ink break-words max-w-full leading-relaxed" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>

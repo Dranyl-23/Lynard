@@ -275,7 +275,16 @@ const registerCommunityChat = () => {
 
         formatTime(dateStr) {
             const d = new Date(dateStr);
-            return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const now = new Date();
+            const diffSecs = Math.floor((now - d) / 1000);
+            
+            if (diffSecs < 60) return 'just now';
+            const diffMins = Math.floor(diffSecs / 60);
+            if (diffMins < 60) return diffMins + 'm ago';
+            const diffHours = Math.floor(diffMins / 60);
+            if (diffHours < 24) return diffHours + 'h ago';
+            const diffDays = Math.floor(diffHours / 24);
+            return diffDays + 'd ago';
         },
         
         renderLocation(loc) {
@@ -476,7 +485,7 @@ const registerCommunityChat = () => {
 
         updateGame() {
             if (!this.gameActive) return;
-            const speed = 4;
+            const speed = 2;
             let dx = 0;
             let dy = 0;
             let dir = null;
