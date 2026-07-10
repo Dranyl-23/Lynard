@@ -19,8 +19,8 @@
 
         <!-- Click to play prompt -->
         <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none" :class="{'opacity-0': gameActive}">
-            <span class="font-mono text-xs text-ink dark:text-white tracking-widest bg-white/90 dark:bg-[#18181b]/90 px-4 py-2 rounded-full border border-gray-200 dark:border-zinc-800 shadow-xl md:ml-[30%]">
-                click to play - <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800 ml-1">W</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">A</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">S</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">D</kbd>
+            <span class="font-mono text-xs text-ink tracking-widest bg-white/90 dark:bg-[#18181b]/90 px-4 py-2 rounded-full border border-gray-200 shadow-xl md:ml-[30%]">
+                click to play - <kbd class="px-1 py-0.5 rounded border border-gray-200 bg-gray-100 ml-1">W</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 bg-gray-100">A</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 bg-gray-100">S</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 bg-gray-100">D</kbd>
             </span>
         </div>
     </div>
@@ -45,7 +45,7 @@
 
         <!-- Action Button (Right) -->
         <div class="relative pointer-events-auto transition-opacity" x-show="nearbyInteract" x-transition>
-            <button @touchstart.prevent="triggerInteract()" class="w-16 h-16 bg-white dark:bg-zinc-800 backdrop-blur border border-gray-200 dark:border-zinc-700 rounded-full flex items-center justify-center text-ink dark:text-white active:scale-95 transition-transform shadow-2xl">
+            <button @touchstart.prevent="triggerInteract()" class="w-16 h-16 bg-white backdrop-blur border border-gray-200 rounded-full flex items-center justify-center text-ink active:scale-95 transition-transform shadow-2xl">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             </button>
         </div>
@@ -74,7 +74,7 @@
              style="-webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent); mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent);">
             <div class="h-8"></div> <!-- Spacer for top mask -->
             <button x-show="hasMore" @click="loadMore()" 
-                class="text-[11px] font-mono text-gray-400 hover:text-ink dark:hover:text-white mx-auto block mb-4 transition-colors pointer-events-auto"
+                class="text-[11px] font-mono text-gray-400 hover:text-ink mx-auto block mb-4 transition-colors pointer-events-auto"
                 :class="{'opacity-50 cursor-wait': loadingMore}">
                 <span x-text="loadingMore ? 'loading...' : '↑ load earlier messages'"></span>
             </button>
@@ -86,11 +86,11 @@
                     x-transition:enter-start="opacity-0 translate-x-4"
                     x-transition:enter-end="opacity-100 translate-x-0">
                     
-                    <img :src="msg.avatar" class="w-7 h-7 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0 object-cover mt-1" alt="Avatar">
+                    <img :src="msg.avatar" class="w-7 h-7 rounded-full bg-gray-200 shrink-0 object-cover mt-1" alt="Avatar">
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
-                            <span class="font-mono text-[11px] font-semibold text-ink dark:text-white" x-text="msg.username"></span>
-                            <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
+                            <span class="font-mono text-[11px] font-semibold text-ink" x-text="msg.username"></span>
+                            <span class="text-gray-300 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500 flex items-center">
                                 <span x-text="(msg.location || 'Unknown').replace('💻', '').replace('📱', '').trim()"></span>
                                 <template x-if="(msg.location || '').includes('💻')">
@@ -100,10 +100,10 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-px" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>
                                 </template>
                             </span>
-                            <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
+                            <span class="text-gray-300 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black dark:text-white wrap-break-word max-w-full leading-relaxed" x-text="msg.content"></div>
+                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black wrap-break-word max-w-full leading-relaxed" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>
@@ -113,7 +113,7 @@
         <!-- Input Area -->
         <div class="mt-6 pt-4 pointer-events-auto">
             <div class="flex items-center gap-2 text-[11px] font-mono text-gray-500 mb-3" x-show="currentUser.name">
-                chatting as <span class="text-ink dark:text-gray-200 font-semibold" x-text="currentUser.name"></span>
+                chatting as <span class="text-ink font-semibold" x-text="currentUser.name"></span>
             </div>
             <form @submit.prevent="sendMessage" class="flex gap-4 items-end">
                 <textarea 
@@ -121,10 +121,10 @@
                     @keydown.enter.prevent="sendMessage"
                     @focus="gameActive = false"
                     :placeholder="currentUser.name ? 'say something...' : 'enter a nickname to join...'" 
-                    class="w-full bg-transparent border-none p-0 text-black dark:text-white placeholder-gray-400 dark:placeholder-zinc-600 focus:ring-0 focus:outline-none resize-none font-mono text-[11px] h-10 leading-10 m-0"
+                    class="w-full bg-transparent border-none p-0 text-black placeholder-gray-400 focus:ring-0 focus:outline-none resize-none font-mono text-[11px] h-10 leading-10 m-0"
                     rows="1"
                 ></textarea>
-                <button type="submit" class="text-[11px] font-mono text-gray-400 hover:text-ink dark:hover:text-white shrink-0 mb-3 transition-colors" :class="{'opacity-30 cursor-not-allowed': !newMessage.trim()}" :disabled="!newMessage.trim()">
+                <button type="submit" class="text-[11px] font-mono text-gray-400 hover:text-ink shrink-0 mb-3 transition-colors" :class="{'opacity-30 cursor-not-allowed': !newMessage.trim()}" :disabled="!newMessage.trim()">
                     <span x-text="currentUser.name ? 'send ↵' : 'join ↵'"></span>
                 </button>
             </form>
