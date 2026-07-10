@@ -87,14 +87,31 @@ Route::post('/broadcasting/auth', function (Request $request) {
 
     $sessionUser = session('chat_user');
     
+    // Helper to get location
+    $getLocation = function() use ($request) {
+        $city = urldecode($request->header('x-vercel-ip-city', 'Local Area'));
+        $country = $request->header('x-vercel-ip-country', '');
+        
+        $userAgent = $request->header('user-agent', '');
+        $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
+        $deviceIcon = $isMobile ? '📱' : '💻';
+        
+        $location = $city;
+        if ($country) {
+            $location .= ', ' . $country;
+        }
+        return $location . ' ' . $deviceIcon;
+    };
+    
     // Fallback if session wasn't set for some reason
     if (!$sessionUser) {
         $sessionUser = [
             'id' => (string) str()->uuid(),
             'name' => 'Guest-' . rand(1000, 9999),
-            'location' => 'Unknown',
+            'location' => $getLocation(),
             'avatar' => 'https://api.dicebear.com/9.x/pixel-art/svg?seed=Guest'
         ];
+        session(['chat_user' => $sessionUser]);
     }
 
     $socketId = $request->socket_id;
@@ -160,9 +177,25 @@ Route::post('/set-name', function (Request $request) {
     $request->validate(['name' => 'required|string|min:2|max:20']);
     $sessionUser = session('chat_user');
     
+    $getLocation = function() use ($request) {
+        $city = urldecode($request->header('x-vercel-ip-city', 'Local Area'));
+        $country = $request->header('x-vercel-ip-country', '');
+        
+        $userAgent = $request->header('user-agent', '');
+        $isMobile = preg_match('/Mobile|Android|iP(hone|od|ad)|Windows Phone/i', $userAgent);
+        $deviceIcon = $isMobile ? '📱' : '💻';
+        
+        $location = $city;
+        if ($country) {
+            $location .= ', ' . $country;
+        }
+        return $location . ' ' . $deviceIcon;
+    };
+    
     if ($sessionUser) {
         $sessionUser['name'] = e($request->name);
         $sessionUser['avatar'] = "https://api.dicebear.com/9.x/pixel-art/svg?seed=" . urlencode($request->name);
+        $sessionUser['location'] = $getLocation();
         session(['chat_user' => $sessionUser]);
         return response()->json($sessionUser);
     }
