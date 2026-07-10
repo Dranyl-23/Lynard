@@ -1,7 +1,7 @@
 <div x-show="isOpen" 
      @keydown.escape.window="isOpen = false" 
      x-effect="document.body.style.overflow = isOpen ? 'hidden' : ''"
-     class="fixed inset-0 z-100 flex bg-white dark:bg-[#121215]" 
+     class="fixed inset-0 z-100 flex bg-white dark:bg-[#161618]" 
      x-cloak>
     
     <!-- Instructions overlay -->
@@ -10,12 +10,12 @@
     </div>
 
     <!-- Right Side Game Canvas -->
-    <div class="absolute right-0 top-0 bottom-0 w-full md:w-1/2 lg:w-[60%] z-0 bg-[#fbfbfb] dark:bg-[#0a0a0c] overflow-hidden" @click="focusGame">
+    <div class="absolute right-0 top-0 bottom-0 w-full md:w-1/2 lg:w-[60%] z-0 bg-transparent overflow-hidden" @click="focusGame">
         <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas"></canvas>
         
         <!-- Click to play prompt -->
-        <div class="absolute inset-0 flex items-center justify-center bg-white/30 dark:bg-black/30 backdrop-blur-sm transition-opacity duration-300" :class="{'opacity-0 pointer-events-none': gameActive}">
-            <span class="font-mono text-xs text-ink dark:text-white tracking-widest bg-white/90 dark:bg-zinc-900/90 px-4 py-2 rounded-full border border-gray-200 dark:border-zinc-800 shadow-xl">
+        <div class="absolute inset-0 flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-sm transition-opacity duration-300" :class="{'opacity-0 pointer-events-none': gameActive}">
+            <span class="font-mono text-xs text-ink dark:text-white tracking-widest bg-white/90 dark:bg-[#161618]/90 px-4 py-2 rounded-full border border-gray-200 dark:border-zinc-800 shadow-xl">
                 click to play - <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800 ml-1">W</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">A</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">S</kbd> <kbd class="px-1 py-0.5 rounded border border-gray-200 dark:border-zinc-700 bg-gray-100 dark:bg-zinc-800">D</kbd>
             </span>
         </div>
@@ -87,7 +87,7 @@
                             <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-400" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2 rounded-2xl bg-gray-100 dark:bg-zinc-800/60 inline-block text-[13px] font-mono text-ink break-words max-w-full leading-relaxed" x-text="msg.content"></div>
+                        <div class="px-4 py-2 rounded-2xl bg-gray-200 dark:bg-zinc-800 inline-block text-[13px] font-mono text-ink break-words max-w-full leading-relaxed shadow-sm" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>

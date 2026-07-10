@@ -1,5 +1,5 @@
 const cell = 32;
-const scale = 2; // draw scale (player ≈ 64px)
+const scale = 1.2; // draw scale (player ≈ 38px)
 const animRow = { IDLE_DOWN: 0, IDLE_RIGHT: 32, IDLE_UP: 64, WALK_DOWN: 96, WALK_RIGHT: 128, WALK_UP: 160 };
 
 const assets = {};
