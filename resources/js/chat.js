@@ -35,13 +35,22 @@ const sfx = {
     step: new Audio('/audio/game/step.wav'),
     collision: new Audio('/audio/game/collision.wav')
 };
-sfx.step.volume = 0.13;
-sfx.collision.volume = 0.13;
+sfx.step.volume = 0.4;
+sfx.collision.volume = 0.4;
 sfx.step.preload = 'auto';
 sfx.collision.preload = 'auto';
 
 function playSfx(name) {
-    try { sfx[name].currentTime = 0; sfx[name].play(); } catch(e) {}
+    try { 
+        const sound = sfx[name].cloneNode();
+        sound.volume = sfx[name].volume;
+        const playPromise = sound.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // Ignore DOMException: The play() request was interrupted
+            });
+        }
+    } catch(e) {}
 }
 
 const registerCommunityChat = () => {
