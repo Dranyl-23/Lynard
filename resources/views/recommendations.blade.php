@@ -23,7 +23,7 @@
                         </div>
 
                         <!-- Content -->
-                        <div class="flex-grow">
+                        <div class="grow">
                             <p class="font-sans text-[14px] leading-loose text-ink relative z-10">
                                 {{ $rec['content'] }}
                             </p>

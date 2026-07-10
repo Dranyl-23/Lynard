@@ -15,7 +15,7 @@
         <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas" @click="focusGame"></canvas>
         
         <!-- Seamless Fade Overlay (left side fades to background) -->
-        <div class="absolute inset-y-0 left-0 w-full md:w-[60%] bg-gradient-to-r from-white via-white/95 to-transparent dark:from-[#18181b] dark:via-[#18181b]/95 dark:to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-[60%] bg-gradient-to-r from-white via-white/95 dark:from-[#18181b] dark:via-[#18181b]/95 pointer-events-none"></div>
 
         <!-- Click to play prompt -->
         <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none" :class="{'opacity-0': gameActive}">
