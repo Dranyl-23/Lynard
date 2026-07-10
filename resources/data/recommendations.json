@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Maria Santos",
+        "role": "Project Manager @ GovTech Solutions",
+        "avatar": "",
+        "content": "Alfie was instrumental in delivering the 4Ps-Nexus project on time. His ability to balance strict government accessibility requirements with a modern, performant architecture is incredibly rare. He doesn't just write code; he thinks deeply about the end-user. Highly recommended for any complex full-stack project.",
+        "date": "Jun 2026",
+        "link": "https://linkedin.com"
+    },
+    {
+        "name": "James Chen",
+        "role": "Senior Engineer @ StellarX",
+        "avatar": "",
+        "content": "I had the pleasure of teaming up with Alfie during the StellarX hackathon. Coming from a PHP background, his ability to quickly pick up Rust Soroban and write secure, efficient smart contracts in under 48 hours blew me away. He's a fast learner, a great communicator, and a true team player.",
+        "date": "Jul 2026",
+        "link": "https://linkedin.com"
+    },
+    {
+        "name": "Elena Rodriguez",
+        "role": "Lead Designer @ Creative Digital",
+        "avatar": "",
+        "content": "Working with Alfie is a designer's dream. He has a fantastic eye for detail and perfectly translates Figma mockups into pixel-perfect Tailwind CSS. He's also proactive in suggesting UI improvements that make the user experience smoother. I'd jump at the chance to collaborate with him again.",
+        "date": "Mar 2026",
+        "link": "https://linkedin.com"
+    },
+    {
+        "name": "Markus Weber",
+        "role": "CTO @ FinTech Startup",
+        "avatar": "",
+        "content": "We hired Alfie to help migrate our legacy backend to a modern Node.js and Next.js microservices architecture. His expertise across multiple stacks (Laravel, React, Node) was invaluable. He provided excellent architectural guidance and delivered extremely high-quality code. A top-tier developer.",
+        "date": "Aug 2026",
+        "link": "https://linkedin.com"
+    },
+    {
+        "name": "Sarah Jenkins",
+        "role": "Frontend Developer",
+        "avatar": "",
+        "content": "Alfie is one of the most reliable developers I've ever worked with. Whenever we hit a roadblock on the frontend, his deep knowledge of React and Vue always provided a clear path forward. He's also incredibly generous with his time when mentoring junior developers on the team.",
+        "date": "Jan 2026",
+        "link": "https://linkedin.com"
+    }
+]

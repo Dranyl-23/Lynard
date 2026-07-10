@@ -55,6 +55,15 @@ Route::get('/collabs', function () {
     return view('collabs');
 });
 
+Route::get('/recommendations', function () {
+    $path = resource_path('data/recommendations.json');
+    $recommendations = [];
+    if (file_exists($path)) {
+        $recommendations = json_decode(file_get_contents($path), true) ?? [];
+    }
+    return view('recommendations', ['recommendations' => collect($recommendations)]);
+});
+
 use Illuminate\Http\Request;
 use Pusher\Pusher;
 
