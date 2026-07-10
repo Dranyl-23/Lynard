@@ -278,15 +278,15 @@
                         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
                         .hide-scroll::-webkit-scrollbar { display: none; }
 
-                        .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g700)); box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-                        html.dark .gh-dot-4 { background-color: rgb(var(--g200)); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-                        .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g500)); }
-                        html.dark .gh-dot-3 { background-color: rgb(var(--g400)); opacity: 0.9; }
-                        .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g400)); }
-                        html.dark .gh-dot-2 { background-color: rgb(var(--g500)); opacity: 0.8; }
-                        .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g300)); }
-                        html.dark .gh-dot-1 { background-color: rgb(var(--g600)); opacity: 0.7; }
-                        .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
+                        .gh-dot-4 { width: 11px; height: 11px; background-color: #216e39; box-shadow: 0 0 10px rgba(33,110,57,0.3); }
+                        html.dark .gh-dot-4 { background-color: #39d353; box-shadow: 0 0 10px rgba(57,211,83,0.3); }
+                        .gh-dot-3 { width: 9px; height: 9px; background-color: #30a14e; }
+                        html.dark .gh-dot-3 { background-color: #26a641; }
+                        .gh-dot-2 { width: 7px; height: 7px; background-color: #40c463; }
+                        html.dark .gh-dot-2 { background-color: #006d32; }
+                        .gh-dot-1 { width: 5px; height: 5px; background-color: #9be9a8; }
+                        html.dark .gh-dot-1 { background-color: #0e4429; }
+                        .gh-dot-0 { width: 3px; height: 3px; background-color: #ebedf0; }
                         html.dark .gh-dot-0 { background-color: #2a2a2a; }
                     </style>
 
