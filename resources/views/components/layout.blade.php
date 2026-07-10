@@ -127,10 +127,10 @@
                 <div class="flex items-center gap-2 mb-2">
                     <div class="flex -space-x-2">
                         <template x-for="(viewer, index) in viewers.slice(0, 3)" :key="viewer.id">
-                            <img :src="viewer.user_info?.avatar" class="w-6 h-6 rounded-full border-2 border-white bg-gray-200" alt="Avatar">
+                            <img :src="viewer.user_info?.avatar" class="w-6 h-6 shrink-0 rounded-full border-2 border-white bg-gray-200 object-cover" alt="Avatar">
                         </template>
-                        <div x-show="viewers.length > 3" class="w-6 h-6 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[8px] font-mono font-medium text-gray-500" x-text="'+' + (viewers.length - 3)"></div>
-                        <div x-show="viewers.length === 0" class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px]">?</div>
+                        <div x-show="viewers.length > 3" class="w-6 h-6 shrink-0 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[8px] font-mono font-medium text-gray-500" x-text="'+' + (viewers.length - 3)"></div>
+                        <div x-show="viewers.length === 0" class="w-6 h-6 shrink-0 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px]">?</div>
                     </div>
                     <span class="font-mono text-[10px] text-gray-500"><strong class="text-ink" x-text="Math.max(1, viewers.length)"></strong> people viewing now</span>
                 </div>

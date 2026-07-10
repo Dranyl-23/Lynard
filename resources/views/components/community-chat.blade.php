@@ -78,7 +78,7 @@
                     x-transition:enter-start="opacity-0 translate-x-4"
                     x-transition:enter-end="opacity-100 translate-x-0">
                     
-                    <img :src="msg.avatar" class="w-8 h-8 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0" alt="Avatar">
+                    <img :src="msg.avatar" class="w-8 h-8 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0 object-cover" alt="Avatar">
                     <div class="flex-1 min-w-0">
                         <div class="flex items-baseline gap-2 mb-1">
                             <span class="font-mono text-sm text-ink dark:text-gray-200 truncate" x-text="msg.username"></span>
