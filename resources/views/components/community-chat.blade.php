@@ -11,7 +11,7 @@
     </div>
 
     <!-- Fullscreen Game Canvas with Gradient Fade -->
-    <div class="absolute inset-0 z-0 bg-white dark:bg-[#18181b] overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-white dark:bg-[#18181b] overflow-hidden hidden md:block">
         <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas" @click="focusGame"></canvas>
         
         <!-- Seamless Fade Overlay (left side fades to background) -->
@@ -25,8 +25,8 @@
         </div>
     </div>
 
-    <!-- Mobile Touch Controls -->
-    <div class="absolute inset-0 z-10 pointer-events-none md:hidden flex justify-between items-end p-6 pb-30" x-show="gameActive">
+    <!-- Mobile Touch Controls (Disabled as per user request to only have chat on mobile) -->
+    <div class="hidden">
         <!-- D-Pad (Left) -->
         <div class="relative w-40 h-32 pointer-events-auto opacity-70 transition-opacity">
             <button @touchstart.prevent="handleTouch('w', true)" @touchend.prevent="handleTouch('w', false)" @touchcancel.prevent="handleTouch('w', false)" class="absolute top-0 left-10 w-12 h-12 bg-zinc-900/50 backdrop-blur border border-white/10 rounded-full flex items-center justify-center text-white/50 active:bg-zinc-800/80">
