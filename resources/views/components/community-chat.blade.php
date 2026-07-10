@@ -11,7 +11,7 @@
 
     <!-- Fullscreen Game Canvas (Background) -->
     <div class="absolute inset-0 z-0 bg-[#fbfbfb] dark:bg-zinc-950 overflow-hidden" @click="focusGame">
-        <canvas x-ref="gameCanvas" class="w-full h-full"></canvas>
+        <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas"></canvas>
         
         <!-- Click to play prompt -->
         <div class="absolute inset-0 flex items-center justify-center bg-white/30 dark:bg-black/30 backdrop-blur-sm transition-opacity duration-300" :class="{'opacity-0 pointer-events-none': gameActive}">

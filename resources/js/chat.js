@@ -369,14 +369,18 @@ const registerCommunityChat = () => {
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
 
-            // Handle keyboard for game
-            window.addEventListener('keydown', (e) => {
+            this.keydownHandler = (e) => {
                 if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
                 // Interaction key
                 if ((e.key === 'e' || e.key === 'E') && this.nearbyInteract && this.gameActive) {
                     this.isOpen = false;
                     window.location.href = this.nearbyInteract.url;
                     return;
+                }
+                // Focus canvas on first movement
+                if (!this.gameActive && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(e.key)) {
+                    this.gameActive = true;
+                    e.preventDefault();
                 }
                 // Unlock audio on first keypress
                 if (!this.sfxUnlocked) {
@@ -387,20 +391,24 @@ const registerCommunityChat = () => {
                     e.preventDefault();
                 }
                 this.keys[e.key] = true;
-            });
-            window.addEventListener('keyup', (e) => {
+            };
+
+            this.keyupHandler = (e) => {
                 if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
                 this.keys[e.key] = false;
-            });
+            };
 
-            // Click outside to defocus
-            window.addEventListener('click', (e) => {
+            this.clickHandler = (e) => {
                 if (this.isOpen && !canvas.contains(e.target) && e.target.closest('#communityChat') !== null) {
                     if(e.target.closest('.w-full.md\\:w-1\\/2') !== canvas.closest('.w-full.md\\:w-1\\/2')) {
                         this.gameActive = false;
                     }
                 }
-            });
+            };
+
+            window.addEventListener('keydown', this.keydownHandler);
+            window.addEventListener('keyup', this.keyupHandler);
+            window.addEventListener('click', this.clickHandler);
 
             let lastBroadcast = 0;
             
@@ -700,6 +708,7 @@ const registerCommunityChat = () => {
         },
 
         drawNPC(npc) {
+            // ... (keep exact contents, don't change this method, just adding destroy below) ...
             if (!assetsLoaded) return;
             const d = npc.direction;
             const moving = npc.isMoving;
@@ -738,6 +747,21 @@ const registerCommunityChat = () => {
                 this.ctx.fillStyle = isDark ? '#a6a6ad' : '#6d6d72';
                 this.ctx.fillText(npc.name, npc.x, cy - 8);
                 this.ctx.restore();
+            }
+        },
+
+        destroy() {
+            if (this.animationFrame) {
+                cancelAnimationFrame(this.animationFrame);
+            }
+            if (this.keydownHandler) window.removeEventListener('keydown', this.keydownHandler);
+            if (this.keyupHandler) window.removeEventListener('keyup', this.keyupHandler);
+            if (this.clickHandler) window.removeEventListener('click', this.clickHandler);
+            
+            if (window.Echo) {
+                window.Echo.leave('site');
+                window.Echo.leave('chat');
+                window.Echo.leave('game');
             }
         }
     }));

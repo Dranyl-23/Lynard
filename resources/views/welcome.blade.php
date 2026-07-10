@@ -54,7 +54,7 @@
                             <div class="mt-2 text-[0.65rem] font-mono text-gray-500 uppercase tracking-widest whitespace-nowrap transition-colors group-hover:text-ink">Projects</div>
                         </a>
                         <!-- Stat 3 (Clickable) -->
-                        <div onclick="openHackathonModal()" class="group cursor-pointer py-6 pr-6 sm:px-6 border-r border-gray-100">
+                        <div role="button" tabindex="0" onclick="openHackathonModal()" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openHackathonModal(); }" class="group cursor-pointer py-6 pr-6 sm:px-6 border-r border-gray-100">
                             <div class="font-pixel text-xl sm:text-[1.4rem] flex items-start gap-1">
                                 1<span class="text-[1rem] text-gray-400 font-sans font-medium mt-[0.15rem]">x</span> <span class="inline-block text-[0.65rem] text-gray-300 font-sans mt-1.5 transition-all duration-300 group-hover:text-ink group-hover:scale-125 group-hover:-translate-y-px group-hover:translate-x-px group-hover:font-bold">↗</span>
                             </div>

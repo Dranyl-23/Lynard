@@ -22,9 +22,9 @@ class IdentityMiddleware
             
             if ($ip && $ip !== '127.0.0.1' && $ip !== '::1') {
                 try {
-                    $response = Http::timeout(3)->get("http://ip-api.com/json/{$ip}");
-                    if ($response->successful() && $response->json('status') === 'success') {
-                        $location = $response->json('city') . ', ' . $response->json('countryCode');
+                    $response = Http::timeout(3)->get("https://ipapi.co/{$ip}/json/");
+                if ($response->successful() && $response->json('city')) {
+                    $location = $response->json('city') . ', ' . $response->json('country_name');
                     }
                 } catch (\Exception $e) {
                     // Ignore API errors

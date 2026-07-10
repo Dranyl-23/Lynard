@@ -198,6 +198,14 @@ Route::get('/ajax/github-contributions/{username}', function($username) {
 })->where('username', '[a-zA-Z0-9_-]+')->middleware('throttle:10,1');
 
 Route::get('/me', function () {
-    return response()->json(session('chat_user'));
+    $user = session('chat_user');
+    if ($user) {
+        return response()->json([
+            'id' => $user['id'] ?? null,
+            'name' => $user['name'] ?? null,
+            'avatar' => $user['avatar'] ?? null,
+        ]);
+    }
+    return response()->json(null);
 });
 
