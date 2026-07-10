@@ -56,8 +56,8 @@
             </div>
 
             <!-- Pagination -->
-            <div class="mt-16">
-                {{ $posts->links() }}
+            <div class="mt-16 border-t border-gray-100/50 pt-10">
+                {{ $posts->links('components.pagination') }}
             </div>
 
             <!-- Footer -->
