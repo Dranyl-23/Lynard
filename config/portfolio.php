@@ -112,7 +112,7 @@ return [
         [
             'company' => 'Independent Software Developer',
             'logo_text' => 'DEV',
-            'total_duration' => 'Freelance · 1 yr',
+            'total_duration' => 'Freelance · 2 yrs',
             'location' => 'Davao Region, Philippines · Remote',
             'roles' => [
                 [
@@ -121,46 +121,73 @@ return [
                     'description' => [
                         'Spearheaded the end-to-end design, development, and deployment of comprehensive web applications tailored to address real-world problem scenarios, focusing on user-centric design and high-performance backend architectures.',
                         'Engineered scalable RESTful APIs and real-time WebSocket communication utilizing Laravel and Reverb/Pusher, significantly improving the responsiveness of collaborative platforms and civic tech initiatives.',
-                        'Architected complex database schemas in MySQL/PostgreSQL to handle multi-tenant data securely, ensuring robust data integrity and optimal query performance across various freelance projects.',
-                        'Leveraged modern frontend frameworks like React and Vue.js alongside Tailwind CSS to build highly interactive, accessible, and responsive user interfaces that adapt seamlessly across devices.'
+                        'Architected complex database schemas in MySQL/PostgreSQL to handle multi-tenant data securely, ensuring robust data integrity and optimal query performance across various freelance projects.'
                     ],
                     'skills' => ['Laravel', 'React', 'Tailwind CSS', 'TypeScript', 'WebSockets']
+                ],
+                [
+                    'title' => 'Freelance UI/UX Designer',
+                    'duration' => 'Jan 2024 - Present · 2 yrs 6 mos',
+                    'description' => [
+                        'Translated complex business requirements into intuitive, aesthetically pleasing, and highly accessible user interfaces using Figma and modern design principles.',
+                        'Created comprehensive wireframes, interactive prototypes, and scalable design systems that drastically accelerated frontend development workflows for clients and personal projects.',
+                        'Conducted user research and usability testing to iterate on designs, ensuring seamless user experiences across both mobile and desktop platforms.'
+                    ],
+                    'skills' => ['Figma', 'UI/UX Design', 'Wireframing', 'Prototyping']
                 ]
             ]
         ],
         [
-            'company' => 'Tech Community & Hackathons',
-            'logo_text' => 'IT',
-            'total_duration' => 'Tech Enthusiast · 2 yrs',
+            'company' => 'Tech Community & Open Source',
+            'logo_text' => 'OSS',
+            'total_duration' => 'Developer · 2 yrs',
             'location' => 'Davao City, Philippines · On-site / Hybrid',
             'roles' => [
                 [
-                    'title' => 'Active Participant & Builder',
-                    'duration' => 'Feb 2024 - Present · 2 yrs',
+                    'title' => 'Open Source Contributor',
+                    'duration' => 'Oct 2024 - Present · 1 yr 9 mos',
+                    'description' => [
+                        'Actively developed and maintained public GitHub repositories focusing on civic tech, blockchain disbursement (4PS-Nexus), and AI-assisted productivity tools.',
+                        'Collaborated with the open-source community by reviewing pull requests, optimizing algorithms, and resolving critical bugs in decentralized applications.',
+                        'Explored and integrated cutting-edge technologies including Web3 smart contracts (Stellar/Soroban) and AI-assisted workflows (OpenAI), translating theoretical concepts into functional, real-world open-source software.'
+                    ],
+                    'skills' => ['Git', 'GitHub', 'Open Source', 'Web3', 'AI Integrations']
+                ],
+                [
+                    'title' => 'Hackathon Participant & Builder',
+                    'duration' => 'Feb 2024 - Present · 2 yrs 5 mos',
                     'description' => [
                         'Actively engaged in regional and national IT-related activities, competitive hackathons, and intensive tech seminars to continuously hone full-stack development skills and stay ahead of industry trends.',
-                        'Collaborated with cross-functional teams of developers and designers in high-pressure environments to rapidly prototype and pitch innovative software solutions, such as blockchain disbursement systems (4PS-Nexus) and civic issue trackers (Report-Davao).',
-                        'Explored and integrated cutting-edge technologies including Web3 smart contracts (Stellar/Soroban) and AI-assisted workflows (OpenAI), translating theoretical concepts into functional, real-world proof-of-concepts.'
+                        'Collaborated with cross-functional teams of developers and designers in high-pressure environments to rapidly prototype and pitch innovative software solutions.'
                     ],
-                    'skills' => ['Web3', 'AI Integrations', 'Problem Solving', 'Rapid Prototyping']
+                    'skills' => ['Problem Solving', 'Rapid Prototyping', 'Team Collaboration']
                 ]
             ]
         ],
         [
             'company' => 'Cor Jesu College',
             'logo_text' => 'CJC',
-            'total_duration' => 'Student · 1 yr',
+            'total_duration' => 'Student · 3 yrs',
             'location' => 'Digos City, Davao del Sur · On-site',
             'roles' => [
                 [
+                    'title' => 'Capstone Lead Developer',
+                    'duration' => 'Aug 2025 - Present · 11 mos',
+                    'description' => [
+                        'Leading the technical architecture, database design, and core development for a major final-year capstone project aimed at solving localized community problems.',
+                        'Managing a team of student developers using Agile methodologies, assigning tasks, and reviewing code to ensure the system meets academic and industry standards.',
+                        'Implementing modern tech stacks to build a secure, real-time, and scalable system tailored for local government or institutional deployment.'
+                    ],
+                    'skills' => ['System Architecture', 'Agile', 'Team Leadership', 'Full Stack Development']
+                ],
+                [
                     'title' => 'BS Information Technology (4th Year)',
-                    'duration' => 'Aug 2023 - Present',
+                    'duration' => 'Aug 2023 - Present · 3 yrs',
                     'description' => [
                         'Currently completing the final year of a Bachelor of Science in Information Technology, maintaining a strong academic focus on advanced software engineering principles, modern web technologies, and scalable systems architecture.',
-                        'Consistently taking on leadership roles in collaborative student projects, managing project lifecycles from initial requirements gathering to final deployment, and ensuring adherence to agile development methodologies.',
                         'Serving as a technical mentor to junior students, sharing knowledge on modern tech stacks, debugging techniques, and best practices in version control with Git and GitHub.'
                     ],
-                    'skills' => ['Software Engineering', 'System Architecture', 'Leadership', 'Agile']
+                    'skills' => ['Software Engineering', 'Networking', 'Academic Research']
                 ]
             ]
         ]
