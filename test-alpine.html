@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div x-data="testGraph()" id="test-container">
+        <template x-for="(week, index) in weeks" :key="index">
+            <div class="week-col" style="display: flex; flex-direction: column;">
+                <template x-for="day in week" :key="day.date">
+                    <div class="day-cell" :class="'gh-dot-' + day.level" x-text="day.level"></div>
+                </template>
+            </div>
+        </template>
+    </div>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('testGraph', () => ({
+                weeks: [
+                    [{date: '1', level: 0}, {date: '2', level: 4}]
+                ]
+            }));
+        });
+    </script>
+</body>
+</html>

@@ -344,7 +344,7 @@
             <h2 class="mt-5 font-pixel text-2xl text-ink sm:text-3xl">1x Participant</h2>
 
             <!-- Featured Card -->
-            <div class="mt-8 rounded-2xl bg-ink p-6 sm:p-8 text-white border border-gray-100">
+            <div class="mt-8 rounded-2xl bg-[#111111] p-6 sm:p-8 text-white border border-gray-100">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2 text-[10px] font-mono text-gray-400 uppercase tracking-wider">
                         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
@@ -395,7 +395,7 @@
                 
                 <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-1.5 mb-3">
                     <span class="font-mono text-[11px] text-gray-600 ml-3">alfielynard23@gmail.com</span>
-                    <button onclick="navigator.clipboard.writeText('alfielynard23@gmail.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000)" class="bg-ink text-white font-medium text-[11px] px-3.5 py-1.5 rounded-md hover:opacity-80 transition-opacity">Copy</button>
+                    <button onclick="navigator.clipboard.writeText('alfielynard23@gmail.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000)" class="bg-[#111111] text-white font-medium text-[11px] px-3.5 py-1.5 rounded-md hover:opacity-80 transition-opacity">Copy</button>
                 </div>
                 
                 <a href="mailto:alfielynard23@gmail.com" class="block w-full text-center border border-gray-200 hover:bg-gray-50 transition-colors rounded-lg py-2.5 text-[12.5px] font-medium font-mono text-gray-600">Open mail app</a>

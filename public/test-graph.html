@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { background: #0a0a0a; color: white; padding: 2rem; font-family: sans-serif; }
+        .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(115,115,115); }
+        .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(163,163,163); opacity: 0.9; }
+        .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(212,212,212); opacity: 0.8; }
+        .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(233,233,233); opacity: 0.7; }
+        .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(233,233,233); }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .gap-1 { gap: 0.35rem; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .w-11 { width: 11px; }
+        .h-11 { height: 11px; }
+        .border { border: 1px solid red; }
+    </style>
+</head>
+<body>
+    <div x-data="githubGraph('Dranyl-23')" x-init="init()">
+        <div x-show="loading">Loading...</div>
+        <div x-show="!loading" style="display: flex; gap: 0.35rem;">
+            <template x-for="(week, index) in weeks" :key="index">
+                <div class="flex flex-col gap-1">
+                    <template x-for="day in week" :key="day.date">
+                        <div class="w-11 h-11 flex items-center justify-center border" :title="day.count">
+                            <div :class="'gh-dot-' + day.level"></div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div style="margin-top:20px;">TOTAL: <span x-text="totalContributions"></span></div>
+    </div>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('githubGraph', (username) => ({
+                loading: true,
+                totalContributions: 0,
+                weeks: [],
+                async init() {
+                    const res = await fetch('https://github-contributions-api.deno.dev/' + username + '.json');
+                    const data = await res.json();
+                    this.totalContributions = data.totalContributions;
+                    const levelMap = { "NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4 };
+                    let newWeeks = [];
+                    data.contributions.forEach(week => {
+                        let mappedWeek = week.map(day => ({
+                            date: day.date, level: levelMap[day.contributionLevel] || 0, count: day.contributionCount
+                        }));
+                        if(mappedWeek.length < 7){
+                            let pad = 7 - mappedWeek.length;
+                            if(newWeeks.length === 0) {
+                                for(let i=0; i<pad; i++) mappedWeek.unshift({date:'p-s-'+i, level:0, count:0});
+                            } else {
+                                for(let i=0; i<pad; i++) mappedWeek.push({date:'p-e-'+i, level:0, count:0});
+                            }
+                        }
+                        newWeeks.push(mappedWeek);
+                    });
+                    this.weeks = newWeeks;
+                    this.loading = false;
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
