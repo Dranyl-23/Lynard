@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -39,18 +40,30 @@ class Post
             ->map(function ($file) {
                 $document = YamlFrontMatter::parseFile($file->getPathname());
 
-                return new self(
-                    $document->title,
-                    $document->excerpt,
-                    $document->date,
-                    $document->readTime,
-                    $document->image,
-                    $file->getFilenameWithoutExtension(),
-                    $document->body()
-                );
-            })
-            ->sortByDesc('date')
-            ->values();
+        return Cache::remember('all_posts', 3600, function () {
+            if (!File::exists(resource_path('posts'))) {
+                return collect();
+            }
+
+            $files = File::files(resource_path('posts'));
+
+            return collect($files)
+                ->map(function ($file) {
+                    $document = YamlFrontMatter::parseFile($file->getPathname());
+
+                    return new self(
+                        $document->title,
+                        $document->excerpt,
+                        $document->date,
+                        $document->readTime,
+                        $document->image,
+                        $file->getFilenameWithoutExtension(),
+                        $document->body()
+                    );
+                })
+                ->sortByDesc('date')
+                ->values();
+        });
     }
 
     public static function find($slug)
