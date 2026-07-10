@@ -30,16 +30,6 @@ class Post
 
     public static function all()
     {
-        if (!File::exists(resource_path('posts'))) {
-            return collect();
-        }
-
-        $files = File::files(resource_path('posts'));
-
-        return collect($files)
-            ->map(function ($file) {
-                $document = YamlFrontMatter::parseFile($file->getPathname());
-
         return Cache::remember('all_posts', 3600, function () {
             if (!File::exists(resource_path('posts'))) {
                 return collect();

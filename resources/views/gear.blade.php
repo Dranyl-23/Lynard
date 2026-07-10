@@ -186,7 +186,7 @@
                         <a href="https://www.anker.com/" target="_blank" rel="noopener noreferrer" class="group flex flex-col rounded-[1.25rem] border border-gray-100 dark:border-[#222] bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all duration-300 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 shadow-sm hover:shadow-xl dark:shadow-none">
                             <!-- Image Container (Always White, Inset) -->
                             <div class="aspect-square bg-white rounded-xl border border-gray-100 dark:border-transparent flex items-center justify-center p-6 mb-5 overflow-hidden">
-                                <img src="/HandCarry/anker%20powerbank.webp" alt="Anker Powerbank" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                                <img src="/HandCarry/Anker%20Powerbank.webp" alt="Anker Powerbank" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                             </div>
                             <!-- Text Container -->
                             <div class="flex flex-col flex-1">
