@@ -294,24 +294,26 @@
                         @endphp
                         
                         <div class="w-full overflow-x-auto pb-6 scrollbar-hide">
-                            <div class="flex flex-col gap-[0.45rem] w-max">
+                            <div class="flex flex-col gap-1 w-max">
                                 @foreach($githubGraph as $row)
-                                    <div class="flex items-center gap-[0.45rem]">
+                                    <div class="flex items-center gap-1">
                                         @foreach(str_split($row) as $char)
-                                            @if($char === '#')
-                                                <div class="w-2.5 h-2.5 rounded-full bg-gray-500 dark:bg-gray-100 transition-transform hover:scale-150 duration-200"></div>
-                                            @else
-                                                @php $rand = mt_rand(1, 100); @endphp
-                                                @if($rand > 95)
-                                                    <div class="w-2.5 h-2.5 rounded-full bg-gray-400 dark:bg-gray-300 opacity-80 transition-transform hover:scale-150 duration-200"></div>
-                                                @elseif($rand > 80)
-                                                    <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-500 opacity-60 transition-transform hover:scale-150 duration-200"></div>
-                                                @elseif($rand > 50)
-                                                    <div class="w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-gray-600 opacity-40 transition-transform hover:scale-150 duration-200"></div>
+                                            <div class="w-3 h-3 flex items-center justify-center">
+                                                @if($char === '#')
+                                                    <div class="w-full h-full rounded-full bg-gray-500 dark:bg-gray-100 transition-transform hover:scale-150 duration-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]"></div>
                                                 @else
-                                                    <div class="w-1 h-1 rounded-full bg-gray-100 dark:bg-gray-800 opacity-30"></div>
+                                                    @php $rand = mt_rand(1, 100); @endphp
+                                                    @if($rand > 95)
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-gray-400 dark:bg-gray-300 opacity-80 transition-transform hover:scale-150 duration-200"></div>
+                                                    @elseif($rand > 80)
+                                                        <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-500 opacity-60 transition-transform hover:scale-150 duration-200"></div>
+                                                    @elseif($rand > 50)
+                                                        <div class="w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-gray-600 opacity-40 transition-transform hover:scale-150 duration-200"></div>
+                                                    @else
+                                                        <div class="w-1 h-1 rounded-full bg-gray-100 dark:bg-gray-800 opacity-30"></div>
+                                                    @endif
                                                 @endif
-                                            @endif
+                                            </div>
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -319,7 +321,7 @@
                         </div>
                         
                         <div class="mt-6 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest">
-                            1,967 CONTRIBUTIONS IN THE LAST YEAR
+                            562 CONTRIBUTIONS IN 2026
                         </div>
                     </div>
                 </div>
