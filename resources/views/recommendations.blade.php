@@ -28,18 +28,18 @@
                             </div>
                             <div class="flex flex-col pt-0.5">
                                 @if(!empty($rec['link']))
-                                    <a href="{{ $rec['link'] }}" target="_blank" rel="noopener noreferrer" class="font-mono text-[13px] font-medium text-ink dark:text-gray-200 hover:underline transition-all truncate">
+                                    <a href="{{ $rec['link'] }}" target="_blank" rel="noopener noreferrer" class="font-mono text-[13px] font-medium text-ink hover:underline transition-all truncate">
                                         {{ $rec['name'] }}
                                     </a>
                                 @else
-                                    <span class="font-mono text-[13px] font-medium text-ink dark:text-gray-200 truncate">
+                                    <span class="font-mono text-[13px] font-medium text-ink truncate">
                                         {{ $rec['name'] }}
                                     </span>
                                 @endif
-                                <span class="font-mono text-[11px] text-gray-500 dark:text-zinc-500 line-clamp-1 mt-0.5">
+                                <span class="font-mono text-[11px] text-gray-500 line-clamp-1 mt-0.5">
                                     {{ $rec['role'] }}
                                 </span>
-                                <span class="font-mono text-[10px] text-gray-400 dark:text-zinc-600 mt-1 uppercase tracking-widest">
+                                <span class="font-mono text-[10px] text-gray-400 mt-1 uppercase tracking-widest">
                                     {{ $rec['date'] }}
                                 </span>
                             </div>
@@ -47,7 +47,7 @@
 
                         <!-- Content -->
                         <div class="flex-grow">
-                            <p class="font-mono text-[12px] leading-relaxed text-ink dark:text-gray-300 relative z-10">
+                            <p class="font-mono text-[12px] leading-relaxed text-ink relative z-10">
                                 {{ $rec['content'] }}
                             </p>
                         </div>

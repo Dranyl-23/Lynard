@@ -81,11 +81,11 @@
                     <img :src="msg.avatar" class="w-8 h-8 rounded-full bg-gray-200 dark:bg-zinc-800 shrink-0 object-cover" alt="Avatar">
                     <div class="flex-1 min-w-0">
                         <div class="flex items-baseline gap-2 mb-1">
-                            <span class="font-mono text-sm text-ink dark:text-gray-200 truncate" x-text="msg.username"></span>
+                            <span class="font-mono text-sm text-ink truncate" x-text="msg.username"></span>
                             <span class="font-mono text-[10px] text-gray-500 truncate" x-text="msg.location || 'Unknown'"></span>
-                            <span class="font-mono text-[10px] text-gray-400 dark:text-zinc-500 ml-auto" x-text="formatTime(msg.created_at)"></span>
+                            <span class="font-mono text-[10px] text-gray-400 ml-auto" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-0 py-1 text-sm font-mono text-ink dark:text-gray-300 break-all" x-text="msg.content"></div>
+                        <div class="px-0 py-1 text-sm font-mono text-ink break-all" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>
