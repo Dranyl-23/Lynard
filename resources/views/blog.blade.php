@@ -35,8 +35,8 @@
                 @foreach ($posts as $post)
                 <a href="/blog/{{ $post->slug }}" class="blog-post group transition-colors flex flex-col gap-4"
                    :class="view === 'list' ? 'py-8 border-b border-gray-100 sm:flex-row gap-6 sm:gap-8 hover:bg-gray-50/50 -mx-6 px-6 rounded-2xl !gap-x-8' : ''">
-                    <div class="shrink-0 w-full aspect-video" :class="view === 'list' ? 'sm:w-32 sm:aspect-auto' : ''">
-                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="w-full h-full rounded-xl object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="shrink-0 w-full relative aspect-video rounded-xl overflow-hidden" :class="view === 'list' ? 'sm:w-32 sm:aspect-square' : ''">
+                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                     </div>
                     <div class="flex flex-col justify-center">
                         <span class="font-mono text-[0.65rem] text-gray-400 uppercase tracking-widest mb-2">{{ $post->date }}</span>
