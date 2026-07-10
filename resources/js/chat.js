@@ -576,27 +576,16 @@ const registerCommunityChat = () => {
 
             // Draw grid
             const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                // Dot Matrix for Dark Mode
-                this.ctx.fillStyle = 'rgba(56, 189, 248, 0.15)'; // Sky blue cyber dots
-                for (let x = 0; x <= this.worldWidth; x += 40) {
-                    for (let y = 0; y <= this.worldHeight; y += 40) {
-                        this.ctx.fillRect(x - 1, y - 1, 2, 2);
-                    }
-                }
-            } else {
-                // Classic lines for Light Mode
-                this.ctx.strokeStyle = 'rgba(0,0,0,0.1)';
-                this.ctx.lineWidth = 1;
-                this.ctx.beginPath();
-                for (let x = 0; x <= this.worldWidth; x += 40) {
-                    this.ctx.moveTo(x, 0); this.ctx.lineTo(x, this.worldHeight);
-                }
-                for (let y = 0; y <= this.worldHeight; y += 40) {
-                    this.ctx.moveTo(0, y); this.ctx.lineTo(this.worldWidth, y);
-                }
-                this.ctx.stroke();
+            this.ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+            this.ctx.lineWidth = 1;
+            this.ctx.beginPath();
+            for (let x = 0; x <= this.worldWidth; x += 40) {
+                this.ctx.moveTo(x, 0); this.ctx.lineTo(x, this.worldHeight);
             }
+            for (let y = 0; y <= this.worldHeight; y += 40) {
+                this.ctx.moveTo(0, y); this.ctx.lineTo(this.worldWidth, y);
+            }
+            this.ctx.stroke();
 
             if (!assetsLoaded) {
                 this.ctx.fillStyle = 'red';
