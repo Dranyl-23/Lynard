@@ -30,7 +30,7 @@ class Post
 
     public static function all()
     {
-        return Cache::remember('all_posts', 3600, function () {
+        return Cache::remember('all_posts_v2', 3600, function () {
             if (!File::exists(resource_path('posts'))) {
                 return collect();
             }
