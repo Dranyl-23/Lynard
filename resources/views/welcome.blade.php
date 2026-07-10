@@ -293,24 +293,22 @@
                             ];
                         @endphp
                         
-                        <div class="w-full overflow-x-auto pb-6 scrollbar-hide">
-                            <div class="flex flex-col gap-1 w-max">
+                        <div class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
+                            <div class="flex flex-col gap-[0.35rem] w-max">
                                 @foreach($githubGraph as $row)
-                                    <div class="flex items-center gap-1">
+                                    <div class="flex items-center gap-[0.35rem]">
                                         @foreach(str_split($row) as $char)
-                                            <div class="w-3 h-3 flex items-center justify-center">
+                                            <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0">
                                                 @if($char === '#')
-                                                    <div class="w-full h-full rounded-full bg-gray-500 dark:bg-gray-100 transition-transform hover:scale-150 duration-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]"></div>
+                                                    <div class="w-[11px] h-[11px] rounded-full bg-gray-500 dark:bg-gray-200 transition-transform hover:scale-150 duration-200 shadow-[0_0_10px_rgba(255,255,255,0.2)] shrink-0"></div>
                                                 @else
                                                     @php $rand = mt_rand(1, 100); @endphp
-                                                    @if($rand > 95)
-                                                        <div class="w-2.5 h-2.5 rounded-full bg-gray-400 dark:bg-gray-300 opacity-80 transition-transform hover:scale-150 duration-200"></div>
-                                                    @elseif($rand > 80)
-                                                        <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-500 opacity-60 transition-transform hover:scale-150 duration-200"></div>
-                                                    @elseif($rand > 50)
-                                                        <div class="w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-gray-600 opacity-40 transition-transform hover:scale-150 duration-200"></div>
+                                                    @if($rand > 97)
+                                                        <div class="w-[11px] h-[11px] rounded-full bg-gray-400 dark:bg-gray-400 opacity-90 transition-transform hover:scale-150 duration-200 shrink-0"></div>
+                                                    @elseif($rand > 85)
+                                                        <div class="w-[7px] h-[7px] rounded-full bg-gray-300 dark:bg-gray-500 opacity-80 transition-transform hover:scale-150 duration-200 shrink-0"></div>
                                                     @else
-                                                        <div class="w-1 h-1 rounded-full bg-gray-100 dark:bg-gray-800 opacity-30"></div>
+                                                        <div class="w-[3px] h-[3px] rounded-full bg-gray-200 dark:bg-[#2a2a2a] shrink-0"></div>
                                                     @endif
                                                 @endif
                                             </div>
@@ -320,7 +318,7 @@
                             </div>
                         </div>
                         
-                        <div class="mt-6 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest">
+                        <div class="mt-8 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest text-left sm:text-center">
                             562 CONTRIBUTIONS IN 2026
                         </div>
                     </div>
