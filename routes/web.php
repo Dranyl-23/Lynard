@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -59,11 +60,11 @@ use Pusher\Pusher;
 
 Route::post('/broadcasting/auth', function (Request $request) {
     $pusher = new Pusher(
-        env('PUSHER_APP_KEY'),
-        env('PUSHER_APP_SECRET'),
-        env('PUSHER_APP_ID'),
+        config('broadcasting.connections.pusher.key'),
+        config('broadcasting.connections.pusher.secret'),
+        config('broadcasting.connections.pusher.app_id'),
         [
-            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'cluster' => config('broadcasting.connections.pusher.options.cluster'),
             'useTLS' => true,
         ]
     );
@@ -193,12 +194,3 @@ Route::get('/me', function () {
     return response()->json(session('chat_user'));
 });
 
-// Temporary route to run migrations on Vercel
-Route::get('/deploy-migrate', function () {
-    try {
-        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true]);
-        return 'Migrations executed successfully! ' . \Illuminate\Support\Facades\Artisan::output();
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
