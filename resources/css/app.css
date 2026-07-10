@@ -121,17 +121,17 @@ html.dark .halftone-portrait .halftone-overlay {
 a, button { transition: color .2s, background-color .2s, border-color .2s, opacity .2s, transform .2s; cursor: pointer; }
 
 /* GitHub Graph Standard Dots */
-.gh-dot { width: 10px; height: 10px; border-radius: 50%; }
-.gh-dot-4 { background-color: #216e39; }
-html.dark .gh-dot-4 { background-color: #39d353; }
-.gh-dot-3 { background-color: #30a14e; }
-html.dark .gh-dot-3 { background-color: #26a641; }
-.gh-dot-2 { background-color: #40c463; }
-html.dark .gh-dot-2 { background-color: #006d32; }
-.gh-dot-1 { background-color: #9be9a8; }
-html.dark .gh-dot-1 { background-color: #0e4429; }
-.gh-dot-0 { background-color: #ebedf0; }
-html.dark .gh-dot-0 { background-color: #161b22; }
+.gh-dot { border-radius: 50%; transition: width 0.2s, height 0.2s, background-color 0.2s; }
+.gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g600)); }
+html.dark .gh-dot-4 { background-color: rgb(var(--g200)); }
+.gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g600)); }
+html.dark .gh-dot-3 { background-color: rgb(var(--g200)); }
+.gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g600)); }
+html.dark .gh-dot-2 { background-color: rgb(var(--g200)); }
+.gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g600)); }
+html.dark .gh-dot-1 { background-color: rgb(var(--g200)); }
+.gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
+html.dark .gh-dot-0 { background-color: #2a2a2a; }
 
 html.dark .text-ink { color: #f4f4f5 !important; }
 
