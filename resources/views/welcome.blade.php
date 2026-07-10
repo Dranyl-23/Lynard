@@ -293,13 +293,7 @@
                                             <template x-for="day in week" :key="day.date">
                                                 <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date && !day.date.includes('pad') ? (day.date + ': ' + day.count + ' contributions') : ''">
                                                     <div class="rounded-full transition-transform hover:scale-150 duration-200 shrink-0"
-                                                         :class="{
-                                                             'w-[11px] h-[11px] bg-gray-500 dark:bg-gray-200 shadow-[0_0_10px_rgba(255,255,255,0.2)]': day.level >= 4,
-                                                             'w-[9px] h-[9px] bg-gray-400 dark:bg-gray-400 opacity-90': day.level == 3,
-                                                             'w-[7px] h-[7px] bg-gray-300 dark:bg-gray-500 opacity-80': day.level == 2,
-                                                             'w-[5px] h-[5px] bg-gray-200 dark:bg-gray-600 opacity-70': day.level == 1,
-                                                             'w-[3px] h-[3px] bg-gray-200 dark:bg-[#2a2a2a]': day.level == 0
-                                                         }">
+                                                         :class="'gh-dot-' + day.level">
                                                     </div>
                                                 </div>
                                             </template>
@@ -381,3 +375,5 @@
         });
     </script>
 </x-layout>
+<!-- TEST_TAILWIND_V4 w-[99px] h-[99px] -->
+<div class="hidden w-[99px] h-[99px]"></div>
