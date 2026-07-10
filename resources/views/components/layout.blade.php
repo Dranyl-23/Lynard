@@ -37,6 +37,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <script>
+        window.Laravel = {
+            reverbAppKey: "{{ env('VITE_REVERB_APP_KEY', 'empty-key') }}",
+            reverbHost: "{{ env('VITE_REVERB_HOST', '127.0.0.1') }}",
+            reverbPort: {{ env('VITE_REVERB_PORT', 80) }},
+            reverbScheme: "{{ env('VITE_REVERB_SCHEME', 'https') }}"
+        };
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="relative overflow-x-hidden bg-white font-sans text-ink antialiased" x-data="communityChat" x-init="initEcho()">
