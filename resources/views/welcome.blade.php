@@ -287,11 +287,11 @@
                             </div>
 
                             <div x-cloak x-show="!loading" class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
-                                <div class="flex items-center gap-[0.35rem] w-max">
+                                <div style="display: flex; align-items: center; gap: 0.35rem; width: max-content;">
                                     <template x-for="(week, index) in weeks" :key="index">
-                                        <div class="flex flex-col gap-[0.35rem]">
+                                        <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                                             <template x-for="day in week" :key="day.date">
-                                                <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date && !day.date.includes('pad') ? (day.date + ': ' + day.count + ' contributions') : ''">
+                                                <div style="width: 11px; height: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" :title="day.date && !day.date.includes('pad') ? (day.date + ': ' + day.count + ' contributions') : ''">
                                                     <div class="rounded-full transition-transform hover:scale-150 duration-200 shrink-0"
                                                          :class="'gh-dot-' + day.level">
                                                     </div>
