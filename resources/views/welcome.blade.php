@@ -290,33 +290,23 @@
                                 <div class="flex items-center gap-[0.35rem] w-max">
                                     <template x-for="(week, index) in weeks" :key="index">
                                         <div class="flex flex-col gap-[0.35rem]">
-                                            <template x-for="day in week" :key="day.date || Math.random()">
+                                            <template x-for="day in week" :key="day.date">
                                                 <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date ? (day.date + ': ' + day.level + ' contributions') : ''">
-                                                    <!-- Level 4 -->
-                                                    <template x-if="day.level >= 4">
-                                                        <div class="w-[11px] h-[11px] rounded-full bg-gray-500 dark:bg-gray-200 transition-transform hover:scale-150 duration-200 shadow-[0_0_10px_rgba(255,255,255,0.2)] shrink-0"></div>
-                                                    </template>
-                                                    <!-- Level 3 -->
-                                                    <template x-if="day.level == 3">
-                                                        <div class="w-[9px] h-[9px] rounded-full bg-gray-400 dark:bg-gray-400 opacity-90 transition-transform hover:scale-150 duration-200 shrink-0"></div>
-                                                    </template>
-                                                    <!-- Level 2 -->
-                                                    <template x-if="day.level == 2">
-                                                        <div class="w-[7px] h-[7px] rounded-full bg-gray-300 dark:bg-gray-500 opacity-80 transition-transform hover:scale-150 duration-200 shrink-0"></div>
-                                                    </template>
-                                                    <!-- Level 1 -->
-                                                    <template x-if="day.level == 1">
-                                                        <div class="w-[5px] h-[5px] rounded-full bg-gray-200 dark:bg-gray-600 opacity-70 transition-transform hover:scale-150 duration-200 shrink-0"></div>
-                                                    </template>
-                                                    <!-- Level 0 (Background) -->
-                                                    <template x-if="day.level == 0">
-                                                        <div class="w-[3px] h-[3px] rounded-full bg-gray-200 dark:bg-[#2a2a2a] shrink-0"></div>
-                                                    </template>
+                                                    <div class="rounded-full transition-transform hover:scale-150 duration-200 shrink-0"
+                                                         :class="{
+                                                             'w-[11px] h-[11px] bg-gray-500 dark:bg-gray-200 shadow-[0_0_10px_rgba(255,255,255,0.2)]': day.level >= 4,
+                                                             'w-[9px] h-[9px] bg-gray-400 dark:bg-gray-400 opacity-90': day.level == 3,
+                                                             'w-[7px] h-[7px] bg-gray-300 dark:bg-gray-500 opacity-80': day.level == 2,
+                                                             'w-[5px] h-[5px] bg-gray-200 dark:bg-gray-600 opacity-70': day.level == 1,
+                                                             'w-[3px] h-[3px] bg-gray-200 dark:bg-[#2a2a2a]': day.level == 0
+                                                         }">
+                                                    </div>
                                                 </div>
                                             </template>
                                         </div>
                                     </template>
                                 </div>
+                                <div x-show="weeks.length === 0" class="text-gray-500 font-mono text-[0.65rem]">No graph data found.</div>
                             </div>
                             
                             <div x-cloak x-show="!loading" class="mt-8 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest text-left sm:text-center">
