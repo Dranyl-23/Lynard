@@ -343,28 +343,42 @@
                         if (data && data.days) {
                             this.totalContributions = data.total;
                             
-                            let currentWeek = [];
-                            this.weeks = [];
+                            // 1. Sort days chronologically (API returns them row by row)
+                            const sortedDays = [...data.days].sort((a, b) => new Date(a.date) - new Date(b.date));
                             
-                            data.days.forEach((day, index) => {
+                            // 2. Build weeks array
+                            let newWeeks = [];
+                            let currentWeek = [];
+                            
+                            sortedDays.forEach((day, i) => {
+                                // If it's the very first day, pad the beginning of the week
+                                if (i === 0) {
+                                    const dayOfWeek = new Date(day.date).getDay(); // 0 is Sunday
+                                    for (let j = 0; j < dayOfWeek; j++) {
+                                        currentWeek.push({ date: `pad-start-${j}`, level: 0 });
+                                    }
+                                }
+                                
                                 currentWeek.push(day);
-                                if (currentWeek.length === 7 || index === data.days.length - 1) {
-                                    if (this.weeks.length === 0 && currentWeek.length < 7) {
-                                        const padding = 7 - currentWeek.length;
-                                        for(let i=0; i<padding; i++) {
-                                            currentWeek.unshift({date: '', level: 0});
-                                        }
-                                    }
-                                    else if (index === data.days.length - 1 && currentWeek.length < 7) {
-                                        const padding = 7 - currentWeek.length;
-                                        for(let i=0; i<padding; i++) {
-                                            currentWeek.push({date: '', level: 0});
-                                        }
-                                    }
-                                    this.weeks.push(currentWeek);
+                                
+                                // If the week is full, push to weeks and reset
+                                if (currentWeek.length === 7) {
+                                    newWeeks.push(currentWeek);
                                     currentWeek = [];
                                 }
                             });
+                            
+                            // Pad the end of the last week if necessary
+                            if (currentWeek.length > 0 && currentWeek.length < 7) {
+                                const padding = 7 - currentWeek.length;
+                                for (let j = 0; j < padding; j++) {
+                                    currentWeek.push({ date: `pad-end-${j}`, level: 0 });
+                                }
+                                newWeeks.push(currentWeek);
+                            }
+                            
+                            // 3. Assign the final array to trigger Alpine reactivity once
+                            this.weeks = newWeeks;
                         }
                     } catch (e) {
                         console.error('Error fetching GitHub contributions:', e);
