@@ -236,7 +236,7 @@
                     </div>
 
                     <!-- Stack Section -->
-                    <div id="stack" class="w-full pb-32 pt-2">
+                    <div id="stack" class="w-full pb-20 pt-2">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-6">
                             <span>STACK</span>
                             <a href="/stack" class="hover:text-ink transition-colors">VIEW ALL &rarr;</a>
@@ -267,6 +267,61 @@
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">Git</div>
                             <div class="rounded-xl border border-gray-200 px-3.5 py-1.5 font-mono text-[13px] text-ink hover:bg-gray-50 transition-colors cursor-default">GitHub</div>
                         </div>
+                    </div>
+
+                    <!-- Dotted Divider -->
+                    <div class="mt-8 mb-12 border-b border-gray-100/0">
+                        <div class="halftone halftone-wide h-6.5 w-full opacity-30"></div>
+                    </div>
+
+                    <!-- Github Section -->
+                    <div id="github" class="w-full pb-32 pt-8">
+                        <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
+                            <span>07 — github</span>
+                            <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors">@DRANYL-23 &rarr;</a>
+                        </div>
+                        
+                        @php
+                            $githubGraph = [
+                                "...............#...#.#.#..#..#..##..##.................",
+                                "...............#...#.#.##.##.#.#.#.#.#.................",
+                                "...............#....#.##.##.#.#.#.#.#..................",
+                                "...............#....#.#.##.###.##..#.#.................",
+                                "...............#....#.#.##.#.#.#.#.#.#.................",
+                                "...............#....#.#..#.#.#.#.#.#.#.................",
+                                "...............###..#.#..#.#.#.#.#.##.................."
+                            ];
+                        @endphp
+                        
+                        <div class="w-full overflow-x-auto pb-6 scrollbar-hide">
+                            <div class="flex flex-col gap-[0.45rem] w-max">
+                                @foreach($githubGraph as $row)
+                                    <div class="flex items-center gap-[0.45rem]">
+                                        @foreach(str_split($row) as $char)
+                                            @if($char === '#')
+                                                <div class="w-2.5 h-2.5 rounded-full bg-gray-500 dark:bg-gray-100 transition-transform hover:scale-150 duration-200"></div>
+                                            @else
+                                                @php $rand = mt_rand(1, 100); @endphp
+                                                @if($rand > 95)
+                                                    <div class="w-2.5 h-2.5 rounded-full bg-gray-400 dark:bg-gray-300 opacity-80 transition-transform hover:scale-150 duration-200"></div>
+                                                @elseif($rand > 80)
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-500 opacity-60 transition-transform hover:scale-150 duration-200"></div>
+                                                @elseif($rand > 50)
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-gray-600 opacity-40 transition-transform hover:scale-150 duration-200"></div>
+                                                @else
+                                                    <div class="w-1 h-1 rounded-full bg-gray-100 dark:bg-gray-800 opacity-30"></div>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest">
+                            1,967 CONTRIBUTIONS IN THE LAST YEAR
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
