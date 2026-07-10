@@ -4,14 +4,12 @@ import Pusher from 'pusher-js';
 window.Pusher = Pusher;
 
 try {
-    const reverbConfig = window.Laravel || {};
+    const config = window.Laravel || {};
     window.Echo = new Echo({
-        broadcaster: 'reverb',
-        key: reverbConfig.reverbAppKey || 'empty-key',
-        wsHost: reverbConfig.reverbHost || '127.0.0.1',
-        wsPort: reverbConfig.reverbPort || 80,
-        wssPort: reverbConfig.reverbPort || 443,
-        forceTLS: (reverbConfig.reverbScheme || 'https') === 'https',
+        broadcaster: 'pusher',
+        key: config.pusherAppKey || 'empty-key',
+        cluster: config.pusherCluster || 'mt1',
+        forceTLS: true,
         enabledTransports: ['ws', 'wss'],
     });
 } catch (e) {

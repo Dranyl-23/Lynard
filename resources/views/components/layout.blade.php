@@ -39,10 +39,8 @@
 
     <script>
         window.Laravel = {
-            reverbAppKey: "{{ env('VITE_REVERB_APP_KEY', 'empty-key') }}",
-            reverbHost: "{{ env('VITE_REVERB_HOST', '127.0.0.1') }}",
-            reverbPort: {{ env('VITE_REVERB_PORT', 80) }},
-            reverbScheme: "{{ env('VITE_REVERB_SCHEME', 'https') }}"
+            pusherAppKey: "{{ config('broadcasting.connections.pusher.key') }}",
+            pusherCluster: "{{ config('broadcasting.connections.pusher.options.cluster') }}",
         };
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
