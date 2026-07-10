@@ -171,14 +171,14 @@ return [
             'location' => 'Digos City, Davao del Sur · On-site',
             'roles' => [
                 [
-                    'title' => 'Capstone Lead Developer',
+                    'title' => 'Capstone Full Stack Developer',
                     'duration' => 'Aug 2025 - Present · 11 mos',
                     'description' => [
-                        'Leading the technical architecture, database design, and core development for a major final-year capstone project aimed at solving localized community problems.',
-                        'Managing a team of student developers using Agile methodologies, assigning tasks, and reviewing code to ensure the system meets academic and industry standards.',
-                        'Implementing modern tech stacks to build a secure, real-time, and scalable system tailored for local government or institutional deployment.'
+                        'Spearheading the full-stack development of Chainbudget, a Blockchain-Based Budget Management System designed for transparent organizational fund monitoring as the primary capstone project.',
+                        'Architecting both the frontend interfaces and complex backend logic, ensuring financial integrity and secure data flow across organizational departments.',
+                        'Integrating blockchain methodologies to create an immutable ledger for budget tracking, leveraging modern web frameworks to deliver a responsive and accessible user experience.'
                     ],
-                    'skills' => ['System Architecture', 'Agile', 'Team Leadership', 'Full Stack Development']
+                    'skills' => ['Full Stack Development', 'Blockchain Integration', 'System Architecture', 'Database Design']
                 ],
                 [
                     'title' => 'BS Information Technology (4th Year)',
