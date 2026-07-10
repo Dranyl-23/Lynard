@@ -58,8 +58,8 @@ const registerCommunityChat = () => {
         animationFrame: null,
         worldWidth: 2400,
         worldHeight: 2400,
-        cameraX: 800,
-        cameraY: 800,
+        cameraX: 1200 - (typeof window !== 'undefined' ? window.innerWidth / 2 : 600),
+        cameraY: 1200 - (typeof window !== 'undefined' ? window.innerHeight / 2 : 400),
         direction: 'down',
         isMoving: false,
         animTime: 0,
@@ -481,6 +481,13 @@ const registerCommunityChat = () => {
             this.spawnNPCs();
             
             const loop = (timestamp) => {
+                // BUG FIX 11: Skip game logic and rendering when chat is closed to save CPU/GPU.
+                // The requestAnimationFrame loop still runs (very cheaply) so it can resume immediately when opened.
+                if (!this.isOpen) {
+                    this.animationFrame = requestAnimationFrame(loop);
+                    return;
+                }
+
                 this.updateGame();
                 this.drawGame();
 
@@ -720,11 +727,16 @@ const registerCommunityChat = () => {
             // Draw shadow
             const cx = x - w/2;
             const cy = y - h/2 - 16;
-            
+
+            // BUG FIX 6: The correct way to flip a sprite that is already in camera-space:
+            // translate to the sprite center, scale(-1,1), then draw at -w/2 instead of cx.
+            // The old formula (-cx - w) was wrong because ctx.translate(-cameraX,-cameraY)
+            // was already applied, so negating cx placed the sprite at the wrong position.
             if (flip) {
                 this.ctx.save();
-                this.ctx.scale(-1, 1);
-                this.ctx.drawImage(assets.shadow, cf * cell, rowY, cell, cell, -cx - w, cy, w, h);
+                this.ctx.translate(cx + w/2, 0); // move origin to sprite center X
+                this.ctx.scale(-1, 1);            // mirror horizontally around that center
+                this.ctx.drawImage(assets.shadow, cf * cell, rowY, cell, cell, -w/2, cy, w, h);
                 this.ctx.restore();
             } else {
                 this.ctx.drawImage(assets.shadow, cf * cell, rowY, cell, cell, cx, cy, w, h);
@@ -733,8 +745,9 @@ const registerCommunityChat = () => {
             // Draw character
             if (flip) {
                 this.ctx.save();
+                this.ctx.translate(cx + w/2, 0);
                 this.ctx.scale(-1, 1);
-                this.ctx.drawImage(assets.hero, cf * cell, rowY, cell, cell, -cx - w, cy, w, h);
+                this.ctx.drawImage(assets.hero, cf * cell, rowY, cell, cell, -w/2, cy, w, h);
                 this.ctx.restore();
             } else {
                 this.ctx.drawImage(assets.hero, cf * cell, rowY, cell, cell, cx, cy, w, h);

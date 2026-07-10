@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Http;
+use App\Services\ChatLocationService;
 
 class IdentityMiddleware
 {
@@ -17,21 +17,8 @@ class IdentityMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->session()->has('chat_user')) {
-            $ip = $request->ip();
-            $location = 'Unknown Location';
-            
-            if ($ip && $ip !== '127.0.0.1' && $ip !== '::1') {
-                try {
-                    $response = Http::timeout(3)->get("https://ipapi.co/{$ip}/json/");
-                if ($response->successful() && $response->json('city')) {
-                    $location = $response->json('city') . ', ' . $response->json('country_name');
-                    }
-                } catch (\Exception $e) {
-                    // Ignore API errors
-                }
-            } else {
-                $location = 'Local Area';
-            }
+            // BUG FIX C9: Use the cached location service instead of making a synchronous, blocking HTTP call to ipapi.co
+            $location = ChatLocationService::getLocation($request);
 
             $request->session()->put('chat_user', [
                 'id' => (string) str()->uuid(),
@@ -65,3 +52,4 @@ class IdentityMiddleware
         return $next($request);
     }
 }
+
