@@ -275,14 +275,17 @@
                     </div>
 
                     <style>
-                        .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g500)); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-                        html.dark .gh-dot-4 { background-color: rgb(var(--g200)); }
-                        .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g400)); opacity: 0.9; }
-                        html.dark .gh-dot-3 { background-color: rgb(var(--g400)); }
-                        .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g300)); opacity: 0.8; }
-                        html.dark .gh-dot-2 { background-color: rgb(var(--g500)); }
-                        .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g200)); opacity: 0.7; }
-                        html.dark .gh-dot-1 { background-color: rgb(var(--g600)); }
+                        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+                        .hide-scroll::-webkit-scrollbar { display: none; }
+
+                        .gh-dot-4 { width: 11px; height: 11px; background-color: rgb(var(--g700)); box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+                        html.dark .gh-dot-4 { background-color: rgb(var(--g200)); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+                        .gh-dot-3 { width: 9px; height: 9px; background-color: rgb(var(--g500)); }
+                        html.dark .gh-dot-3 { background-color: rgb(var(--g400)); opacity: 0.9; }
+                        .gh-dot-2 { width: 7px; height: 7px; background-color: rgb(var(--g400)); }
+                        html.dark .gh-dot-2 { background-color: rgb(var(--g500)); opacity: 0.8; }
+                        .gh-dot-1 { width: 5px; height: 5px; background-color: rgb(var(--g300)); }
+                        html.dark .gh-dot-1 { background-color: rgb(var(--g600)); opacity: 0.7; }
                         .gh-dot-0 { width: 3px; height: 3px; background-color: rgb(var(--g200)); }
                         html.dark .gh-dot-0 { background-color: #2a2a2a; }
                     </style>
@@ -299,7 +302,7 @@
                                 <div class="font-mono text-[0.65rem] text-gray-500 animate-pulse">Loading contributions...</div>
                             </div>
 
-                            <div x-cloak x-show="!loading" x-ref="graphContainer" class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
+                            <div x-cloak x-show="!loading" x-ref="graphContainer" class="w-full overflow-x-auto pb-6 hide-scroll flex justify-start sm:justify-center">
                                 <div style="display: flex; align-items: center; gap: 0.35rem; width: max-content;">
                                     <template x-for="(week, index) in weeks" :key="index">
                                         <div style="display: flex; flex-direction: column; gap: 0.35rem;">
