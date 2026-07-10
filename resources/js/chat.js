@@ -325,8 +325,8 @@ const registerCommunityChat = () => {
             if (!loc) return 'Unknown';
             let safeLoc = loc.replace(/</g, '&lt;').replace(/>/g, '&gt;');
             
-            const desktopIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v10H4zm2 2v6h12V8H6zM2 18h20v2H2z"/></svg>`;
-            const mobileIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>`;
+            const desktopIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-px" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v10H4zm2 2v6h12V8H6zM2 18h20v2H2z"/></svg>`;
+            const mobileIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-px" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>`;
             
             safeLoc = safeLoc.replace('💻', desktopIcon);
             safeLoc = safeLoc.replace('📱', mobileIcon);

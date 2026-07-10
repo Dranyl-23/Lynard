@@ -20,8 +20,8 @@
                     
                     <div class="flex flex-wrap justify-center sm:justify-start gap-y-8 sm:-mx-2">
                         @foreach(config('portfolio.certifications.awards') as $award)
-                        <a href="{{ $award['file'] }}" @click.prevent="openModal('{{ $award['modal_type'] }}', '{{ $award['file'] }}')" target="_blank" class="group relative {{ $award['z_index'] }} hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col {{ $award['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
+                        <a href="{{ $award['file'] }}" @click.prevent="openModal('{{ $award['modal_type'] }}', '{{ $award['file'] }}')" target="_blank" class="group relative {{ $award['z_index'] }} hover:z-50! my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
+                            <div class="bg-white border border-gray-200/60 rounded-3xl p-3 w-68 flex flex-col {{ $award['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
                                 <div class="relative w-full mb-8">
                                     <div class="w-full h-32 rounded-xl overflow-hidden bg-gray-100 relative border border-gray-100/50">
                                         <img src="{{ $award['image'] }}" alt="{{ $award['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -43,7 +43,7 @@
                                 <div class="px-3 pb-3 text-left">
                                     <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">{{ $award['title'] }}</h4>
                                     <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">{{ $award['subtitle'] }}</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
+                                    <div class="font-mono text-[8px] uppercase tracking-widest text-(--color-brand-cyan) text-blue-500 font-semibold flex items-center gap-1 mt-4">
                                         {!! $award['action_text'] !!}
                                     </div>
                                 </div>
@@ -59,10 +59,10 @@
                     
                     <div class="flex flex-wrap justify-center sm:justify-start gap-y-8 sm:-mx-2">
                         @foreach(config('portfolio.certifications.networking') as $cert)
-                        <a href="{{ $cert['file'] }}" @click.prevent="openModal('{{ $cert['modal_type'] }}', '{{ $cert['file'] }}')" target="_blank" class="group relative {{ $cert['z_index'] }} hover:!z-50 my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
-                            <div class="bg-white border border-gray-200/60 rounded-[1.5rem] p-3 w-[17rem] flex flex-col {{ $cert['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
+                        <a href="{{ $cert['file'] }}" @click.prevent="openModal('{{ $cert['modal_type'] }}', '{{ $cert['file'] }}')" target="_blank" class="group relative {{ $cert['z_index'] }} hover:z-50! my-2 sm:-mx-3 mx-2 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-3 block">
+                            <div class="bg-white border border-gray-200/60 rounded-3xl p-3 w-68 flex flex-col {{ $cert['rotation'] }} group-hover:rotate-0 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-xl">
                                 <div class="relative w-full mb-8">
-                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br {{ $cert['gradient'] }} relative border border-gray-100/50">
+                                    <div class="w-full h-32 rounded-xl overflow-hidden bg-linear-to-br {{ $cert['gradient'] }} relative border border-gray-100/50">
                                         <div class="absolute inset-0 flex items-center justify-center opacity-20">
                                             <svg viewBox="0 0 24 24" class="w-16 h-16 {{ $cert['icon_color'] }}" fill="currentColor">{!! $cert['svg'] !!}</svg>
                                         </div>
@@ -74,7 +74,7 @@
                                 <div class="px-3 pb-3 text-left">
                                     <h4 class="font-sans text-[14px] font-bold text-ink leading-snug mb-1">{{ $cert['title'] }}</h4>
                                     <div class="font-mono text-[9px] uppercase tracking-widest text-gray-500 mb-1">{{ $cert['subtitle'] }}</div>
-                                    <div class="font-mono text-[8px] uppercase tracking-widest text-[var(--color-brand-cyan)] text-blue-500 font-semibold flex items-center gap-1 mt-4">
+                                    <div class="font-mono text-[8px] uppercase tracking-widest text-(--color-brand-cyan) text-blue-500 font-semibold flex items-center gap-1 mt-4">
                                         {!! $cert['action_text'] !!}
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
         <!-- Modal Overlay -->
         <div x-show="modalOpen" 
              style="display: none;"
-             class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+             class="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 backdrop-blur-none"
              x-transition:enter-end="opacity-100 backdrop-blur-sm"

@@ -15,7 +15,7 @@
         <canvas x-ref="gameCanvas" class="w-full h-full" role="img" aria-label="Community chat interactive canvas" @click="focusGame"></canvas>
         
         <!-- Seamless Fade Overlay (left side fades to background) -->
-        <div class="absolute inset-y-0 left-0 w-full md:w-[60%] bg-gradient-to-r from-white via-white/95 dark:from-[#18181b] dark:via-[#18181b]/95 pointer-events-none"></div>
+        <div class="absolute inset-y-0 left-0 w-full md:w-[60%] bg-linear-to-r from-white via-white/95 dark:from-[#18181b] dark:via-[#18181b]/95 pointer-events-none"></div>
 
         <!-- Click to play prompt -->
         <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none" :class="{'opacity-0': gameActive}">
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Messages Area -->
-        <div class="flex-1 overflow-y-auto pr-4 space-y-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pointer-events-auto" 
+        <div class="flex-1 overflow-y-auto pr-4 space-y-6 scrollbar-none [&::-webkit-scrollbar]:hidden pointer-events-auto" 
              id="chat-messages" 
              style="-webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent); mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent);">
             <div class="h-8"></div> <!-- Spacer for top mask -->
@@ -94,16 +94,16 @@
                             <span class="font-mono text-[10px] text-gray-500 flex items-center">
                                 <span x-text="(msg.location || 'Unknown').replace('💻', '').replace('📱', '').trim()"></span>
                                 <template x-if="(msg.location || '').includes('💻')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v10H4zm2 2v6h12V8H6zM2 18h20v2H2z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-px" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v10H4zm2 2v6h12V8H6zM2 18h20v2H2z"/></svg>
                                 </template>
                                 <template x-if="(msg.location || '').includes('📱')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 inline-block ml-1 opacity-70 relative -top-px" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12v20H6V2zm2 2v14h8V4H8zm2 16h4v2h-4v-2z"/></svg>
                                 </template>
                             </span>
                             <span class="text-gray-300 dark:text-zinc-700 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black dark:text-white break-words max-w-full leading-relaxed" x-text="msg.content"></div>
+                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black dark:text-white wrap-break-word max-w-full leading-relaxed" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>
