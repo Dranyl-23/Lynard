@@ -299,7 +299,7 @@
                                 <div class="font-mono text-[0.65rem] text-gray-500 animate-pulse">Loading contributions...</div>
                             </div>
 
-                            <div x-cloak x-show="!loading" class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
+                            <div x-cloak x-show="!loading" x-ref="graphContainer" class="w-full overflow-x-auto pb-6 scrollbar-hide flex justify-start sm:justify-center">
                                 <div style="display: flex; align-items: center; gap: 0.35rem; width: max-content;">
                                     <template x-for="(week, index) in weeks" :key="index">
                                         <div style="display: flex; flex-direction: column; gap: 0.35rem;">
@@ -382,6 +382,12 @@
                         console.error('Error fetching GitHub contributions:', e);
                     } finally {
                         this.loading = false;
+                        this.$nextTick(() => {
+                            const container = this.$refs.graphContainer;
+                            if (container) {
+                                container.scrollLeft = container.scrollWidth;
+                            }
+                        });
                     }
                 }
             }));
