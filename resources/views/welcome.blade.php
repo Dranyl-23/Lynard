@@ -291,7 +291,7 @@
                                     <template x-for="(week, index) in weeks" :key="index">
                                         <div class="flex flex-col gap-[0.35rem]">
                                             <template x-for="day in week" :key="day.date">
-                                                <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date ? (day.date + ': ' + day.level + ' contributions') : ''">
+                                                <div class="w-[11px] h-[11px] flex items-center justify-center shrink-0" :title="day.date && !day.date.includes('pad') ? (day.date + ': ' + day.count + ' contributions') : ''">
                                                     <div class="rounded-full transition-transform hover:scale-150 duration-200 shrink-0"
                                                          :class="{
                                                              'w-[11px] h-[11px] bg-gray-500 dark:bg-gray-200 shadow-[0_0_10px_rgba(255,255,255,0.2)]': day.level >= 4,
@@ -357,11 +357,11 @@
                                     // If it's the first week, pad at start. Otherwise at end.
                                     if (newWeeks.length === 0) {
                                         for(let i=0; i<padding; i++) {
-                                            mappedWeek.unshift({ date: '', level: 0, count: 0 });
+                                            mappedWeek.unshift({ date: 'pad-start-' + i, level: 0, count: 0 });
                                         }
                                     } else {
                                         for(let i=0; i<padding; i++) {
-                                            mappedWeek.push({ date: '', level: 0, count: 0 });
+                                            mappedWeek.push({ date: 'pad-end-' + i, level: 0, count: 0 });
                                         }
                                     }
                                 }
