@@ -313,9 +313,10 @@ return [
                 'action_text' => '&lang; VIEW PDF &rang;',
                 'modal_type' => 'pdf',
                 'file' => '/CertificationLogo/Networking Cert/DICT-ITU DTC.pdf',
+                'logo' => '/CertificationLogo/Networking Cert/cisco logo.png',
                 'gradient' => 'from-yellow-50 to-amber-50',
                 'icon_color' => 'text-yellow-600',
-                'badge_color' => 'bg-yellow-100 text-yellow-600',
+                'badge_color' => 'bg-white',
                 'svg' => '<path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"></path>',
                 'rotation' => 'rotate-2',
                 'z_index' => 'z-20'
