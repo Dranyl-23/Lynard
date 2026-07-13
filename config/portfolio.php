@@ -320,6 +320,20 @@ return [
                 'svg' => '<path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"></path>',
                 'rotation' => 'rotate-2',
                 'z_index' => 'z-20'
+            ],
+            [
+                'title' => 'Wadhwani Foundation',
+                'subtitle' => 'Training & Seminars',
+                'action_text' => '&lang; VIEW PDF &rang;',
+                'modal_type' => 'pdf',
+                'file' => '/CertificationLogo/wadwhani/Wadhwani Foundation Certificate - 6a5452efbf2abf1765863414.pdf',
+                'logo' => '/CertificationLogo/wadwhani/wadwhani logo.png',
+                'gradient' => 'from-orange-50 to-amber-50',
+                'icon_color' => 'text-orange-500',
+                'badge_color' => 'bg-white',
+                'svg' => '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>',
+                'rotation' => '-rotate-1',
+                'z_index' => 'z-10'
             ]
         ]
     ]
