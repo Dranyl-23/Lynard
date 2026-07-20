@@ -55,7 +55,7 @@ return [
                 'badge_svg' => '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>',
                 'tags' => 'BLOCKCHAIN &middot; TS',
                 'github_url' => 'https://github.com/Dranyl-23/4PS-Nexus',
-                'live_url' => '#'
+                'live_url' => 'https://4ps-nexus.vercel.app'
             ],
             [
                 'title' => 'Chainbudget',
@@ -66,7 +66,7 @@ return [
                 'badge_svg' => '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-1.15 2.4-1.92 0-1.28-.97-1.93-3.08-2.6-2.52-.78-3.79-2.07-3.79-3.9 0-1.83 1.34-3.1 3.12-3.48V3.1h2.67v1.79c1.55.33 2.76 1.48 2.91 3.1h-1.96c-.15-1.04-.9-1.59-2.28-1.59-1.39 0-2.32.74-2.32 1.8 0 1.25 1.25 1.77 3.29 2.45 2.46.81 3.58 2.07 3.58 4.04 0 1.91-1.35 3.16-3.22 3.4z"/>',
                 'tags' => 'ENTERPRISE &middot; TS',
                 'github_url' => 'https://github.com/Dranyl-23/Chainbudget',
-                'live_url' => '#'
+                'live_url' => 'https://chainbudget.vercel.app'
             ],
             [
                 'title' => 'Report-Davao',
@@ -77,7 +77,19 @@ return [
                 'badge_svg' => '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>',
                 'tags' => 'PUBLIC SERVICE &middot; TS',
                 'github_url' => 'https://github.com/Dranyl-23/Report-Davao',
-                'live_url' => '#'
+                'live_url' => 'https://Report-Davao.vercel.app'
+            ],
+            [
+                'title' => 'Navy Sharks',
+                'description' => 'Discover the worlds best value for money lifestyle
+                destinations with expertly researched safe zones, premium venues, and unparalleled experiences. ',
+                'image' => 'ProjectLogos/NavySharks.png',
+                'badge' => 'ELITE CONCIERGE & CLUB',
+                'badge_color' => 'blue-500',
+                'badge_svg' => '<path d="M5 16h14l-1.5-9-3.5 4-2-6-2 6-3.5-4L5 16zm-3 2h20v2H2v-2z"/>',
+                'tags' => 'CONCIERGE & CLUB &middot; TS',
+                'github_url' => '#',
+                'live_url' => 'https://navysharks.com'
             ]
         ],
         'other' => [
