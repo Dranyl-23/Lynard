@@ -335,7 +335,7 @@
             </button>
 
             <!-- Header -->
-            <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest">
+            <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest pr-8">
                 <span>Hackathons</span>
                 <span>1 Entered</span>
             </div>
