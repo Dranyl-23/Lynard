@@ -175,43 +175,46 @@ const registerCommunityChat = () => {
         },
 
         setupChannels() {
-            // Join global presence channel to get current user info and site viewers
-            window.Echo.join('site')
-                .here((users) => {
-                    this.viewers = users;
-                })
-                .joining((user) => {
-                    this.viewers.push(user);
-                })
-                .leaving((user) => {
-                    this.viewers = this.viewers.filter(u => u.id !== user.id);
-                });
+            try {
+                if (!window.Echo) return;
+                // Join global presence channel to get current user info and site viewers
+                window.Echo.join('site')
+                    .here((users) => {
+                        this.viewers = users;
+                    })
+                    .joining((user) => {
+                        this.viewers.push(user);
+                    })
+                    .leaving((user) => {
+                        this.viewers = this.viewers.filter(u => u.id !== user.id);
+                    });
 
-            // Join game channel
-            const gameChannel = window.Echo.join('game')
-                .here((users) => {
-                    users.forEach(u => {
-                        // BUG FIX 12: spawn at a random offset so players don't stack at same position
+                // Join game channel
+                const gameChannel = window.Echo.join('game')
+                    .here((users) => {
+                        users.forEach(u => {
+                            const spawnX = 1200 + (Math.random() - 0.5) * 200;
+                            const spawnY = 1200 + (Math.random() - 0.5) * 200;
+                            this.players[u.id] = { ...u.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
+                        });
+                    })
+                    .joining((user) => {
                         const spawnX = 1200 + (Math.random() - 0.5) * 200;
                         const spawnY = 1200 + (Math.random() - 0.5) * 200;
-                        this.players[u.id] = { ...u.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
+                        this.players[user.id] = { ...user.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
+                    })
+                    .leaving((user) => {
+                        delete this.players[user.id];
+                    })
+                    .listenForWhisper('move', (e) => {
+                        if (this.players[e.id]) {
+                            this.players[e.id].tx = e.x;
+                            this.players[e.id].ty = e.y;
+                        }
                     });
-                })
-                .joining((user) => {
-                    const spawnX = 1200 + (Math.random() - 0.5) * 200;
-                    const spawnY = 1200 + (Math.random() - 0.5) * 200;
-                    this.players[user.id] = { ...user.user_info, x: spawnX, y: spawnY, tx: spawnX, ty: spawnY };
-                })
-                .leaving((user) => {
-                    delete this.players[user.id];
-                })
-                .listenForWhisper('move', (e) => {
-                    if (this.players[e.id]) {
-                        // BUG FIX 12: store target position — the game loop will interpolate x/y toward tx/ty
-                        this.players[e.id].tx = e.x;
-                        this.players[e.id].ty = e.y;
-                    }
-                });
+            } catch (e) {
+                console.warn("Echo/Presence channels not available:", e);
+            }
 
             // Set up local user id from local storage or generated
             this.myId = localStorage.getItem('chat_uid');
