@@ -354,47 +354,31 @@
                 
                 async init() {
                     try {
-                        const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
+                        const response = await fetch(`/ajax/github-contributions/${username}`);
                         const data = await response.json();
                         
-                        if (data && data.contributions) {
-                            this.totalContributions = data.totalContributions;
-                            
-                            const levelMap = {
-                                "NONE": 0,
-                                "FIRST_QUARTILE": 1,
-                                "SECOND_QUARTILE": 2,
-                                "THIRD_QUARTILE": 3,
-                                "FOURTH_QUARTILE": 4
-                            };
+                        if (data && data.days && data.days.length > 0) {
+                            this.totalContributions = data.total || 0;
                             
                             let newWeeks = [];
+                            let currentWeek = [];
                             
-                            // The Deno API already groups by week perfectly!
-                            data.contributions.forEach((week) => {
-                                let mappedWeek = week.map(day => ({
+                            data.days.forEach((day) => {
+                                currentWeek.push({
                                     date: day.date,
-                                    level: levelMap[day.contributionLevel] || 0,
-                                    count: day.contributionCount
-                                }));
+                                    level: day.level,
+                                    count: day.count || 0
+                                });
                                 
-                                // Ensure exactly 7 days in a week column for grid alignment
-                                if (mappedWeek.length < 7) {
-                                    const padding = 7 - mappedWeek.length;
-                                    // If it's the first week, pad at start. Otherwise at end.
-                                    if (newWeeks.length === 0) {
-                                        for(let i=0; i<padding; i++) {
-                                            mappedWeek.unshift({ date: 'pad-start-' + i, level: 0, count: 0 });
-                                        }
-                                    } else {
-                                        for(let i=0; i<padding; i++) {
-                                            mappedWeek.push({ date: 'pad-end-' + i, level: 0, count: 0 });
-                                        }
-                                    }
+                                if (currentWeek.length === 7) {
+                                    newWeeks.push(currentWeek);
+                                    currentWeek = [];
                                 }
-                                
-                                newWeeks.push(mappedWeek);
                             });
+                            
+                            if (currentWeek.length > 0) {
+                                newWeeks.push(currentWeek);
+                            }
                             
                             this.weeks = newWeeks;
                         }

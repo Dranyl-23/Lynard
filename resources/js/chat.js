@@ -314,7 +314,7 @@ const registerCommunityChat = () => {
             let safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             
             // Format bold **text**
-            safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-black dark:text-white">$1</strong>');
+            safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-zinc-900 dark:text-zinc-100">$1</strong>');
             
             // Format bullet lists (lines starting with * or -)
             safe = safe.replace(/(?:^|\n)[*|-]\s+(.*)/g, '<br>• $1');

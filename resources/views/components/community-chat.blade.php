@@ -94,7 +94,7 @@
                             <span class="text-gray-300 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2.5 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black dark:text-gray-100 wrap-break-word max-w-full leading-relaxed" :class="{'animate-pulse': msg.isTyping}" x-html="formatMessage(msg.content)"></div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200/50 dark:border-zinc-700/50 inline-block text-xs font-mono text-zinc-900 dark:text-zinc-100 wrap-break-word max-w-full leading-relaxed" :class="{'animate-pulse': msg.isTyping}" x-html="formatMessage(msg.content)"></div>
                     </div>
                 </div>
             </template>
@@ -112,7 +112,7 @@
                     @keydown.enter.prevent="sendMessage"
                     @focus="gameActive = false"
                     placeholder="ask me anything about Alfie's work..." 
-                    class="w-full bg-transparent border-none p-0 text-black placeholder-gray-400 focus:ring-0 focus:outline-none resize-none font-mono text-[11px] h-10 leading-10 m-0"
+                    class="w-full bg-transparent border-none p-0 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:ring-0 focus:outline-none resize-none font-mono text-[11px] h-10 leading-10 m-0"
                     rows="1"
                 ></textarea>
                 <button type="submit" class="text-[11px] font-mono text-gray-400 hover:text-ink shrink-0 mb-3 transition-colors" :class="{'opacity-30 cursor-not-allowed': !newMessage.trim()}" :disabled="!newMessage.trim()">
