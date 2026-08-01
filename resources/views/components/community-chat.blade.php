@@ -1,10 +1,10 @@
 <div id="communityChat"
      x-show="isOpen" 
-     style="display: none;"
      @open-chat.window="isOpen = true"
      @keydown.escape.window="isOpen = false" 
      x-effect="document.body.style.overflow = isOpen ? 'hidden' : ''"
-     class="fixed inset-0 z-100 flex bg-white dark:bg-[#18181b]">
+     class="fixed inset-0 z-100 flex bg-white dark:bg-[#18181b]"
+     x-cloak>
     
     <!-- Instructions overlay -->
     <div class="absolute top-6 right-16 z-20 text-gray-400 font-mono text-[10px] tracking-widest uppercase hidden md:block">

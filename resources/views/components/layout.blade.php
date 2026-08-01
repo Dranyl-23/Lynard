@@ -135,7 +135,7 @@
             </div>
 
             <!-- Bottom Section -->
-            <div class="flex flex-col gap-4 mt-auto pb-16 relative z-20">
+            <div class="flex flex-col gap-4 mt-12">
                 <div class="h-px bg-gray-200 w-full mb-2"></div>
                 
                 <!-- Presence Indicators -->
@@ -151,7 +151,7 @@
                 </div>
 
                 <!-- Community Chat Button -->
-                <button type="button" @click="isOpen = true" class="group flex items-center gap-2 font-mono text-[11px] text-gray-500 hover:text-ink transition-colors text-left w-fit mb-2 cursor-pointer relative z-30">
+                <button type="button" @click="isOpen = true" class="group flex items-center gap-2 font-mono text-[11px] text-gray-500 hover:text-ink transition-colors text-left w-fit mb-2">
                     <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     community chat
                 </button>
