@@ -211,18 +211,27 @@ Route::post('/ai-chat', function (Request $request) {
             ];
         }
 
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key={$apiKey}", [
-            'system_instruction' => [
-                'parts' => ['text' => $systemPrompt]
-            ],
-            'contents' => $geminiContents
-        ]);
+        $modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-flash-latest'];
+        $aiMessage = null;
 
-        if ($response->successful()) {
-            $data = $response->json();
-            $aiMessage = $data['candidates'][0]['content']['parts'][0]['text'] ?? "Sorry, I couldn't generate a response.";
+        foreach ($modelsToTry as $model) {
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+            ])->timeout(8)->post("https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}", [
+                'system_instruction' => [
+                    'parts' => ['text' => $systemPrompt]
+                ],
+                'contents' => $geminiContents
+            ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                $aiMessage = $data['candidates'][0]['content']['parts'][0]['text'] ?? null;
+                if ($aiMessage) break;
+            }
+        }
+
+        if ($aiMessage) {
             $history[] = ['role' => 'assistant', 'content' => $aiMessage];
             
             if (count($history) > 11) {
@@ -230,10 +239,10 @@ Route::post('/ai-chat', function (Request $request) {
             }
             session(['ai_chat_history' => $history]);
         } else {
-            $aiMessage = "Gemini API Error: " . $response->json('error.message', 'Unknown error');
+            $aiMessage = "The AI is currently experiencing high demand. Please try sending your message again in a few seconds!";
         }
     } catch (\Exception $e) {
-        $aiMessage = "Sorry, I'm having trouble connecting right now. " . $e->getMessage();
+        $aiMessage = "Sorry, I'm having trouble connecting right now. Please try again in a moment.";
     }
 
     return response()->json([
