@@ -1,5 +1,6 @@
 <div id="communityChat"
      x-show="isOpen" 
+     style="display: none;"
      @open-chat.window="isOpen = true"
      @keydown.escape.window="isOpen = false" 
      x-effect="document.body.style.overflow = isOpen ? 'hidden' : ''"
