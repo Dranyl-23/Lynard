@@ -186,7 +186,7 @@ Route::post('/ai-chat', function (Request $request) {
 
     $history[] = ['role' => 'user', 'content' => $request->content];
 
-    $apiKey = env('OPENAI_API_KEY');
+    $apiKey = env('GEMINI_API_KEY');
     
     if (!$apiKey) {
         return response()->json([
@@ -194,27 +194,44 @@ Route::post('/ai-chat', function (Request $request) {
             'username' => 'AI Assistant',
             'avatar' => 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
             'location' => 'System Server',
-            'content' => "Error: OPENAI_API_KEY is not set in the .env file. Please ask Alfie to configure it.",
+            'content' => "Error: GEMINI_API_KEY is not set in the .env file. Please configure it.",
             'created_at' => now()->toIso8601String(),
         ]);
     }
 
     try {
-        $client = \OpenAI::client($apiKey);
-        $response = $client->chat()->create([
-            'model' => 'gpt-4o-mini',
-            'messages' => $history,
-        ]);
+        $geminiContents = [];
+        $systemPrompt = $history[0]['content'];
         
-        $aiMessage = $response->choices[0]->message->content;
-        $history[] = ['role' => 'assistant', 'content' => $aiMessage];
-        
-        // Keep last 10 messages to save session space (plus system prompt)
-        if (count($history) > 11) {
-            $history = array_merge([$history[0]], array_slice($history, -10));
+        foreach ($history as $msg) {
+            if ($msg['role'] === 'system') continue;
+            $geminiContents[] = [
+                'role' => $msg['role'] === 'user' ? 'user' : 'model',
+                'parts' => [['text' => $msg['content']]],
+            ];
         }
-        session(['ai_chat_history' => $history]);
 
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}", [
+            'system_instruction' => [
+                'parts' => ['text' => $systemPrompt]
+            ],
+            'contents' => $geminiContents
+        ]);
+
+        if ($response->successful()) {
+            $data = $response->json();
+            $aiMessage = $data['candidates'][0]['content']['parts'][0]['text'] ?? "Sorry, I couldn't generate a response.";
+            $history[] = ['role' => 'assistant', 'content' => $aiMessage];
+            
+            if (count($history) > 11) {
+                $history = array_merge([$history[0]], array_slice($history, -10));
+            }
+            session(['ai_chat_history' => $history]);
+        } else {
+            $aiMessage = "Gemini API Error: " . $response->json('error.message', 'Unknown error');
+        }
     } catch (\Exception $e) {
         $aiMessage = "Sorry, I'm having trouble connecting right now. " . $e->getMessage();
     }
