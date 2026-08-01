@@ -247,7 +247,7 @@ Route::post('/ai-chat', function (Request $request) {
 })->middleware('throttle:20,1');
 
 Route::get('/ajax/github-contributions/{username}', function($username) {
-    return Cache::remember('github_contributions_v2_' . $username, 14400, function() use ($username) {
+    return Cache::remember('github_contributions_v3_' . $username, 14400, function() use ($username) {
         try {
             $response = Http::withHeaders([
                 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -273,6 +273,12 @@ Route::get('/ajax/github-contributions/{username}', function($username) {
                     'level' => (int)$matches[2][$i]
                 ];
             }
+
+            // GitHub HTML table is structured by row (by day of week).
+            // Sort chronologically by date so the frontend receives sequential days!
+            usort($days, function($a, $b) {
+                return strcmp($a['date'], $b['date']);
+            });
 
             return [
                 'total' => $total,

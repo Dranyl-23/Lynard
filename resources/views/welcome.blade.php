@@ -364,6 +364,16 @@
                             let currentWeek = [];
                             
                             data.days.forEach((day) => {
+                                const d = new Date(day.date + 'T00:00:00');
+                                const dayOfWeek = d.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+                                
+                                if (currentWeek.length === 0 && newWeeks.length === 0 && dayOfWeek > 0) {
+                                    // Pad start of first week so Sunday is at index 0
+                                    for (let i = 0; i < dayOfWeek; i++) {
+                                        currentWeek.push({ date: 'pad-start-' + i, level: 0, count: 0 });
+                                    }
+                                }
+                                
                                 currentWeek.push({
                                     date: day.date,
                                     level: day.level,
@@ -377,6 +387,9 @@
                             });
                             
                             if (currentWeek.length > 0) {
+                                while (currentWeek.length < 7) {
+                                    currentWeek.push({ date: 'pad-end-' + currentWeek.length, level: 0, count: 0 });
+                                }
                                 newWeeks.push(currentWeek);
                             }
                             
