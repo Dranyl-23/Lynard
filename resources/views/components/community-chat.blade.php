@@ -73,11 +73,7 @@
              id="chat-messages" 
              style="-webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent); mask-image: linear-gradient(to bottom, transparent, black 15%, black 88%, transparent);">
             <div class="h-8"></div> <!-- Spacer for top mask -->
-            <button x-show="hasMore" @click="loadMore()" 
-                class="text-[11px] font-mono text-gray-400 hover:text-ink mx-auto block mb-4 transition-colors pointer-events-auto"
-                :class="{'opacity-50 cursor-wait': loadingMore}">
-                <span x-text="loadingMore ? 'loading...' : '↑ load earlier messages'"></span>
-            </button>
+
             <template x-for="msg in messages" :key="msg.id">
                 <div class="flex items-start gap-3 reveal" style="animation-duration: 0.4s; animation-delay: 0s;">
                     
@@ -98,7 +94,7 @@
                             <span class="text-gray-300 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black wrap-break-word max-w-full leading-relaxed" x-text="msg.content"></div>
+                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black wrap-break-word max-w-full leading-relaxed" :class="{'animate-pulse': msg.isTyping}" x-text="msg.content"></div>
                     </div>
                 </div>
             </template>
@@ -107,20 +103,20 @@
 
         <!-- Input Area -->
         <div class="mt-6 pt-4 pointer-events-auto">
-            <div class="flex items-center gap-2 text-[11px] font-mono text-gray-500 mb-3" x-show="currentUser.name">
-                chatting as <span class="text-ink font-semibold" x-text="currentUser.name"></span>
+            <div class="flex items-center gap-2 text-[11px] font-mono text-gray-500 mb-3">
+                chatting with <span class="text-ink font-semibold">AI Assistant</span>
             </div>
             <form @submit.prevent="sendMessage" class="flex gap-4 items-end">
                 <textarea 
                     x-model="newMessage" 
                     @keydown.enter.prevent="sendMessage"
                     @focus="gameActive = false"
-                    :placeholder="currentUser.name ? 'say something...' : 'enter a nickname to join...'" 
+                    placeholder="ask me anything about Alfie's work..." 
                     class="w-full bg-transparent border-none p-0 text-black placeholder-gray-400 focus:ring-0 focus:outline-none resize-none font-mono text-[11px] h-10 leading-10 m-0"
                     rows="1"
                 ></textarea>
                 <button type="submit" class="text-[11px] font-mono text-gray-400 hover:text-ink shrink-0 mb-3 transition-colors" :class="{'opacity-30 cursor-not-allowed': !newMessage.trim()}" :disabled="!newMessage.trim()">
-                    <span x-text="currentUser.name ? 'send ↵' : 'join ↵'"></span>
+                    <span>send ↵</span>
                 </button>
             </form>
         </div>

@@ -138,21 +138,15 @@ const registerCommunityChat = () => {
 
         async initEcho() {
             try {
-                // Fetch initial messages and current user
-                const [msgsRes, meRes] = await Promise.all([
-                    axios.get('/messages'),
-                    axios.get('/me')
-                ]);
+                // Fetch initial history
+                const msgsRes = await axios.get('/ai-chat-history');
                 this.messages = msgsRes.data.messages || [];
-                this.hasMore = msgsRes.data.has_more || false;
-                this.oldestId = msgsRes.data.oldest_id || null;
-                this.currentUser = meRes.data || {};
+                this.hasMore = false;
                 
                 // Scroll to bottom
                 this.$nextTick(() => { this.scrollToBottom() });
                 
-                // BUG FIX 10: Watch messages array so that if spawnNPCs runs before messages load, 
-                // the NPCs will automatically adopt the chat names once they arrive.
+                // Watch messages array to name NPCs
                 this.$watch('messages', () => {
                     if (!this.npcs || this.npcs.length === 0) return;
                     const names = this.getRecentChatNames();
@@ -191,20 +185,6 @@ const registerCommunityChat = () => {
                 })
                 .leaving((user) => {
                     this.viewers = this.viewers.filter(u => u.id !== user.id);
-                });
-
-            // Join chat channel
-            window.Echo.join('chat')
-                .listen('MessageSent', (e) => {
-                    if (!this.messages.find(m => m.id === e.message.id)) {
-                        this.messages.push(e.message);
-                        this.$nextTick(() => { this.scrollToBottom() });
-                    }
-                    // Refresh NPC names from latest chat messages
-                    if (this.npcs.length) {
-                        const names = this.getRecentChatNames();
-                        this.npcs.forEach((n, i) => { if (names[i]) n.name = names[i]; });
-                    }
                 });
 
             // Join game channel
@@ -246,30 +226,7 @@ const registerCommunityChat = () => {
             }
         },
 
-        async setName() {
-            if (!this.newMessage.trim()) return;
-            try {
-                const res = await axios.post('/set-name', { name: this.newMessage.trim() });
-                this.currentUser = res.data;
-                this.newMessage = '';
-                // BUG FIX 14: Leave channels and rejoin to broadcast new name.
-                // Do NOT call initGame() again — it's already running. setupChannels() guard
-                // above (animationFrame check) prevents a second game loop from spawning.
-                window.Echo.leave('site');
-                window.Echo.leave('chat'); // BUG FIX WS3
-                window.Echo.leave('game');
-                this.setupChannels();
-            } catch (e) {
-                // Silently handle failure
-            }
-        },
-
         async sendMessage() {
-            if (!this.currentUser.name) {
-                return this.setName();
-            }
-
-            // BUG FIX 18: Prevent rapid Enter key presses from sending duplicate messages
             if (this.isSending || !this.newMessage.trim()) return;
             this.isSending = true;
             
@@ -280,34 +237,42 @@ const registerCommunityChat = () => {
             const tempId = 'temp-' + Date.now();
             const optimisticMsg = {
                 id: tempId,
-                username: this.currentUser.name,
-                avatar: this.currentUser.avatar || 'https://api.dicebear.com/9.x/pixel-art/svg?seed=' + encodeURIComponent(this.currentUser.name),
-                location: this.currentUser.location || 'Unknown',
+                username: 'You',
+                avatar: 'https://api.dicebear.com/9.x/pixel-art/svg?seed=You',
+                location: 'Virtual Office',
                 content: content,
                 created_at: new Date().toISOString()
             };
             this.messages.push(optimisticMsg);
+            
+            // Add typing indicator
+            this.messages.push({
+                id: 'typing',
+                username: 'AI Assistant',
+                avatar: 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+                location: 'System Server',
+                content: 'typing...',
+                created_at: new Date().toISOString(),
+                isTyping: true
+            });
+
             this.$nextTick(() => { this.scrollToBottom() });
 
             try {
-                const res = await axios.post('/messages', { content });
+                const res = await axios.post('/ai-chat', { content });
                 
-                // Replace optimistic message with actual data from server
-                const idx = this.messages.findIndex(m => m.id === tempId);
-                if (idx !== -1) {
-                    // Update object in place so Alpine reactivity catches it
-                    Object.assign(this.messages[idx], res.data);
-                } else if (!this.messages.find(m => m.id === res.data.id)) {
-                    this.messages.push(res.data);
-                }
+                // Remove typing indicator
+                this.messages = this.messages.filter(m => m.id !== 'typing');
                 
-                // We also learn who we are (if server updated it)
-                this.currentUser = { name: res.data.username, avatar: res.data.avatar, location: res.data.location };
+                // Add AI response
+                this.messages.push(res.data);
             } catch (e) {
-                // If it fails, remove the optimistic message
+                // Remove typing indicator and optimistic user message on failure
+                this.messages = this.messages.filter(m => m.id !== 'typing');
                 this.messages = this.messages.filter(m => m.id !== tempId);
             } finally {
                 this.isSending = false;
+                this.$nextTick(() => { this.scrollToBottom() });
             }
         },
 
@@ -344,18 +309,7 @@ const registerCommunityChat = () => {
         },
 
         async loadMore() {
-            if (!this.hasMore || this.loadingMore) return;
-            this.loadingMore = true;
-            try {
-                const res = await axios.get('/messages', { params: { before: this.oldestId } });
-                const older = res.data.messages || [];
-                this.messages = [...older, ...this.messages];
-                this.hasMore = res.data.has_more || false;
-                this.oldestId = res.data.oldest_id || this.oldestId;
-            } catch (e) {
-                // Silently handle failure
-            }
-            this.loadingMore = false;
+            // Disabled for AI chat since we load the whole session history at once
         },
 
         spawnNPCs() {

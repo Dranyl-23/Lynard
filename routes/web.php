@@ -134,75 +134,101 @@ Route::post('/broadcasting/auth', function (Request $request) {
     }
 })->middleware('throttle:30,1');
 
-use App\Models\Message;
-use App\Events\MessageSent;
 use Illuminate\Support\Facades\Http;
+use OpenAI;
 
-Route::get('/messages', function (Request $request) {
-    $query = Message::orderBy('created_at', 'desc');
+Route::get('/ai-chat-history', function (Request $request) {
+    $history = session('ai_chat_history', []);
     
-    if ($request->has('before')) {
-        $query->where('id', '<', (int) $request->before);
+    // Convert history to UI format
+    $messages = [];
+    foreach ($history as $index => $msg) {
+        if ($msg['role'] === 'system') continue;
+        
+        $messages[] = [
+            'id' => 'msg-' . $index,
+            'username' => $msg['role'] === 'user' ? 'You' : 'AI Assistant',
+            'avatar' => $msg['role'] === 'user' 
+                ? 'https://api.dicebear.com/9.x/pixel-art/svg?seed=You'
+                : 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+            'location' => $msg['role'] === 'user' ? 'Virtual Office' : 'System Server',
+            'content' => $msg['content'],
+            'created_at' => now()->subMinutes(count($history) - $index)->toIso8601String(),
+        ];
     }
     
-    // Fetch 51 to correctly determine if more exist
-    $fetched = $query->take(51)->get();
-    $hasMore = $fetched->count() === 51;
-    $messages = $fetched->take(50)->reverse()->values();
+    // Add welcome message if history is empty (only system prompt exists)
+    if (count($history) <= 1) {
+        $messages[] = [
+            'id' => 'welcome',
+            'username' => 'AI Assistant',
+            'avatar' => 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+            'location' => 'System Server',
+            'content' => "Hello! I'm Alfie's AI assistant. I can help you navigate his portfolio or answer any questions you have about his work and experience. What can I help you with today?",
+            'created_at' => now()->toIso8601String(),
+        ];
+    }
     
     return response()->json([
         'messages' => $messages,
-        'has_more' => $hasMore,
-        'oldest_id' => $messages->first()?->id,
+        'has_more' => false,
     ]);
-})->middleware('throttle:30,1');
+});
 
-Route::post('/messages', function (Request $request) {
+Route::post('/ai-chat', function (Request $request) {
     $request->validate([
-        'content' => 'required|string|min:1|max:500',
+        'content' => 'required|string|min:1|max:1000',
     ]);
 
-    $sessionUser = session('chat_user');
-    
-    if (!$sessionUser || !$sessionUser['name']) {
-        return response()->json(['error' => 'Set a name first'], 403);
-    }
-
-    // Always re-evaluate location on message send to ensure accuracy and fix stale sessions
-    $currentLocation = ChatLocationService::getLocation($request);
-    
-    // Store raw (no e() here) — x-text in Alpine escapes at render time, preventing double-encoding
-    $message = Message::create([
-        'username' => $sessionUser['name'],
-        'location' => $currentLocation,
-        'avatar' => $sessionUser['avatar'],
-        'content' => $request->content,
+    // Load conversation history from session
+    $history = session('ai_chat_history', [
+        ['role' => 'system', 'content' => "You are a helpful and professional AI assistant for Alfie Lynard's portfolio website. You guide visitors, answer questions about his experience, projects, and skills. Be concise, friendly, and helpful. You live in a 2D interactive virtual office."]
     ]);
 
-    // Update session location quietly
-    $sessionUser['location'] = $currentLocation;
-    session(['chat_user' => $sessionUser]);
+    $history[] = ['role' => 'user', 'content' => $request->content];
 
-    broadcast(new MessageSent($message))->toOthers();
-
-    return response()->json($message);
-})->middleware('throttle:10,1,chat_user.id');
-
-Route::post('/set-name', function (Request $request) {
-    $request->validate(['name' => 'required|string|min:2|max:20']);
-    $sessionUser = session('chat_user');
+    $apiKey = env('OPENAI_API_KEY');
     
-    if ($sessionUser) {
-        // Store raw name (no e()) — escaping happens at render time
-        $sessionUser['name'] = $request->name;
-        $sessionUser['avatar'] = "https://api.dicebear.com/9.x/pixel-art/svg?seed=" . urlencode($request->name);
-        $sessionUser['location'] = ChatLocationService::getLocation($request);
-        session(['chat_user' => $sessionUser]);
-        return response()->json($sessionUser);
+    if (!$apiKey) {
+        return response()->json([
+            'id' => uniqid(),
+            'username' => 'AI Assistant',
+            'avatar' => 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+            'location' => 'System Server',
+            'content' => "Error: OPENAI_API_KEY is not set in the .env file. Please ask Alfie to configure it.",
+            'created_at' => now()->toIso8601String(),
+        ]);
     }
-    
-    return response()->json(['error' => 'No session'], 400);
-})->middleware('throttle:5,1');
+
+    try {
+        $client = OpenAI::client($apiKey);
+        $response = $client->chat()->create([
+            'model' => 'gpt-4o-mini',
+            'messages' => $history,
+        ]);
+        
+        $aiMessage = $response->choices[0]->message->content;
+        $history[] = ['role' => 'assistant', 'content' => $aiMessage];
+        
+        // Keep last 10 messages to save session space (plus system prompt)
+        if (count($history) > 11) {
+            $history = array_merge([$history[0]], array_slice($history, -10));
+        }
+        session(['ai_chat_history' => $history]);
+
+    } catch (\Exception $e) {
+        $aiMessage = "Sorry, I'm having trouble connecting right now. " . $e->getMessage();
+    }
+
+    return response()->json([
+        'id' => uniqid(),
+        'username' => 'AI Assistant',
+        'avatar' => 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+        'location' => 'System Server',
+        'content' => $aiMessage,
+        'created_at' => now()->toIso8601String(),
+    ]);
+})->middleware('throttle:20,1');
 
 Route::get('/ajax/github-contributions/{username}', function($username) {
     return Cache::remember('github_contributions_' . $username, 43200, function() use ($username) {
@@ -239,17 +265,4 @@ Route::get('/ajax/github-contributions/{username}', function($username) {
         ];
     });
 })->where('username', '[a-zA-Z0-9_-]+')->middleware('throttle:10,1');
-
-Route::get('/me', function () {
-    $user = session('chat_user');
-    if ($user) {
-        return response()->json([
-            'id' => $user['id'] ?? null,
-            'name' => $user['name'] ?? null,
-            'avatar' => $user['avatar'] ?? null,
-            'location' => $user['location'] ?? 'Unknown',
-        ]);
-    }
-    return response()->json(null);
-});
 
