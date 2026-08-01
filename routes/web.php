@@ -135,7 +135,6 @@ Route::post('/broadcasting/auth', function (Request $request) {
 })->middleware('throttle:30,1');
 
 use Illuminate\Support\Facades\Http;
-use OpenAI;
 
 Route::get('/ai-chat-history', function (Request $request) {
     $history = session('ai_chat_history', []);
@@ -201,7 +200,7 @@ Route::post('/ai-chat', function (Request $request) {
     }
 
     try {
-        $client = OpenAI::client($apiKey);
+        $client = \OpenAI::client($apiKey);
         $response = $client->chat()->create([
             'model' => 'gpt-4o-mini',
             'messages' => $history,
