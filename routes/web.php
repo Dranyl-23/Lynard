@@ -247,38 +247,40 @@ Route::post('/ai-chat', function (Request $request) {
 })->middleware('throttle:20,1');
 
 Route::get('/ajax/github-contributions/{username}', function($username) {
-    return Cache::remember('github_contributions_' . $username, 43200, function() use ($username) {
-        $options = [
-            "http" => [
-                "header" => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n"
-            ]
-        ];
-        $context = stream_context_create($options);
-        $html = @file_get_contents("https://github.com/users/{$username}/contributions", false, $context);
-        
-        if (!$html) {
-            return ['error' => 'Failed to fetch'];
-        }
+    return Cache::remember('github_contributions_v2_' . $username, 14400, function() use ($username) {
+        try {
+            $response = Http::withHeaders([
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            ])->timeout(10)->get("https://github.com/users/{$username}/contributions");
 
-        $total = '0';
-        if (preg_match('/<h2[^>]*>\s*([\d,]+)\s+contributions/i', $html, $m)) {
-            $total = trim($m[1]);
-        }
+            if (!$response->successful()) {
+                return ['total' => '0', 'days' => [], 'error' => 'HTTP ' . $response->status()];
+            }
 
-        preg_match_all('/data-date="([^"]+)"[^>]*data-level="([^"]+)"/i', $html, $matches);
-        
-        $days = [];
-        for ($i = 0; $i < count($matches[1]); $i++) {
-            $days[] = [
-                'date' => $matches[1][$i],
-                'level' => (int)$matches[2][$i]
+            $html = $response->body();
+
+            $total = '0';
+            if (preg_match('/([\d,]+)\s+contributions/i', $html, $m)) {
+                $total = trim($m[1]);
+            }
+
+            preg_match_all('/data-date="([^"]+)"[^>]*data-level="([^"]+)"/i', $html, $matches);
+            
+            $days = [];
+            for ($i = 0; $i < count($matches[1]); $i++) {
+                $days[] = [
+                    'date' => $matches[1][$i],
+                    'level' => (int)$matches[2][$i]
+                ];
+            }
+
+            return [
+                'total' => $total,
+                'days' => $days
             ];
+        } catch (\Exception $e) {
+            return ['total' => '0', 'days' => [], 'error' => $e->getMessage()];
         }
-
-        return [
-            'total' => $total,
-            'days' => $days
-        ];
     });
 })->where('username', '[a-zA-Z0-9_-]+')->middleware('throttle:10,1');
 
