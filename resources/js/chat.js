@@ -233,7 +233,7 @@ const registerCommunityChat = () => {
             const content = this.newMessage.trim();
             this.newMessage = ''; // clear immediately
 
-            // Optimistic UI update
+            // 1. Optimistic UI update (User message pops up immediately)
             const tempId = 'temp-' + Date.now();
             const optimisticMsg = {
                 id: tempId,
@@ -244,30 +244,39 @@ const registerCommunityChat = () => {
                 created_at: new Date().toISOString()
             };
             this.messages.push(optimisticMsg);
-            
-            // Add typing indicator
-            this.messages.push({
-                id: 'typing',
-                username: 'AI Assistant',
-                avatar: 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
-                location: 'System Server',
-                content: 'typing...',
-                created_at: new Date().toISOString(),
-                isTyping: true
-            });
-
             this.$nextTick(() => { this.scrollToBottom() });
 
+            const sleep = ms => new Promise(res => setTimeout(res, ms));
+
             try {
+                // 2. Pause 1.2 seconds before typing starts (simulates reading the message)
+                await sleep(1200);
+
+                // 3. Show typing indicator
+                this.messages.push({
+                    id: 'typing',
+                    username: 'AI Assistant',
+                    avatar: 'https://api.dicebear.com/9.x/bottts/svg?seed=assistant',
+                    location: 'System Server',
+                    content: 'typing...',
+                    created_at: new Date().toISOString(),
+                    isTyping: true
+                });
+                this.$nextTick(() => { this.scrollToBottom() });
+
+                // 4. Fetch response and ensure typing stays visible for at least 1.5s
+                const startTime = Date.now();
                 const res = await axios.post('/ai-chat', { content });
+                const elapsedTime = Date.now() - startTime;
                 
-                // Remove typing indicator
+                if (elapsedTime < 1500) {
+                    await sleep(1500 - elapsedTime);
+                }
+
+                // 5. Remove typing indicator and show AI response
                 this.messages = this.messages.filter(m => m.id !== 'typing');
-                
-                // Add AI response
                 this.messages.push(res.data);
             } catch (e) {
-                // Remove typing indicator and optimistic user message on failure
                 this.messages = this.messages.filter(m => m.id !== 'typing');
                 this.messages = this.messages.filter(m => m.id !== tempId);
             } finally {
