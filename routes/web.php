@@ -84,53 +84,44 @@ use Pusher\Pusher;
 use App\Services\ChatLocationService;
 
 Route::post('/broadcasting/auth', function (Request $request) {
-    // Validate Origin header to prevent cross-origin forgery
     $origin = $request->header('Origin');
-    $allowedOrigins = [config('app.url'), 'https://lynard.vercel.app'];
-    if ($origin && !in_array($origin, $allowedOrigins)) {
+    $host = $origin ? parse_url($origin, PHP_URL_HOST) : null;
+    
+    // Allow localhost, 127.0.0.1, vercel.app subdomains, or configured APP_URL
+    if ($host && !preg_match('/(localhost|127\.0\.0\.1|vercel\.app)$/i', $host) && $origin !== config('app.url')) {
         abort(403, 'Invalid origin');
     }
 
-    $pusher = new Pusher(
-        config('broadcasting.connections.pusher.key'),
-        config('broadcasting.connections.pusher.secret'),
-        config('broadcasting.connections.pusher.app_id'),
-        [
-            'cluster' => config('broadcasting.connections.pusher.options.cluster'),
-            'useTLS' => true,
-        ]
-    );
+    $key = config('broadcasting.connections.pusher.key');
+    $secret = config('broadcasting.connections.pusher.secret');
+    $appId = config('broadcasting.connections.pusher.app_id');
 
-    $sessionUser = session('chat_user');
-    
-    // Fallback if session wasn't set for some reason
-    if (!$sessionUser) {
-        $sessionUser = [
+    if (!$key || !$secret || !$appId) {
+        return response()->json(['auth' => 'disabled']);
+    }
+
+    try {
+        $pusher = new Pusher(
+            $key,
+            $secret,
+            $appId,
+            [
+                'cluster' => config('broadcasting.connections.pusher.options.cluster', 'mt1'),
+                'useTLS' => true,
+            ]
+        );
+
+        $sessionUser = session('chat_user', [
             'id' => (string) str()->uuid(),
             'name' => 'Guest-' . rand(1000, 9999),
             'location' => 'Unknown',
             'avatar' => 'https://api.dicebear.com/9.x/pixel-art/svg?seed=Guest'
-        ];
-        session(['chat_user' => $sessionUser]);
-    }
+        ]);
 
-    $socketId = $request->socket_id;
-    $channelName = $request->channel_name;
-
-    $presenceData = [
-        'user_id' => $sessionUser['id'],
-        'user_info' => $sessionUser
-    ];
-
-    try {
-        if (str_starts_with($channelName, 'presence-')) {
-            $auth = $pusher->presence_auth($channelName, $socketId, $sessionUser['id'], $presenceData);
-        } else {
-            $auth = $pusher->socket_auth($channelName, $socketId);
-        }
-        return response($auth)->header('Content-Type', 'application/json');
+        $auth = $pusher->presence_auth($request->channel_name, $request->socket_id, $sessionUser['id'], ['user_id' => $sessionUser['id'], 'user_info' => $sessionUser]);
+        return response($auth);
     } catch (\Exception $e) {
-        return response()->json(['error' => 'Auth failed'], 403);
+        return response()->json(['auth' => 'disabled']);
     }
 })->middleware('throttle:30,1');
 
