@@ -308,6 +308,26 @@ const registerCommunityChat = () => {
             return safeLoc;
         },
 
+        formatMessage(text) {
+            if (!text) return '';
+            // Basic HTML escaping first to prevent XSS
+            let safe = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            // Format bold **text**
+            safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-black dark:text-white">$1</strong>');
+            
+            // Format bullet lists (lines starting with * or -)
+            safe = safe.replace(/(?:^|\n)[*|-]\s+(.*)/g, '<br>• $1');
+            
+            // Preserve line breaks
+            safe = safe.replace(/\n/g, '<br>');
+            
+            // Clean up double <br> from bullet list conversion
+            safe = safe.replace(/(<br>){3,}/g, '<br><br>');
+            
+            return safe;
+        },
+
         async loadMore() {
             // Disabled for AI chat since we load the whole session history at once
         },

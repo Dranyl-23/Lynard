@@ -94,7 +94,7 @@
                             <span class="text-gray-300 text-[10px]">·</span>
                             <span class="font-mono text-[10px] text-gray-500" x-text="formatTime(msg.created_at)"></span>
                         </div>
-                        <div class="px-4 py-2 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black wrap-break-word max-w-full leading-relaxed" :class="{'animate-pulse': msg.isTyping}" x-text="msg.content"></div>
+                        <div class="px-4 py-2.5 rounded-2xl bg-[#f4f4f5] dark:bg-[#27272a] inline-block text-xs font-mono text-black dark:text-gray-100 wrap-break-word max-w-full leading-relaxed" :class="{'animate-pulse': msg.isTyping}" x-html="formatMessage(msg.content)"></div>
                     </div>
                 </div>
             </template>
