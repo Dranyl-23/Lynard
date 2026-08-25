@@ -12,7 +12,7 @@
     ],
     "routes": [
         {
-            "src": "/(build|CertificationLogo|DeskSetup|HandCarry|ProjectLogos|WorldMap|audio|images)/(.*)",
+            "src": "/(build|CertificationLogo|DAO|DeskSetup|HandCarry|ProjectLogos|WorldMap|audio|images)/(.*)",
             "dest": "/public/$1/$2"
         },
         {

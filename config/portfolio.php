@@ -208,6 +208,19 @@ return [
     'certifications' => [
         'awards' => [
             [
+                'title' => 'Rust School x H.E.R. DAO',
+                'subtitle' => 'Systems · Web3 · Networking',
+                'action_text' => '&lang; VIEW CERTIFICATE &rang;',
+                'modal_type' => 'image',
+                'file' => '/DAO/Rust-Cert.png',
+                'image' => '/DAO/Rust-Cert.png',
+                'logos' => [
+                    ['src' => '/CertificationLogo/BASEPH logo.png', 'classes' => 'bg-slate-900 border-white p-1 z-10']
+                ],
+                'rotation' => '-rotate-1',
+                'z_index' => 'z-30'
+            ],
+            [
                 'title' => 'FigmaFusion x Cor Jesu',
                 'subtitle' => 'Concept to Interface',
                 'action_text' => '&lang; VIEW CERTIFICATE &rang;',
