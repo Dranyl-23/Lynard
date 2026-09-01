@@ -195,6 +195,23 @@ return [
             ]
         ],
         [
+            'company' => 'Full-Stack Web Development Bootcamp',
+            'logo_text' => 'MERN',
+            'total_duration' => 'Bootcamp · 2025',
+            'location' => 'Remote · Philippines',
+            'roles' => [
+                [
+                    'title' => 'MERN Stack Developer Trainee',
+                    'duration' => '2025',
+                    'description' => [
+                        'Completed an intensive full-stack development program specializing in MongoDB, Express.js, React, and Node.js.',
+                        'Engineered RESTful web services, responsive component architectures, state management, and database schemas following industry software design standards.'
+                    ],
+                    'skills' => ['MongoDB', 'Express.js', 'React', 'Node.js', 'MERN Stack', 'REST APIs']
+                ]
+            ]
+        ],
+        [
             'company' => 'Cor Jesu College',
             'logo_text' => 'CJC',
             'total_duration' => 'Student · 3 yrs',
@@ -211,13 +228,14 @@ return [
                     'skills' => ['Full Stack Development', 'Blockchain Integration', 'System Architecture', 'Database Design']
                 ],
                 [
-                    'title' => 'BS Information Technology (4th Year)',
+                    'title' => 'BS Information Technology — Major in Software Engineering',
                     'duration' => 'Aug 2023 - Present · 3 yrs',
                     'description' => [
-                        'Currently completing the final year of a Bachelor of Science in Information Technology, maintaining a strong academic focus on advanced software engineering principles, modern web technologies, and scalable systems architecture.',
+                        'Completing a Bachelor of Science in Information Technology (Major in Software Engineering, Minor in Data Science) at Cor Jesu College with a General Weighted Average (GWA) of 1.50 (Dean’s Lister / Cum Laude Candidate).',
+                        'Relevant coursework includes Data Structures & Algorithms, Software Engineering, Operating Systems, Database Systems, Web & Mobile Development, and Scalable Systems Architecture.',
                         'Serving as a technical mentor to junior students, sharing knowledge on modern tech stacks, debugging techniques, and best practices in version control with Git and GitHub.'
                     ],
-                    'skills' => ['Software Engineering', 'Networking', 'Academic Research']
+                    'skills' => ['Software Engineering', 'Data Science', 'Data Structures & Algorithms', 'Database Systems', 'Git & GitHub']
                 ]
             ]
         ]
