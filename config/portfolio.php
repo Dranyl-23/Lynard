@@ -244,10 +244,25 @@ return [
                 'file' => '/DAO/Rust-Cert.png',
                 'image' => '/DAO/Rust-Cert.png',
                 'logos' => [
-                    ['src' => '/CertificationLogo/BASEPH logo.png', 'classes' => 'bg-slate-900 border-white p-1 z-10']
+                    ['src' => '/CertificationLogo/BASEPH logo.svg', 'classes' => 'bg-slate-900 border-white p-1 z-10'],
+                     ['src' => '/CertificationLogo/H.E.R-DAO.jpg', 'classes' => 'bg-slate-900 border-white p-1 z-10']
                 ],
                 'rotation' => '-rotate-1',
                 'z_index' => 'z-30'
+            ],
+            [
+                'title' => 'Arbitrum Leaner',
+                'subtitle' => 'Blockchain · Web3 · Networking',
+                'action_text' => '&lang; VIEW CERTIFICATE &rang;',
+                'modal_type' => 'image',
+                'file' => '/CertificationLogo/Arbitrum.png',
+                'image' => '/CertificationLogo/Arbitrum.png',
+                'logos' => [
+                    ['src' => '/CertificationLogo/Arbitrum-logo.png', 'classes' => 'bg-slate-900 border-white p-1 z-10'],
+                     ['src' => '/CertificationLogo/Hackquest.svg', 'classes' => 'bg-slate-900 border-white p-1 z-10']
+                ],
+                'rotation' => '-rotate-2',
+                'z_index' => 'z-20'
             ],
             [
                 'title' => 'FigmaFusion x Cor Jesu',

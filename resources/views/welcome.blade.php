@@ -34,7 +34,7 @@
                             <a href="https://linkedin.com/in/alfielynard" target="_blank" class="hover:text-ink transition-colors whitespace-nowrap">linkedin ↗</a>
                             <a href="https://facebook.com/alfielynard" target="_blank" class="hover:text-ink transition-colors whitespace-nowrap">facebook ↗</a>
                             <a href="#" @click.prevent="$dispatch('open-email-modal')" class="hover:text-ink transition-colors whitespace-nowrap">email</a>
-                            <a href="{{ asset('Alfie-Lynard-Resume.docx') }}" download class="hover:text-ink transition-colors whitespace-nowrap font-semibold text-blue-600 dark:text-blue-400">resume ⤓</a>
+                            <a href="{{ asset('Alfie-Lynard-Resume.pdf') }}" download class="hover:text-ink transition-colors whitespace-nowrap font-semibold text-blue-600 dark:text-blue-400">resume ⤓</a>
                         </div>
 
                     </div>
