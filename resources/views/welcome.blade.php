@@ -106,17 +106,17 @@
                     </div>
 
                     <!-- Projects Section (Overlapping Cards) -->
-                    <div id="projects" class="w-full pb-16 pt-8 overflow-x-hidden">
+                    <div id="projects" class="w-full pb-16 pt-8 overflow-visible">
                         <div class="flex items-center justify-between font-mono text-[0.65rem] text-gray-500 uppercase tracking-widest mb-10">
                             <span>03 — projects</span>
                             <a href="/projects" class="hover:text-ink transition-colors">ALL PROJECTS &rarr;</a>
                         </div>
                            <!-- Cards Container -->
-                        <div class="relative w-full h-112.5 sm:h-125 flex items-center justify-center mt-12 mb-8">
+                        <div class="relative w-full h-112.5 sm:h-125 flex items-center justify-center mt-12 mb-8 overflow-visible">
                             
                             <!-- Left Card (Chainbudget) -->
-                            <div onclick="window.open('https://github.com/Dranyl-23/Chainbudget', '_blank')" class="absolute left-1/2 top-1/2 -ml-30 sm:-ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 -rotate-10 z-10 hover:z-40! group/card cursor-pointer">
-                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[-20%] group-hover/card:rotate-[-4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
+                            <div onclick="window.open('https://github.com/Dranyl-23/Chainbudget', '_blank')" class="absolute left-1/2 top-1/2 -ml-24 sm:-ml-36 mt-5 w-60 sm:w-68 -translate-x-1/2 -translate-y-1/2 -rotate-10 z-10 hover:z-40! group/card cursor-pointer">
+                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[-8%] group-hover/card:rotate-[-2deg] group-hover/card:-translate-y-6 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-600 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
                                             &lt; TOP BUDGET TOOL &gt;
@@ -142,8 +142,8 @@
                             </div>
 
                             <!-- Right Card (Report-Davao) -->
-                            <div onclick="window.open('https://github.com/Dranyl-23/Report-Davao', '_blank')" class="absolute left-1/2 top-1/2 ml-30 sm:ml-40 mt-5 w-65 sm:w-70 -translate-x-1/2 -translate-y-1/2 rotate-10 z-10 hover:z-40! group/card cursor-pointer">
-                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[20%] group-hover/card:rotate-[4deg] group-hover/card:-translate-y-4 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
+                            <div onclick="window.open('https://github.com/Dranyl-23/Report-Davao', '_blank')" class="absolute left-1/2 top-1/2 ml-24 sm:ml-36 mt-5 w-60 sm:w-68 -translate-x-1/2 -translate-y-1/2 rotate-10 z-10 hover:z-40! group/card cursor-pointer">
+                                <div class="bg-white border border-gray-200 rounded-[1.25rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out opacity-85 group-hover/card:translate-x-[8%] group-hover/card:rotate-[2deg] group-hover/card:-translate-y-6 group-hover/card:scale-[1.05] group-hover/card:opacity-100">
                                     <div class="flex flex-wrap gap-2 mb-5">
                                         <div class="bg-gray-500 rounded-full px-2.5 py-1 font-mono text-[9px] text-white uppercase tracking-widest flex items-center gap-1">
                                             &lt; CIVIC PLATFORM &gt;
