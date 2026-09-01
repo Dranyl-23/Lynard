@@ -122,6 +122,24 @@ return [
 
     'experience' => [
         [
+            'company' => 'Navy Sharks',
+            'logo_text' => 'NS',
+            'total_duration' => 'Contract · International Client',
+            'location' => 'Australia · Remote',
+            'roles' => [
+                [
+                    'title' => 'Backend & DevOps Engineer',
+                    'duration' => 'July-2026 - Present',
+                    'description' => [
+                        'Partnered with an Australian client to architect the backend infrastructure and database schema for Navy Sharks, an elite lifestyle concierge and club platform.',
+                        'Engineered scalable RESTful APIs and optimized database queries to ensure fast data processing and secure multi-tenant data management for international users.',
+                        'Managed DevOps workflows, CI/CD deployment pipelines, and server environment configurations to maintain high availability and performance.'
+                    ],
+                    'skills' => ['Backend Development', 'Database Architecture', 'DevOps', 'REST APIs', 'Cloud Infrastructure', 'International Client']
+                ]
+            ]
+        ],
+        [
             'company' => 'Independent Software Developer',
             'logo_text' => 'DEV',
             'total_duration' => 'Freelance · 2 yrs',
