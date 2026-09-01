@@ -29,11 +29,12 @@
                         </p>
 
                         <!-- Social Links -->
-                        <div class="mt-8 flex items-center gap-3 font-mono text-[0.75rem] text-gray-500 dark:text-gray-500 sm:gap-4">
-                            <a href="https://github.com/Dranyl-23" class="hover:text-ink transition-colors whitespace-nowrap">github ↗</a>
-                            <a href="https://linkedin.com/in/alfielynard" class="hover:text-ink transition-colors whitespace-nowrap">linkedin ↗</a>
-                            <a href="https://facebook.com/alfielynard" class="hover:text-ink transition-colors whitespace-nowrap">facebook ↗</a>
+                        <div class="mt-8 flex items-center gap-3 font-mono text-[0.75rem] text-gray-500 dark:text-gray-500 sm:gap-4 flex-wrap">
+                            <a href="https://github.com/Dranyl-23" target="_blank" class="hover:text-ink transition-colors whitespace-nowrap">github ↗</a>
+                            <a href="https://linkedin.com/in/alfielynard" target="_blank" class="hover:text-ink transition-colors whitespace-nowrap">linkedin ↗</a>
+                            <a href="https://facebook.com/alfielynard" target="_blank" class="hover:text-ink transition-colors whitespace-nowrap">facebook ↗</a>
                             <a href="#" @click.prevent="$dispatch('open-email-modal')" class="hover:text-ink transition-colors whitespace-nowrap">email</a>
+                            <a href="{{ asset('Alfie-Lynard-Resume.docx') }}" download class="hover:text-ink transition-colors whitespace-nowrap font-semibold text-blue-600 dark:text-blue-400">resume ⤓</a>
                         </div>
 
                     </div>

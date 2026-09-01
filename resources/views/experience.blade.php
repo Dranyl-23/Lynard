@@ -2,9 +2,15 @@
     <div class="mx-auto max-w-2xl px-6">
         <!-- Experience Header -->
         <section class="relative pt-20 pb-12 sm:pt-28 border-b border-gray-100/0">
-            <h1 class="font-pixel text-[2.3rem] leading-[1.05] tracking-[-0.01em] text-ink sm:text-[3rem]">
-                Experience
-            </h1>
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <h1 class="font-pixel text-[2.3rem] leading-[1.05] tracking-[-0.01em] text-ink sm:text-[3rem]">
+                    Experience
+                </h1>
+                <a href="{{ asset('Alfie-Lynard-Resume.docx') }}" download class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 font-mono text-[11px] font-medium text-ink hover:bg-gray-100 hover:border-gray-300 transition-colors shadow-xs">
+                    <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Resume ⤓
+                </a>
+            </div>
             <p class="mt-4 max-w-lg text-[0.95rem] leading-relaxed text-gray-700 sm:mt-5 sm:text-base">
                 A 4th-year IT student passionate about solving real-world problems. Actively building full-stack web applications, participating in tech events, and constantly exploring modern technologies.
             </p>
