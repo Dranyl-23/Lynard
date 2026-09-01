@@ -47,6 +47,17 @@ return [
     'projects' => [
         'featured' => [
             [
+                'title' => 'Reminda (Schedly)',
+                'description' => 'AI-Powered Smart Schedule & Timetable Assistant built with Flutter & Dart. Uses On-Device Neural Vision (Google ML Kit) and Gemini AI to turn timetable screenshots into smart, reminder-ready schedules.',
+                'image' => 'ProjectLogos/Reminda.png',
+                'badge' => 'AI MOBILE APP',
+                'badge_color' => 'purple-500',
+                'badge_svg' => '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-8h-2V7h2v6z"/>',
+                'tags' => 'FLUTTER &middot; AI &middot; DART',
+                'github_url' => 'https://github.com/Dranyl-23/Reminda',
+                'live_url' => 'https://github.com/Dranyl-23/Reminda'
+            ],
+            [
                 'title' => '4PS-Nexus',
                 'description' => 'A blockchain-based disbursement system for the Philippine 4Ps program. Powered by Stellar and Soroban smart contracts to enforce transparency.',
                 'image' => 'ProjectLogos/4Ps-Nexus.jpg',
