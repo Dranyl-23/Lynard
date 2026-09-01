@@ -133,88 +133,102 @@ return [
 
     'experience' => [
         [
-            'company' => 'NAVY SHARKS',
+            'company' => 'Navy Sharks',
             'logo_text' => 'NS',
             'total_duration' => 'Contract · International Client',
             'location' => 'Australia · Remote',
             'roles' => [
                 [
                     'title' => 'Backend & DevOps Engineer',
-                    'duration' => 'July 2026 – Present',
+                    'duration' => 'July-2026 - Present',
                     'description' => [
-                        'Partnered directly with an Australian client to architect the backend infrastructure and database schema for an elite lifestyle concierge & club platform.',
-                        'Engineered scalable RESTful APIs and optimized database queries to ensure high throughput, low latency and secure data processing.',
-                        'Manage DevOps workflows, CI/CD deployment pipelines, and server environment setup for high availability and seamless international accessibility.'
+                        'Partnered with an Australian client to architect the backend infrastructure and database schema for Navy Sharks, an elite lifestyle concierge and club platform.',
+                        'Engineered scalable RESTful APIs and optimized database queries to ensure fast data processing and secure multi-tenant data management for international users.',
+                        'Managed DevOps workflows, CI/CD deployment pipelines, and server environment configurations to maintain high availability and performance.'
                     ],
-                    'skills' => ['Backend Development', 'DevOps', 'REST APIs', 'Database Design', 'CI/CD']
+                    'skills' => ['Backend Development', 'Database Architecture', 'DevOps', 'REST APIs', 'Cloud Infrastructure', 'International Client']
                 ]
             ]
         ],
         [
-            'company' => 'INDEPENDENT SOFTWARE DEVELOPER',
+            'company' => 'Independent Software Developer',
             'logo_text' => 'DEV',
-            'total_duration' => 'Freelance · Feb 2024 – Dec 2025',
-            'location' => 'Digos City, Davao Del Sur · Remote',
+            'total_duration' => 'Freelance · 2 yrs',
+            'location' => 'Davao Region, Philippines · Remote',
             'roles' => [
                 [
-                    'title' => 'Full Stack Developer & Freelancer',
-                    'duration' => 'Feb 2024 – Dec 2025',
+                    'title' => 'Full Stack Developer',
+                    'duration' => 'Jul 2025 - Present · 1 yr',
                     'description' => [
-                        'Spearheaded end-to-end design, development, and deployment of web applications for clients using Laravel, React, TypeScript, Flutter, and Tailwind CSS.',
-                        'Built real-time communication modules and WebSocket integrations using Laravel Reverb / Pusher, enhancing system responsiveness for collaborative workflows.',
-                        'Designed and optimized MySQL/PostgreSQL/MongoDB database schemas, ensuring data integrity, security, and fast query execution.'
+                        'Spearheaded the end-to-end design, development, and deployment of comprehensive web applications tailored to address real-world problem scenarios, focusing on user-centric design and high-performance backend architectures.',
+                        'Engineered scalable RESTful APIs and real-time WebSocket communication utilizing Laravel and Reverb/Pusher, significantly improving the responsiveness of collaborative platforms and civic tech initiatives.',
+                        'Architected complex database schemas in MySQL/PostgreSQL to handle multi-tenant data securely, ensuring robust data integrity and optimal query performance across various freelance projects.'
                     ],
-                    'skills' => ['Laravel', 'React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'WebSockets', 'MySQL', 'MongoDB']
+                    'skills' => ['Laravel', 'React', 'Tailwind CSS', 'TypeScript', 'WebSockets']
+                ],
+                [
+                    'title' => 'Freelance UI/UX Designer',
+                    'duration' => 'Jan 2024 - Present · 2 yrs 6 mos',
+                    'description' => [
+                        'Translated complex business requirements into intuitive, aesthetically pleasing, and highly accessible user interfaces using Figma and modern design principles.',
+                        'Created comprehensive wireframes, interactive prototypes, and scalable design systems that drastically accelerated frontend development workflows for clients and personal projects.',
+                        'Conducted user research and usability testing to iterate on designs, ensuring seamless user experiences across both mobile and desktop platforms.'
+                    ],
+                    'skills' => ['Figma', 'UI/UX Design', 'Wireframing', 'Prototyping']
                 ]
             ]
         ],
         [
-            'company' => 'FULL-STACK WEB DEVELOPMENT BOOTCAMP',
-            'logo_text' => 'MERN',
-            'total_duration' => 'Bootcamp · 2023',
-            'location' => 'Remote · Digos City',
+            'company' => 'Tech Community & Open Source',
+            'logo_text' => 'OSS',
+            'total_duration' => 'Developer · 2 yrs',
+            'location' => 'Davao City, Philippines · On-site / Hybrid',
             'roles' => [
                 [
-                    'title' => 'MERN Stack Trainee',
-                    'duration' => '2023',
+                    'title' => 'Open Source Contributor',
+                    'duration' => 'Oct 2024 - Present · 1 yr 9 mos',
                     'description' => [
-                        'Completed an intensive full-stack web development bootcamp program specializing in the MERN stack (MongoDB, Express, React, Node.js).'
+                        'Actively developed and maintained public GitHub repositories focusing on civic tech, blockchain disbursement (4PS-Nexus), and AI-assisted productivity tools.',
+                        'Collaborated with the open-source community by reviewing pull requests, optimizing algorithms, and resolving critical bugs in decentralized applications.',
+                        'Explored and integrated cutting-edge technologies including Web3 smart contracts (Stellar/Soroban) and AI-assisted workflows (OpenAI), translating theoretical concepts into functional, real-world open-source software.'
                     ],
-                    'skills' => ['MongoDB', 'Express.js', 'React', 'Node.js', 'MERN Stack']
+                    'skills' => ['Git', 'GitHub', 'Open Source', 'Web3', 'AI Integrations']
+                ],
+                [
+                    'title' => 'Hackathon Participant & Builder',
+                    'duration' => 'Feb 2024 - Present · 2 yrs 5 mos',
+                    'description' => [
+                        'Actively engaged in regional and national IT-related activities, competitive hackathons, and intensive tech seminars to continuously hone full-stack development skills and stay ahead of industry trends.',
+                        'Collaborated with cross-functional teams of developers and designers in high-pressure environments to rapidly prototype and pitch innovative software solutions.'
+                    ],
+                    'skills' => ['Problem Solving', 'Rapid Prototyping', 'Team Collaboration']
                 ]
             ]
         ],
         [
-            'company' => 'COR JESU COLLEGE TECH COMMUNITY',
+            'company' => 'Cor Jesu College',
             'logo_text' => 'CJC',
-            'total_duration' => 'Student Community · Aug 2024 – May 2025',
-            'location' => 'Digos City · On-site',
+            'total_duration' => 'Student · 3 yrs',
+            'location' => 'Digos City, Davao del Sur · On-site',
             'roles' => [
                 [
-                    'title' => 'Student Developer & Tech Mentor',
-                    'duration' => 'Aug 2024 – May 2025',
+                    'title' => 'Capstone Full Stack Developer',
+                    'duration' => 'Aug 2025 - Present · 11 mos',
                     'description' => [
-                        'Mentored junior IT students in Git, GitHub workflows, full-stack web development, and debugging best practices.',
-                        'Participated in regional hackathons and tech seminars, rapidly prototyping innovative software solutions under high-pressure conditions.'
+                        'Spearheading the full-stack development of Chainbudget, a Blockchain-Based Budget Management System designed for transparent organizational fund monitoring as the primary capstone project.',
+                        'Architecting both the frontend interfaces and complex backend logic, ensuring financial integrity and secure data flow across organizational departments.',
+                        'Integrating blockchain methodologies to create an immutable ledger for budget tracking, leveraging modern web frameworks to deliver a responsive and accessible user experience.'
                     ],
-                    'skills' => ['Git', 'GitHub Workflows', 'Mentorship', 'Rapid Prototyping', 'Full Stack']
-                ]
-            ]
-        ],
-        [
-            'company' => 'COR JESU COLLEGE – CJC',
-            'logo_text' => 'CJC',
-            'total_duration' => 'Education · 2023 - Present',
-            'location' => 'Digos City · On-site',
-            'roles' => [
+                    'skills' => ['Full Stack Development', 'Blockchain Integration', 'System Architecture', 'Database Design']
+                ],
                 [
-                    'title' => 'BS Information Technology',
-                    'duration' => '2023 - Present',
+                    'title' => 'BS Information Technology (4th Year)',
+                    'duration' => 'Aug 2023 - Present · 3 yrs',
                     'description' => [
-                        'Currently completing a Bachelor of Science in Information Technology at Cor Jesu College.',
-                        'Relevant Coursework: Data Structures & Algorithms, Software Engineering, Frontend & Backend, Database Systems, Web & Mobile Development.'
+                        'Currently completing the final year of a Bachelor of Science in Information Technology, maintaining a strong academic focus on advanced software engineering principles, modern web technologies, and scalable systems architecture.',
+                        'Serving as a technical mentor to junior students, sharing knowledge on modern tech stacks, debugging techniques, and best practices in version control with Git and GitHub.'
                     ],
-                    'skills' => ['Data Structures & Algorithms', 'Software Engineering', 'Frontend & Backend', 'Database Systems', 'Web & Mobile Development']
+                    'skills' => ['Software Engineering', 'Networking', 'Academic Research']
                 ]
             ]
         ]
