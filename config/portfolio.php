@@ -239,14 +239,13 @@ return [
                     'skills' => ['Full Stack Development', 'Blockchain Integration', 'System Architecture', 'Database Design']
                 ],
                 [
-                    'title' => 'BS Information Technology — Major in Software Engineering',
+                    'title' => 'BS Information Technology',
                     'duration' => 'Aug 2023 - Present · 3 yrs',
                     'description' => [
-                        'Completing a Bachelor of Science in Information Technology (Major in Software Engineering, Minor in Data Science) at Cor Jesu College with a General Weighted Average (GWA) of 1.50 (Dean’s Lister / Cum Laude Candidate).',
-                        'Relevant coursework includes Data Structures & Algorithms, Software Engineering, Operating Systems, Database Systems, Web & Mobile Development, and Scalable Systems Architecture.',
+                        'Currently completing a Bachelor of Science in Information Technology at Cor Jesu College, maintaining a strong focus on full-stack web development, database systems, and software engineering principles.',
                         'Serving as a technical mentor to junior students, sharing knowledge on modern tech stacks, debugging techniques, and best practices in version control with Git and GitHub.'
                     ],
-                    'skills' => ['Software Engineering', 'Data Science', 'Data Structures & Algorithms', 'Database Systems', 'Git & GitHub']
+                    'skills' => ['Software Engineering', 'Full Stack Development', 'Database Systems', 'Git & GitHub']
                 ]
             ]
         ]
